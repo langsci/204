@@ -36,7 +36,7 @@ A lot of computational literature on VPCs focuses on the identification or extra
 
 \citet{Coo06} discuss various senses for the particle \ile{up}\is{particle sense classes} in a cognitive grammar framework, annotate a dataset and perform some classification\is{verb-particle construction!classification} experiments to identify the senses of \ile{up} in unseen data. As a linguistic study, \citet{Jac02} provides a very nice discussion of various types of VPCs involving particles such as directional particles, aspectual particles, time-AWAY constructions, and some idiomatic constructions. Our work differs from theirs in having a broader coverage of particles and/or strong emphasis on ontology with respect to the sense classes of the particles and how different \isi{particle sense classes} relate to verbal ontological classes.
 
-\citet{Fra76} mentions semantic properties of verbs affecting patterns of verb-particle combinations, e.g. semantically similar verbs \ile{bolt/cement/clam/glue/paste /nail} all can combine with the particle \ile{down} and specify the objects that can be used to join material. Our approach is based on the similar assumption that there are generalizations, such as particles with certain sense classes combine with specific verb classes or ontological classes. \citet{Vil03} also adopts the same approach where she tries to encode the information in terms of lexical rules and restrictions, etc. However, her focus is on obtaining productive patterns in VPCs rather than on their interpretation.
+\citet{Fra76} mentions semantic properties of verbs affecting patterns of verb-particle combinations, for instance semantically similar verbs \ile{bolt/cement/clam{\slash}glue/paste/nail} all can combine with the particle \ile{down} and specify the objects that can be used to join material. Our approach is based on the similar assumption that there are generalizations, such as particles with certain sense classes combine with specific verb classes or ontological classes. \citet{Vil03} also adopts the same approach where she tries to encode the information in terms of lexical rules and restrictions, etc. However, her focus is on obtaining productive patterns in VPCs rather than on their interpretation.
 
 Our work also differs from the previous work mentioned above in the following respect: We emphasize the building of complete semantic representations of the sentences, not just the particles' semantics or just the classification of VPCs\is{verb-particle construction!classification}. Similar to our criteria for compositionality, \citet{McC03}, \citet{Bal03}, and \citet{Ban03} have looked at \isi{distributional similarity} as a measure of compositionality of VPCs\is{verb-particle construction!compositionality}. In contrast to the approaches focusing on statistical classification based on word/syntax features, our approach (both symbolic and statistical) uses information obtained from existing lexical resources, such as WordNet, for the classification of VPCs. We augment it with additional knowledge based on the linguistic investigation of VPCs identified in terms of generalizations, which we encode into an ontology, in order to compute the semantics of the compositional classes.
 
@@ -50,7 +50,7 @@ has semantic content which is not contributed by the individual constituents (i.
 
 The compositional VPCs can be further classified into three subtypes: symmetrically compositional VPCs, light particle compositional VPCs (LP-compositional VPCs), and light verb compositional VPCs (LV-compositional VPCs), based on the type of semantic content contributed by each of the constituents. Symmetrically compositional VPCs refer to VPCs in which both constituents, the verb and the particle, contribute their simplex meanings (their lexical-semantic content). For example, in \ile{Debris \lex{flew up} and hit the window in the furthest unit}, the senses for the verb \ile{fly} (e.g., in WordNet, sense fly\%2:38:00) as well as the particle \ile{up} (e.g., in WordNet, sense up\%4:02:00) combine together to provide the meaning of the VPC \ile{fly up}.\footnote{For this study, we have used WordNet version 3.0. The numbers appearing after the symbol \% in the WordNet senses represent the sense keys in WordNet.} We distinguish the other two compositional VPC types from the symmetrically compositional VPCs only in the aspect that in the other two types, the particle or the verb have a relatively lighter contribution than the other constituent which adds its regular lexical-semantic content.\footnote{The term ``light particle" is used in analogy with the term ``light verb" which is commonly used in the literature for verbs with bleached content.} 
 
-LP-compositional VPCs\is{verb-particle construction}\is{verb-particle construction!classification}\is{verb-particle construction!compositionality} involve particles which, instead of contributing a preposition like lexical-semantic content, contribute aspectual information to the VPCs. Verbs contribute most of the lexical-semantic content in such VPCs. For example, in \ile{Susan \lex{finished up} her paper} \citep{Ban03b}, the verb \ile{finish} contributes its regular lexical content (e.g., in WordNet, sense finish\%2:30:02). However, the particle \ile{up}, instead of contributing its regular lexical-semantic content, adds aspectual information that the action was completed (i.e., the COMPLETELY sense in our sense inventory)\is{particle sense classes!completely}. See \sectref{sec:senses} for the specific senses of particles. 
+LP-compositional VPCs\is{verb-particle construction}\is{verb-particle construction!classification}\is{verb-particle construction!compositionality} involve particles which, instead of contributing a pre\-position like lexical-semantic content, contribute aspectual information to the VPCs. Verbs contribute most of the lexical-semantic content in such VPCs. For example, in \ile{Susan \lex{finished up} her paper} \citep{Ban03b}, the verb \ile{finish} contributes its regular lexical content (e.g., in WordNet, sense finish\%2:30:02). However, the particle \ile{up}, instead of contributing its regular lexical-semantic content, adds aspectual information that the action was completed (i.e., the COMPLETELY sense in our sense inventory)\is{particle sense classes!completely}. See \sectref{sec:senses} for the specific senses of particles. 
 
 LV-compositional VPCs\is{verb-particle construction} involve light verbs which carry bleached meaning compared to regular verbs, e.g., CAUSE and BECOME. The particles contribute their regular lexical-semantic content to the VPCs's semantics.  For example, in \ile{The thief \lex{made away} with the cash}, the particle \ile{away} contributes its regular meaning (e.g., WordNet sense away\%4:02:00), but the verb \ile{make}, instead of contributing its regular meaning (e.g., WordNet sense make\%2:36:01), adds a bleached meaning (e.g., cause to be). For details on the procedure to compute meanings of sentences with compositional VPCs, see \sectref{sec:generalizations}.
 
@@ -58,9 +58,9 @@ In a noncompositional VPC\is{non-compositionality}, the sum of meanings of indiv
 
 For identification of the compositionality type for a given VPC\is{verb-particle construction!compositionality}, one may adopt tests as in \figref{fig:tests}.
 
-\begin{figure}[t]
+\begin{figure}
 %\vspace*{-1mm}
-\includegraphics[scale=0.45]{figures/block_compositionality_mod7}
+\includegraphics[width=.66\textwidth]{figures/block_compositionality_mod7}
 %\vspace*{-2mm}
 \caption{Tests to identify compositionality type}\label{fig:tests}
 \end{figure}
@@ -89,12 +89,17 @@ As a first step toward an interpretation of VPCs, we need to determine whether a
 
 \item If WordNet has the VPC as well as the verb in the same synset, VPC is LP-compositional. For example, the VPC \ile{sort out} (sort\_out\%2:31:00) and the verb \ile{sort} (sort\%2:31:00) both appear in the same synset in WordNet.
 
-\item If WordNet has the verb in the VPC as a hypernym for the VPC, VPC is either symmetrically compositional or LP-compositional. For example, compositional VPC \ile{push up} (push\_up\%2:38:00) has the verb \ile{push} (push\%2:38:00) as its direct hypernym.
+
+\item 
+\sloppy 
+If WordNet has the verb in the VPC as a hypernym for the VPC, VPC is either symmetrically compositional or LP-compositional. For example, compositional VPC \ile{push up} (push\_up\%2:38:00) has the verb \ile{push} (push\%2:38:00) as its direct hypernym.
 
 \item If WordNet has the verb in the definition (in its base or inflected form) of the synset where the VPC appears, the VPC is either symmetrically compositional or LP-compositional. For example, the compositional VPC \ile{move up} (move\_up\%2:38:00) has the verb \ile{move} in its definition \ile{move upwards}.
 
 \item If WordNet has the relevant VPC as well as another VPC with the verb replaced with another verb in the same synset, the VPC is compositional (either symmetrically compositional or LP-compositional or LV-compositional). For example, the compositional VPCs \ile{pull out} (pull\_out\%2:35:00) and \ile{rip out} (rip\_out\%2:35:00) appear in the same WordNet synset.
 
+\fussy
+\newpage 
 \item If none of the above heuristics apply, the VPC is noncompositional\is{non-compositionality}. For example, none of the above heuristics apply to the idiomatic VPC \ile{catch up} (catch\_up\%2:38:0).
 
 \end{enumerate}
@@ -118,9 +123,8 @@ An evaluation of the heuristics on Test Set 1 is presented in \tabref{tab:1:eval
 \begin{table}
 \caption[Evaluation of heuristics 3--7 using Test Set 1 (50 test cases)]{Evaluation of heuristics 3--7 using Test Set 1 (50 test cases)\footnote{We define precision as Cn/Tn and coverage as Tn/N, where N is the corpus size, Tn is the sample size that heuristic n is applicable to, and Cn is the number of correct assignments it makes.}}
 \label{tab:1:eval-heur}
-%\vspace*{-2mm}
-\scalebox{0.8}{
- \begin{tabular}{ccc}
+%\vspace*{-2mm} 
+ \begin{tabularx}{\textwidth}{YYY}
   \lsptoprule
     Heuristic \# & Precision for the heuristic ($\%$)  & Coverage of the heuristic ($\%$)\\ 
   \midrule
@@ -129,9 +133,10 @@ An evaluation of the heuristics on Test Set 1 is presented in \tabref{tab:1:eval
   5 & 100 & 12 \\
   6 & 76.92 & 26 \\
   7 & 58.62 & 58 \\
+  \midrule 
    Overall (heuristics 3--7) & 70 & 100 \\
   \lspbottomrule
- \end{tabular}}
+ \end{tabularx}
 \end{table}
 
 
@@ -159,6 +164,7 @@ We identified two general sense classes for the particles in compositional VPCs,
 
 The ASPECTUAL sense class\is{particle sense classes!aspectual} has two subclasses, namely COMPLETELY\is{particle sense classes!completely} and CONTINUING\is{particle sense classes!continuing}, where the particle modifies the verb by providing aspectual information. In terms of the TRIPS semantic roles, the aspectual sense particles assume the MANNER role in relation to the verb. The COMPLETELY sense is used to express that the activity denoted by the verb is performed to the full extent or with thoroughness. Particles with COMPLETELY sense may also emphasize the telicity of an action. For example, the particle \ile{out} in \ile{He \textbf{sorted out} every scrap of manuscript, every map, and the native letters} emphasizes that each of the items mentioned were thoroughly and completely sorted. Particles \ile{up}, \ile{out}, and \ile{down} are used more often than other particles to convey this aspectual sense.
 
+\newpage 
 The CONTINUING sense\is{particle sense classes!continuing} is used to emphasize the durative nature of the event denoted by the verb. For example, in \ile{Day after day she \textbf{worked away} ...} the particle \ile{away} conveys that the activity continued for a duration. The particles in this class may also convey an iterative sense when they are used with semelfactive verbs, e.g., note the use of the particle \ile{away} in \ile{Start your explorations here, \textbf{click away} all you want}. Usually particles \ile{away} and \ile{on} are used to convey this sense in VPCs.
 
 These sense classes correspond to the VPC classes based on their compositionality types mentioned in \sectref{sec:classification}. For example, the DIRECTION sense class\is{particle sense classes!direction} is generally instantiated by the symmetrically compositional or LV-compositional VPCs. The ASPECTUAL sense class\is{particle sense classes!aspectual}, on the other hand, is instantiated by the LP-compositional VPCs. Besides these two sense classes, there are a few other senses that particles may express in VPCs corresponding to the symmetrically compositional and LV-compositional VPCs. For example, the senses IN-WORKING-ORDER-VAL\is{particle sense classes!in-working-order-val} and NOT-IN-WORKING-ORDER-VAL\is{particle sense classes!not-in-working-order-val} mentioned in \tabref{tab:1:senseclasses-prtcls} and \tabref{tab:1:findings-prtcls-3senses} are expressed by particles in LV-compositional VPCs. These senses are usually conveyed by the particles \ile{up}, \ile{down}, and \ile{out}. Similarly, the sense DISAPPEARANCE\is{particle sense classes!disappearance}, conveyed by the particle \ile{away}, may be taken to correspond to the particle %particles 
@@ -215,75 +221,83 @@ in symmetrically compositional VPCs. %This sense is conveyed by the particle \il
 \end{table}
 \end{comment}
 
-
-\begin{small}
-\begin{table}[!t]%\LARGE
+ 
+\begin{table}%\LARGE
 \caption{Sense classes for particles \ile{up}, \ile{down}, \ile{away}, and \ile{out} in compositional VPCs.}
 \label{tab:1:senseclasses-prtcls}
 %\vspace*{-2mm}
-\begin{tabular}{p{1.9in}p{0.5in}p{2in}}
+\footnotesize
+\begin{tabularx}{\textwidth}{llQ}
   \lsptoprule
-  \begin{tabular}{l}\textbf{Sense class} \\Sense type\end{tabular} & Particle & Example \\\midrule
+  \textbf{Sense class}\\
+  Sense type & Particle & Example \\\midrule
 
     \textbf{DIRECTION}: & & \\
+    \midrule
     DIRECTION-UP & up & He took the carpet up. \\
     DIRECTION-DOWN & down & He skied down. \\
     DIRECTION-AWAY & away & He ran away. \\
-    DIRECTION-OUT & out & He cried out.\\\\
+    DIRECTION-OUT & out & He cried out.\\
 
     \textbf{ASPECTUAL}: & & \\
+    \midrule
     COMPLETELY & up & Clean up the room! \\
                         & down & London nightclub closed down over fights with knives and bottles. \\
-                        & out & He sorted out every scrap of manuscript, every map, and the native letters.  \\\\
+                        & out & He sorted out every scrap of manuscript, every map, and the native letters.  \\
    
     \textbf{ASPECTUAL}: & & \\
+    \midrule
     CONTINUING & away & Night and day they hammered away, coming on like great waves. \\
-                         &      & He scrubbed away at the floor.\\\\
+                         &      & He scrubbed away at the floor.\\
 
-    IN-WORKING-ORDER-VAL & up & Bring the browser up!  \\\\
+    IN-WORKING-ORDER-VAL & up & Bring the browser up!  \\
 
     NOT-IN-WORKING-  & down & The computer went down again. \\
-    ORDER-VAL       & out & The national electric grid went out. \\\\ 
+    ORDER-VAL       & out & The national electric grid went out. \\\
 
     DISAPPEARANCE & away & The echo died away. \\
                            &      & The music faded away. \\
 \lspbottomrule
- \end{tabular}
+ \end{tabularx}
 
-\end{table}
-\end{small}
-
+\end{table} 
 
 
-\begin{table}[ht]%\LARGE
+
+\begin{table}
 \caption{Generalizations about sense classes DIRECTION and ASPECTUAL for particles in compositional VPCs. }
 \label{tab:1:findings-prtcls-sense-classes}
 %\vspace*{-2mm}
 %\scalebox{0.38}{
-\small
- \begin{tabular}{p{1in}p{3.5in}}
+\footnotesize
+ \begin{tabularx}{\textwidth}{p{30mm}Q}
   \lsptoprule
    \textbf{Sense class}: \newline Sense type
         & Generalizations\\
     \midrule
-  \textbf{DIRECTION}: \newline DIRECTION-UP \newline DIRECTION-DOWN \newline DIRECTION-AWAY \newline DIRECTION-OUT
+  \textbf{DIRECTION}: \\
+  \midrule
+   DIRECTION-UP \newline DIRECTION-DOWN \newline DIRECTION-AWAY \newline DIRECTION-OUT
     & verb trajectory = + \newline Particle relative to some scale/domain \newline PP alternative is possible for the particles \ile{up}, \ile{down}, and \ile{out}. \newline The particle \ile{away} can take a PP-location as its GROUND argument. \newline The senses tend to appear with motion and movement-related verbs in the TRIPS ontology. \newline Cases pass two tests: (1) Is there a change in physical location/on a scale? (2) Does the entity exist anywhere? \newline DIRECTION-UP is also possible with verbs in the TRIPS ontology classes apply-force and acquire.\newline DIRECTION-DOWN is also possible with verbs in the TRIPS ontology classes hitting.\newline DIRECTION-AWAY is also possible with event-of-change verbs where grammatical resultative construction is used. \newline DIRECTION-OUT is also possible with verbs of vocalization (and the verbs in the TRIPS ontology classes locution and manner-say) and some perception verbs. \\
-\tablevspace
-  \textbf{ASPECTUAL}: \newline COMPLETELY
-    & verb trajectory = - \newline PP alternative not possible \newline Default sense with the event-of-change verbs in the TRIPS ontology \newline COMPLETELY for the particle \ile{up} is also possible with verbs in the TRIPS ontology classes protecting, joining, acquire-by-action, herd, and arrange-text.\newline COMPLETELY for the particle \ile{down} is also possible with verbs in the TRIPS ontology classes change, consume, protecting, put, and pursue. \newline COMPLETELY for the particle \ile{out} is also possible with verbs in the TRIPS ontology classes evoke-tiredness, arranging, and put.\\\\
-  \textbf{ASPECTUAL}: \newline CONTINUING
+  \textbf{ASPECTUAL}: \\ 
+  \midrule
+   COMPLETELY
+    & verb trajectory = - \newline PP alternative not possible \newline Default sense with the event-of-change verbs in the TRIPS ontology \newline COMPLETELY for the particle \ile{up} is also possible with verbs in the TRIPS ontology classes protecting, joining, acquire-by-action, herd, and arrange-text.\newline COMPLETELY for the particle \ile{down} is also possible with verbs in the TRIPS ontology classes change, consume, protecting, put, and pursue. \newline COMPLETELY for the particle \ile{out} is also possible with verbs in the TRIPS ontology classes evoke-tiredness, arranging, and put.\\
+  \textbf{ASPECTUAL}:  \\
+  \midrule
+   CONTINUING
    & verb trajectory = - \newline Usually with atelic verbs that have extended duration \newline Iterative usage with semelfactive verbs \newline PP alternative is not possible, i.e., particle cannot take NP object, but can take PP object in conative constructions. \newline CONTINUING is also possible with verbs in the TRIPS ontology class event-of-action.\\ 
   \lspbottomrule
- \end{tabular}%}
+ \end{tabularx}%}
 \end{table}
 
-\begin{table}[ht]%\LARGE
+\begin{table}%\LARGE
 \caption{Generalizations about senses IN-WORKING-ORDER-VAL, NOT-IN-WORKING-ORDER-VAL, and DISAPPEARANCE for particles in compositional VPCs. Note that NP* refers to the object argument of a transitive verb, e.g., \ile{the carpet} in \ile{he took the carpet up}, or the subject of an intransitive verb, e.g., \ile{he} in \ile{he skied down}.}
 \label{tab:1:findings-prtcls-3senses}
 %\vspace*{-2mm}
 %\scalebox{0.38}{
-\small
- \begin{tabular}{p{1.3in}p{3.2in}}
+\footnotesize
+ \begin{tabularx}{\textwidth}{p{45mm}Q}
   \lsptoprule
    \textbf{Sense class}: \newline Sense type
         & Generalizations\\
@@ -298,52 +312,54 @@ in symmetrically compositional VPCs. %This sense is conveyed by the particle \il
   DISAPPEARANCE
     & verb trajectory = - \newline Usually with verbs of disappearance \newline PP alternative not possible \newline Cases fail two tests: (1) Is there a change in physical location/on a scale? (2) Does the entity exist anywhere? \newline DISAPPEARANCE is also possible with verbs in the TRIPS ontology classes event-of-undergoing-action and change.\\
   \lspbottomrule
- \end{tabular}%}
+ \end{tabularx}%}
 \end{table}
 
 We did not get very high agreement on human annotations\is{inter-annotator agreement} for the sense labels for the particles in VPCs from Test Set 1. The three annotators had full agreement in 20 cases (40\% of the cases). 75\% of these 20 cases had DIRECTION sense, 20\% had COMPLETELY, and 5\% IDIOMATIC\is{particle sense classes!idiomatic}. The disagreement cases involved labels such as DIRECTION vs. COMPLETELY, DIRECTION vs. IDIOMATIC, or COMPLETELY vs. IDIOMATIC. For a more reliable identification of senses for the particles in VPCs, one may adopt tests as in \figref{fig:tests-senses}.
 
-\begin{figure}[ht]
+
+
+\largerpage[2]
+We also explored the use of compositionality heuristics\is{verb-particle construction!heuristics for compositionality} to determine the senses of particles in VPCs, the general sense labels being (DIRECTION, ASPECTUAL, and IDIOMATIC). For example, if heuristic 3 applied to a VPC, the particle was assumed to have an ASPECTUAL sense. If heuristic 7 applied, the VPC was taken to be noncompositional\is{non-compositionality} and hence with an IDIOMATIC sense. In $30\%$ of the cases, a correct sense label was assigned unambiguously. In another $32\%$ of the cases, multiple sense labels were identified and one of them was correct. In the rest of the 19 cases where the sense label based on the application of specific heuristics\is{verb-particle construction!heuristics for compositionality} was incorrect, the DIRECTION sense was the most misclassified sense ($57.89\%$), followed by the COMPLETELY sense ($31.58\%$), followed by the IDIOMATIC sense ($10.53\%$).
+\clearpage 
+
+   \begin{figure}[t]
 %\vspace*{-1mm}
-\includegraphics[scale=0.55]{figures/block_sense_uppercase}
+\includegraphics[width=.66\textwidth]{figures/block_sense_uppercase}
 %\vspace*{-2mm}
 \caption{Tests to identify particle senses}\label{fig:tests-senses}
 \end{figure}
 
 
-
-We also explored the use of compositionality heuristics\is{verb-particle construction!heuristics for compositionality} to determine the senses of particles in VPCs, the general sense labels being (DIRECTION, ASPECTUAL, and IDIOMATIC). For example, if heuristic 3 applied to a VPC, the particle was assumed to have an ASPECTUAL sense. If heuristic 7 applied, the VPC was taken to be noncompositional\is{non-compositionality} and hence with an IDIOMATIC sense. In $30\%$ of the cases, a correct sense label was assigned unambiguously. In another $32\%$ of the cases, multiple sense labels were identified and one of them was correct. In the rest of the 19 cases where the sense label based on the application of specific heuristics\is{verb-particle construction!heuristics for compositionality} was incorrect, the DIRECTION sense was the most misclassified sense ($57.89\%$), followed by the COMPLETELY sense ($31.58\%$), followed by the IDIOMATIC sense ($10.53\%$).
-
-
-\section{Computing semantics of sentences with VPCs} \label{sec:generalizations}
-
+\section{Computing semantics of sentences with VPCs} \label{sec:generalizations} 
+\largerpage
 For the task of interpreting sentences\is{parsing!semantic} with VPCs, we first need to determine if the VPC is compositional or not. We use the heuristics mentioned in \sectref{sec:heuristics} to determine the compositionality of a VPC. For the compositional cases, we get the senses for the verb and the particle from the TRIPS ontology and/or WordNet. The senses for the particles as well as relevant linguistic generalizations to identify these senses are encoded in the TRIPS lexicon and ontology. 
 In this section, we briefly discuss some of the generalizations encoded in the ontology and demonstrate the process of computing the semantics of sentences containing compositional VPCs using three example sentences involving VPCs with different senses for the particle \ile{up}: \ile{She cleaned up her room}, \ile{She pushed the ball up}, and \ile{The network came up}. The logical forms (LFs) produced for these sentences using the TRIPS parser, a broad coverage deep semantic parser driven by the TRIPS ontology, are presented in \figref{fig:lf1} to \figref{fig:lf3}.
+\clearpage 
 
-
-\begin{figure}[t]
+\begin{figure}
 %\vspace*{-1mm}
-\includegraphics[scale=0.6]{figures/LF1_uppercase}
+\includegraphics[width=.66\textwidth]{figures/LF1_uppercase}
 %\vspace*{-2mm}
 \caption{LF for the sentence: \ile{She pushed the ball up.} }\label{fig:lf1}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}
 %\vspace*{-1mm}
-\includegraphics[scale=0.6]{figures/LF2_uppercase}
+\includegraphics[width=.66\textwidth]{figures/LF2_uppercase}
 %\vspace*{-2mm}
 \caption{LF for the sentence: \ile{She cleaned up her room.} }\label{fig:lf2}
 \end{figure}
 
-\begin{figure}[!t]
+\begin{figure}
 %\vspace*{-1mm}
-\includegraphics[scale=0.6]{figures/LF3_uppercase}
+\includegraphics[width=.66\textwidth]{figures/LF3_uppercase}
 %\vspace*{-2mm}
 \caption{LF for the sentence: \ile{The network came up.}}\label{fig:lf3}
 \end{figure}
 
 
-Particles in compositional VPCs can express the senses mentioned in \tabref{tab:1:senseclasses-prtcls}, \tabref{tab:1:findings-prtcls-sense-classes}, \tabref{tab:1:findings-prtcls-3senses}, and in \figref{fig:tests-senses}. This information is encoded in the TRIPS ontology by adding the ontology types corresponding to these senses in the particle's lexicon. For example, the lexical entry for the particle \ile{up} lists sense ontology types ONT::DIRECTION-UP, ONT::COMPLETELY, and ONT::IN-WORKING-ORDER-VAL, used in \figref{fig:lf1} to \figref{fig:lf3} respectively, among other possible senses.\footnote{For a better idea of what information the lexical entries and semantic/ontology classes carry in the TRIPS lexicon and ontology, see  \url{http://www.cs.rochester.edu/research/cisd/projects/trips/lexicon/browse-ont-lex-ajax.html}.} WordNet sense keys corresponding to the particle may be added in the ontology entries for these sense ontology types. For example, WordNet sense keys up\%4:02:00 and up\%4:02:05 are added in the entry for the sense ontology type ONT::DIRECTION-UP.
+Particles in compositional VPCs can express the senses mentioned in Tables \ref{tab:1:senseclasses-prtcls}--\ref{tab:1:findings-prtcls-3senses}, and in \figref{fig:tests-senses}. This information is encoded in the TRIPS ontology by adding the ontology types corresponding to these senses in the particle's lexicon. For example, the lexical entry for the particle \ile{up} lists sense ontology types ONT::DIRECTION-UP, ONT::COMPLETELY, and ONT::IN-WORKING-ORDER-VAL, used in \figref{fig:lf1} to \figref{fig:lf3} respectively, among other possible senses.\footnote{For a better idea of what information the lexical entries and semantic/ontology classes carry in the TRIPS lexicon and ontology, see  \url{http://www.cs.rochester.edu/research/cisd/projects/trips/lexicon/browse-ont-lex-ajax.html}.} WordNet sense keys corresponding to the particle may be added in the ontology entries for these sense ontology types. For example, WordNet sense keys up\%4:02:00 and up\%4:02:05 are added in the entry for the sense ontology type ONT::DIRECTION-UP.
 
 The senses that particles express in a VPC may depend on the verb type they combine with in the VPC. That is, a particle may convey the same sense when it appears with any of the verbs in a specific verb ontology class.\footnote{We find that different verb ontology types that were distinguished for other reasons in the TRIPS  ontology \citep{All07} also line up with the particle distinctions.} For example, particles tend to get DIRECTION sense with verbs of motion and CONTINUING sense with atelic verbs that have extended durations (e.g., activity type verbs). With verb ontology types corresponding to continuous-change verbs (which appear under change verbs in the TRIPS ontology), particles tend to get the COMPLETELY sense. Specific verb ontology classes are also identified for specific particles, e.g., particle \ile{down} exhibits COMPLETELY sense with the verbs in the TRIPS ontology class ONT::PURSUE, as can be seen in \ile{The internet \textbf{tracked down} this guy's stolen car (...)}
 and \ile{A motorist \textbf{chased down}, slapped, and threatened a boy (...)}.
@@ -364,7 +380,8 @@ For the DIRECTION senses\is{particle sense classes!direction}, the particle coul
 
 Depending on the compliance or violations of constraints such as the ones described above, the parser assigns scores for various parse options involving various senses of the particle in a VPC. The parse with the highest score is selected as the semantic representation of the sentence involving the VPC.
 
-In the sentence \ile{She cleaned up her room} in \figref{fig:lf2}, the verb \ile{clean} (ONT::CLEAN which appears under ONT::CHANGE-STATE in the ontology) is not among the list of relevant verb ontology types with which a DIRECTION-UP sense is licensed for the particle \ile{up}. Additionally, a restriction on the verb argument for the DIRECTION-UP sense is that the argument have a semantic feature [+moveable] which is also violated in the given sentence, since \ile{the room} is generally not a moveable entity. Hence, the parser assigns a low score to the parse which involves the DIRECTION-UP sense for the particle \ile{up} in this sentence. The verb \ile{push}, however, in the sentence in \figref{fig:lf1}, is a movement-related verb and the affected entity \ile{ball} is a moveable object. Hence, the parser assigns a higher score to the parse that involves the DIRECTION-UP sense for the particle \ile{up} in this sentence.
+% In the sentence
+In \ile{She cleaned up her room} (\figref{fig:lf2}), the verb \ile{clean} (ONT::CLEAN which appears under ONT::CHANGE-STATE in the ontology) is not among the list of relevant verb ontology types with which a DIRECTION-UP sense is licensed for the particle \ile{up}. Additionally, a restriction on the verb argument for the DIRECTION-UP sense is that the argument have a semantic feature [+moveable] which is also violated in the given sentence, since \ile{the room} is generally not a moveable entity. Hence, the parser assigns a low score to the parse which involves the DIRECTION-UP sense for the particle \ile{up} in this sentence. The verb \ile{push}, however, in the sentence in \figref{fig:lf1}, is a movement-related verb and the affected entity \ile{ball} is a moveable object. Hence, the parser assigns a higher score to the parse that involves the DIRECTION-UP sense for the particle \ile{up} in this sentence.
 
 The IN-WORKING-ORDER-VAL sense requires restrictions on the verbs that they take cognitive entities, devices or processes as their AFFECTED arguments which provide service, i.e., they have some functionality associated with them. The AFFECTED argument for the verb \ile{clean}, namely \ile{the room}, in \figref{fig:lf2} does not satisfy this restriction. Similarly, The AFFECTED argument for the verb \ile{push}, namely \ile{the ball}, in \figref{fig:lf1} does not satisfy this restriction. Hence, the parser assigns a low score for the parses involving an IN-WORKING-ORDER-VAL sense for the particle \ile{up} in the two sentences. On the other hand, the entity \ile{The network} in the sentence in \figref{fig:lf3} satisfies the restriction and hence the sentence in \figref{fig:lf3} gets a higher score for the parse that contains IN-WORKING-ORDER-VAL sense for the particle \ile{up}. 
 
