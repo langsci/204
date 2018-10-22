@@ -14,7 +14,7 @@
 \section{Introduction} 
 Multiword expressions (MWEs) are frequent elements of all natural languages. They are made up of more than one lexeme, but their meaning is not predictable from the meaning of their components. There are different types of MWEs such as stereotyped similes (\textit{as white as snow}), collocations (\textit{strong tea}), or idioms (\textit{to kick the bucket}). This chapter deals with verbal MWEs (VMWEs) where the head element of the MWE is a verb, for example verb-particle constructions (\textit{look after}), or light-verb constructions (\textit{take a shower}). 
 
-This chapter describes our system for verbal MWE recognition built for the PARSEME Shared Task\is{PARSEME!shared task} 1.0 \citep{MWEWorkshop}, USzeged
+This chapter describes our system for verbal MWE recognition. It was built for the PARSEME Shared Task\is{PARSEME!shared task} 1.0 \citep{MWEWorkshop}, USzeged
 and its extension, USzeged+. Both systems use POS tagging\is{part-of-speech tagging} and dependency parsing\is{parsing!dependency} and are capable of identifying single- and multi-token verbal MWEs. They are language-independent: USzeged was submitted for nine of the eighteen languages of the Shared Task, while for this extended version, USzeged+, we present results for all eighteen languages. 
 
 In this chapter, we first describe the original USzeged system and give our results submitted to the Shared Task with detailed error analysis. This part of the chapter builds heavily on our workshop paper \citep{Simko2017}. Then, we describe the details of the updated, USzeged+ version and give the results we achieved with this new system. Last, we give a comparison of the results achieved using our approach in the original, USzeged system and the new USzeged+ one in an experiment using the available \ili{Hungarian} data.
@@ -27,6 +27,7 @@ The guidelines identify five different types of verbal MWEs: idioms (ID), light-
 
 The precise definitions of MWE, VMWE and the VMWE types can be found in \citetv{Savarytv}, as well as details on the different languages' databases used.
 
+\largerpage
 Our team created the \ili{Hungarian} shared task database and VMWE annotation. Our system is mostly based on our experiences with the \ili{Hungarian} data in this annotation phase. Our goal was to create a simple system capable of handling MWE identification in multiple languages.
 
 \subsection{System description}
@@ -41,6 +42,7 @@ MWEs have specific morphological, syntactic and semantic properties. Our approac
 
 The USzeged system works in four steps, and the main MWE identification happens during POS tagging\is{part-of-speech tagging} and dependency parsing\is{parsing!dependency} of the text. Our system relies on the POS tagging and dependency annotations provided by the organizers of the shared task in the companion CoNLL files and the verbal MWE annotation of the texts and is completely language-independent given those inputs.
 
+\newpage 
 In the first step, we prepared the training file from the above mentioned inputs. We merged the training MWE annotation into its morphological and dependency annotation for single- and multi-token MWEs, respectively. The POS tag of single-token MWEs got replaced with their MWE type, while for the multi-token MWEs the dependency graphs' label changed: the label of the dependent node in the tree was replaced with a label denoting the MWE type. 
 
 \figref{fig:simko-1}, \figref{VPC} and \figref{multimwe} show the single-token MWE's change in POS tag and multi-token MWE dependency relabeling for VPCs and LVCs in a \ili{Hungarian} example.
@@ -159,6 +161,7 @@ hozatal}{decision+bringing}{decision-making}.}
 \label{multimwe}
 \end{figure*}
 
+\newpage 
 For multi-token MWEs our approach is based on our hypothesis that the dependent MWE elements will be directly connected to the other MWE element(s). We do not change the structure of the dependency relations\is{dependency!relation} in the tree, but change the dependency label of the dependent MWE element to the MWE type, therefore making the MWE element retraceable from the dependency annotation of the sentence. For example \textit{l\'{a}t} and \textit{el} in \figref{VPC} make up a VPC (\nltliidio{\lex{ell\'at}}{take care}), so the dependency relation label of the dependent element, \textit{el} changes from the general syntactic label \textbf{PREVERB} to the MWE label \textbf{VPC}, with this \textbf{VPC} label now connecting the two elements of the MWE. 
 
 For MWEs of more than two tokens, the conversion replaces the dependency labels of all MWE elements that depend on the head. In \figref{multimwe}, the head of the idiom (\nltliidio{\lex{az els\H{o} k\"ovet veti}}{casts the first stone}) is the verb, \textit{vetette} (cast.Sg3.Past). All other elements' dependency labels are changed to \textbf{ID}. 
@@ -369,6 +372,7 @@ HU  & 83  & 43.3 & 68.9 \\
 \end{tabular}
 \end{table}
 
+\largerpage
 These results confirm that our system achieves better results on single-token MWEs than on multi-token ones.
 
 \section{Gold or parsed?}
