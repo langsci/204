@@ -41,7 +41,7 @@
 %Third paragraph: Motivation. Why are we doing this. Problems we had from evaluation methodology. What we could miss from the \isi{shared task} evaluation methodology. Application context of the MWE \isi{identification} task. Presentation of observed patterns.
 %\end{comment}
 
-Multiword expressions (MWEs) have been studied extensively due to the fact that many natural language processing (NLP) pipelines depend on their correct identification and processing \citep{Sag2002a}. However, there has been relatively little work on \emph{Verbal} MWEs (VMWEs). The PARSEME\footnote{http://parseme.eu} Shared Task\is{PARSEME!shared task} on VMWEs \citep{MWEWorkshop} was the first initiative focusing on the problem of identifying VMWEs for a relatively large number of languages, 18 in total. This initiative produced an array of annotated training and test sets for each language. Using these training sets, shared task participants developed and trained VMWE-identification systems\is{verbal multiword expression!identification}, which were then evaluated on separate test sets also produced by \isi{PARSEME}. 
+Multiword expressions (MWEs) have been studied extensively due to the fact that many natural language processing (NLP) pipelines depend on their correct identification and processing \citep{Sag2002a}. However, there has been relatively little work on \emph{Verbal} MWEs (VMWEs). The PARSEME\footnote{\url{http://parseme.eu}} Shared Task\is{PARSEME!shared task} on VMWEs \citep{MWEWorkshop} was the first initiative focusing on the problem of identifying VMWEs for a relatively large number of languages, 18 in total. This initiative produced an array of annotated training and test sets for each language. Using these training sets, shared task participants developed and trained VMWE-identification systems\is{verbal multiword expression!identification}, which were then evaluated on separate test sets also produced by \isi{PARSEME}. 
 
 %% If a system uses the training data provided alone, without recourse to additional, external data, it competes under the \emph{closed} track. Conversely, if a system exploits data such as word lists, vectors or embeddings learned from external corpora, in addition to the supplied training set, it is deemed to compete under the \emph{open} track. Most participating systems participated in the closed track whereas one participated on the open track.
 
@@ -187,7 +187,7 @@ This section explores several numerical properties of the dataset\is{PARSEME!cor
 
 
 \begin{figure}
-\includegraphics[scale=0.45]{figures/sys-f1-boxplots.pdf}
+\includegraphics[width=\textwidth]{figures/sys-f1-boxplots.pdf}
 \caption{\label{fig:sys-f1-boxplots}Box plots summarising F1 scores achieved by all systems on each language, using the MWE-based and Token-based evaluation modalities}
 \end{figure}
 
@@ -197,20 +197,21 @@ We start by discussing the sizes of the training and test portions in each langu
 
 Notice that \ili{Romanian} and \ili{Czech} have by far the largest training sets, dwarfing corpora of all other languages. This seems to work in favour of these two languages as, on average, \ili{Romanian} ranked 2nd place in both evaluation modalities and \ili{Czech} ranked at 4th and 5th places in the MWE-based and Token-based modalities, respectively. \ili{Swedish} is the language with the smallest training set (only 200 sentences). The average F1 score of systems participating in \ili{Swedish} is around 30\% for both evaluation modalities. Indeed, the size of the training set is somewhat positively correlated with the average system evaluation scores for each language. The Pearson correlation coefficients for MWE-based and Token-based evaluations are 0.33 and 0.35, respectively.
 
-The size of the test set relative to its corresponding training set varies widely across languages. The test-to-training proportions vary from 8\% to 60\% for most languages, except for \ili{Maltese} (79\%), \ili{Spanish} (85\%) and most notably, \ili{Swedish}, with a test set about 8 times larger than its training set (200 training sentences vs. 1600 test sentences), which makes the proportion of the training set almost invisible in \figref{fig:langcorp-sizes}. Although both \ili{Maltese} and \ili{Swedish} performed rather poorly (\ili{Maltese} actually ranked last), there is no clear pattern between the test-to-training proportion of a language corpus and the performance of systems. In fact, \ili{Spanish} ranked exactly in the middle at 9th place. These proportions were found to be mildly negatively correlated against MWE-based and Token-based evaluations: -0.20 and -0.23, respectively (Pearson correlation coefficients).
+The size of the test set relative to its corresponding training set varies widely across languages. The test-to-training proportions vary from 8\% to 60\% for most languages, except for \ili{Maltese} (79\%), \ili{Spanish} (85\%) and most notably, \ili{Swedish}, with a test set about 8 times larger than its training set.\footnote{200 training sentences vs. 1600 test sentences, making the proportion of the training set almost invisible in \figref{fig:langcorp-sizes}} Although both \ili{Maltese} and \ili{Swedish} performed rather poorly (\ili{Maltese} actually ranked last), there is no clear pattern between the test-to-training proportion of a language corpus and the performance of systems. In fact, \ili{Spanish} ranked exactly in the middle at 9th place. These proportions were found to be mildly negatively correlated against MWE-based and Token-based evaluations: -0.20 and -0.23, respectively (Pearson correlation coefficients).
 
 \begin{figure}
-\includegraphics[scale=0.41]{figures/langcorpora-sizes-sents.pdf}
+\includegraphics[height=.4\textheight]{figures/langcorpora-sizes-sents.pdf}
 \caption{\label{fig:langcorp-sizes} Relative sizes (in sentences) of the training and test portions of each language corpus.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=0.41]{figures/prop-sentswithmwes.pdf}
+\includegraphics[height=.4\textheight]{figures/prop-sentswithmwes.pdf}
 \caption{\label{fig:abs-props}VMWE Sparsity -- Percentage of sentences with VMWEs; horizontal lines depict average percentages across languages for training (TRN) and test (TST) sets, respectively.}
 \end{figure}
 
 \figref{fig:abs-props} shows how sparse VMWEs\is{verbal multiword expression!sparsity} are in the language corpora. VMWE sparsity\is{verbal multiword expression!sparsity} can be understood as the inverse of the proportion of sentences that have at least one VMWE. The figure shows the proportion of VMWEs within each set (training and test) using percentages. The graphs show that language corpora differ widely in their VWME sparsity. The overall proportion average (depicted by the two horizontal lines in the figure) is 24\% and 23\% for the training and test sets, respectively. Only \ili{Farsi} and \ili{Hungarian} are well above this average, and \ili{German} is slightly above. For most languages, the vast majority of sentences do not contain a single VMWE. Whilst sentences without VMWE examples are indeed needed by machine learning algorithms, too few examples could hinder learning processes due to class imbalance. Indeed, there is a strong positive correlation between the proportion of sentences with VMWEs and the average system evaluation scores: 0.58 Pearson correlation coefficient against MWE-based evaluation and 0.56 against Token-based evaluation. \ili{Lithuanian} and \ili{Maltese} are the two lowest scoring languages in both evaluation modalities (see \tabref{tbl:official-f1} and \figref{fig:sys-f1-boxplots}). They are two of the three languages with the highest VMWE sparsity. The third language is \ili{Romanian}, which turns out to be the second highest scoring language. \ili{Romanian} is, as previously mentioned, the language with the largest amount of training data. The \ili{Romanian} corpus' large volume seems to outweigh its high VMWE sparsity in systems' performance. 
 
+\largerpage
 Another feature which seems to help systems perform well in the \ili{Romanian} corpus is the \isi{frequency distribution} of its VMWEs, as shown in \figref{fig:matched-mwes}. This figure shows how many VMWE types occur at each VMWE frequency and how many of those VMWEs are successfully retrieved by the systems on the test portion of each language corpus. The grey bars on each chart show the total number of VMWE types occurring at each frequency inscribed on the $x$ axis. The coloured bars count the number of VMWE types at each frequency that were fully detected by each system. This figure shows that \ili{Romanian} VMWEs are \emph{well distributed}: whilst \ili{Romanian} hapax legomena (VMWEs occurring only once) dominate with 208 instances, there are many VMWEs with higher frequencies. The total number of VMWEs that occur more than once is 292, with frequencies up to 31 well represented. By contrast, 88 \ili{Lithuanian} VMWEs appear only once and the rest, 12 of them, just twice! For \ili{Maltese}, 82.57\% of its VMWEs are hapax legomena. The remaining 17.43\% have frequencies between 2 and 9. In short, VMWEs in the \ili{Lithuanian} and \ili{Maltese} corpora are not as well distributed by frequency as those in the \ili{Romanian} corpus. The less frequent a VMWE is, the less opportunities a system has to learn it. So if the majority of VMWEs in a corpus are of low frequency (as in \ili{Lithuanian} and \ili{Maltese}), it will be harder for a system to learn them, which will lead to potentially low performance scores for the system.
 
 \begin{figure}
@@ -222,11 +223,15 @@ As an aside, the grey bars in \figref{fig:matched-mwes} show, for most languages
 
 The issue of \emph{frequency distribution} is important. \ili{Hungarian} and \ili{Spanish} are modest in size in comparison with \ili{Lithuanian} and \ili{Maltese} (see \figref{fig:langcorp-sizes}), and yet the systems perform better in the former languages (especially in \ili{Hungarian}) than in the latter languages. \figref{fig:matched-mwes} reveals that both \ili{Hungarian} and \ili{Spanish} are well distributed by frequency. \ili{Hungarian}, despite having a smaller test set, is in fact even better distributed by frequency and has a lower VMWE sparsity (\figref{fig:abs-props}) than \ili{Spanish}.  It obtains a 67 average F1 score whereas \ili{Spanish} gets an F1 score average of 40--46, in both evaluation modalities (see \emph{avg}~column in \tabref{tbl:official-f1}).
 
+\largerpage
 From these observations, we can point out that language corpora with small amounts of training data, especially when combined with high VMWE sparsity\is{verbal multiword expression!sparsity} and a poor \isi{frequency distribution}, tend to obtain low scores in most systems. So increasing the size of training and test data is definitely a recommendation to follow. VMWE sparsity can be reduced by simply trying to balance out sentences with VMWEs against sentences without VMWEs. However, corpus designers should be cautious of doing this, as it could lead to a corpus that does not reflect the real distribution of VMWEs in the language and/or domain in question. Perhaps, it should be the task of system developers to design systems capable of coping with the natural VMWE imbalance/sparsity in a language corpus.\footnote{Systems could, for example, run a classifier to distinguish sentences that contain VMWEs from sentences that do not, and train/run their VMWE extractors only on sentences that do.} Improving the VMWE \isi{frequency distribution} in language corpora could also help systems. Ensuring that several examples of each VMWE type are included in the training data will be a challenge, however, due to the natural Zipfian tendency of a majority of VMWEs to appear only once in any given corpus. We propose offsetting this tendency by aiming to compile a corpus where the total frequency of VMWE types that occur \emph{frequently enough} outnumber the total frequency of VMWE types that occur \emph{less frequently}. That is, if $\theta$ is the minimum frequency a VMWE needs to have in order to be considered to have \emph{enough frequency},\footnote{$\theta$, a minimum desirable frequency, is a parameter to be set empirically, with $\theta=2$ a reasonable default value.} then we could ensure that the language corpus satisfies the condition:
 
+\eabox{
 \[
 \sum_{v_{i}\in\{f(v_{j})\geq\theta\}}f(v_{i})>\sum_{v_{k}\in\{f(v_{j})<\theta\}}f(v_{k})
 \]
+}
+
 where $f(v)$ is the frequency of VMWE $v$ in the corpus. Note that a corpus with a good VMWE \isi{frequency distribution} cannot be created by simply increasing the size of the corpus, but by better selecting sentences that are good examples of as many VMWEs as possible. 
 
 \subsection{\label{sec:shared}VMWEs shared between the training and test sets}
@@ -234,12 +239,12 @@ where $f(v)$ is the frequency of VMWE $v$ in the corpus. Note that a corpus with
 \citet{maldonado2017} noticed that the proportion of VMWEs shared between the training set and the test set of a language corpus is strongly positively correlated with the performance scores achieved by participating systems on that language test set (see also \citealtv{Savarytv} §6.3). The most likely explanation is that when evaluated on the test set, machine learning systems would tend to perform better on VMWE examples they encountered in the training set (i.e. exact VMWEs that systems have already \emph{seen} during training)\is{verbal multiword expression!seen} than on VMWE examples that systems encounter for the first time in testing. The higher the proportion of shared/seen VMWEs is in one language, the higher a machine learning system can be expected to perform on that language. \figref{fig:f1-vs-ps-all} depicts this relationship by plotting the score achieved by each system on each language against the proportion of shared/seen VMWEs in that language. The languages on the $x$ axis are sorted and labelled by this proportion. Notice the near-linear relationship between this proportion and the system scores.
 
 \begin{figure}
-\includegraphics[scale=0.45]{figures/sys-f1-vs-ps-allvmwes.pdf}
+\includegraphics[width=\textwidth]{figures/sys-f1-vs-ps-allvmwes.pdf}
 \caption{\label{fig:f1-vs-ps-all}System evaluation scores (MWE-based, left; Token-based, right) for each language against the proportion (percentage) of test VMWEs seen during training}
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=0.45]{figures/sys-f1-vs-ps-newvmwes.pdf}
+\includegraphics[width=\textwidth]{figures/sys-f1-vs-ps-newvmwes.pdf}
 \caption{\label{fig:f1-vs-ps-new}System evaluation scores (MWE-based, left; Token-based, right) on non-shared/unseen VMWEs only}
 \end{figure}
 
@@ -275,12 +280,12 @@ Two innovations in the PARSEME shared task\is{PARSEME!shared task} were disconti
 \figref{fig:cont} shows that for most languages, the majority of VMWEs are continuous. For \ili{Czech} and \ili{Turkish}, there is about a 50--50 proportion between continuous and discontinuous VMWEs. For many other languages, the proportion of discontinuous VMWEs is considerable (\ili{German}, \ili{Greek}, \ili{French}, \ili{Polish}, Portuguese\il{Portuguese!Brazilian}, \ili{Romanian}, Slovenian). There is therefore a clear advantage in designing systems capable of detecting discontinuous VMWEs.
 
 \begin{figure}
-\includegraphics[scale=0.45]{figures/noncont-perc.pdf}
+\includegraphics[height=.4\textheight]{figures/noncont-perc.pdf}
 \caption{\label{fig:cont}Percentage of discontinuous VMWEs across language corpora.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=0.45]{figures/emb-perc.pdf}
+\includegraphics[height=.4\textheight]{figures/emb-perc.pdf}
 \caption{\label{fig:embedded}Proportion of Embedded/Overlapped VMWEs across language corpora.}
 \end{figure}
 
@@ -432,6 +437,7 @@ Notice that the maximum performance that can be achieved by this lookup system i
 
 The actual F1 score for the dictionary lookup system described here appears in the BD column in \tabref{tbl:official-f1}. It is evident from this table that this simple baseline is quite competitive, beating some of the participating systems in several languages. In fact, it beat all systems on both evaluation modalities in \ili{Hebrew}, \ili{Lithuanian} and \ili{Polish}, and on MWE-based evaluation in \ili{German}.
 
+\largerpage
 \paragraph*{Verb baseline}
 
 %%As mentioned earlier, this system simply tries to flag each verb in the test set as a VMWE with probability $p$. If $p=1$, then all verbs will be flagged as VMWEs, if $p=0.5$ then about half of the verbs will be flagged as VMWEs, etc. We experiment with two probabilities. One is $p=1$ and the other, which attempts to be more realistic, is the proportion of sentences with VMWEs in the training set for each language. This proportion is indicated as the red bars on the right-hand side of Figure~\ref{fig:abs-props}.
@@ -445,22 +451,23 @@ For BV, notice that the Token-based F1 scores range between 10 to 47 for most la
 \begin{table}
 \caption{\label{tbl:random-token-scores}Token-based scores for the Verb baseline}
 
-{\scriptsize{}}%
-\setlength\tabcolsep{2.0pt} % col separation
-\renewcommand{\arraystretch}{0.65} % row separation
+{{}}%
+\setlength\tabcolsep{2.0pt} % col separation 
+\fittable{
 \begin{tabular}{cccccccccccccccc}
 \lsptoprule
-{\scriptsize{}Language} & {\scriptsize{}CS} & {\scriptsize{}DE} & {\scriptsize{}EL} & {\scriptsize{}ES} & {\scriptsize{}FA} & {\scriptsize{}FR} & {\scriptsize{}HU} & {\scriptsize{}IT} & {\scriptsize{}MT} & {\scriptsize{}PL} & {\scriptsize{}PT} & {\scriptsize{}RO} & {\scriptsize{}SL} & {\scriptsize{}SV} & {\scriptsize{}TR}\tabularnewline
+{{}Language} & {{}CS} & {{}DE} & {{}EL} & {{}ES} & {{}FA} & {{}FR} & {{}HU} & {{}IT} & {{}MT} & {{}PL} & {{}PT} & {{}RO} & {{}SL} & {{}SV} & {{}TR}\tabularnewline
 \midrule
-{\scriptsize{}P-token} & {\scriptsize{}13.57} & {\scriptsize{}20.87} & {\scriptsize{}5.14} & {\scriptsize{}9.58} & {\scriptsize{}48.64} & {\scriptsize{}11.52} & {\scriptsize{}9.29} & {\scriptsize{}8.87} & {\scriptsize{}3.74} & {\scriptsize{}11.42} & {\scriptsize{}8.55} & {\scriptsize{}6.61} & {\scriptsize{}4.17} & {\scriptsize{}7.8} & {\scriptsize{}6.54}\tabularnewline
+{{}P-token} & {{}13.57} & {{}20.87} & {{}5.14} & {{}9.58} & {{}48.64} & {{}11.52} & {{}9.29} & {{}8.87} & {{}3.74} & {{}11.42} & {{}8.55} & {{}6.61} & {{}4.17} & {{}7.8} & {{}6.54}\tabularnewline
 %\midrule
-{\scriptsize{}R-token} & {\scriptsize{}41.13} & {\scriptsize{}45.02} & {\scriptsize{}40.85} & {\scriptsize{}41.49} & {\scriptsize{}46.86} & {\scriptsize{}44.13} & {\scriptsize{}19.08} & {\scriptsize{}38.26} & {\scriptsize{}36.81} & {\scriptsize{}46.31} & {\scriptsize{}44.1} & {\scriptsize{}44.3} & {\scriptsize{}44.59} & {\scriptsize{}43.59} & {\scriptsize{}25.97}\tabularnewline
+{{}R-token} & {{}41.13} & {{}45.02} & {{}40.85} & {{}41.49} & {{}46.86} & {{}44.13} & {{}19.08} & {{}38.26} & {{}36.81} & {{}46.31} & {{}44.1} & {{}44.3} & {{}44.59} & {{}43.59} & {{}25.97}\tabularnewline
 %\midrule
-{\scriptsize{}F1-token} & {\scriptsize{}20.41} & {\scriptsize{}28.52} & {\scriptsize{}9.14} & {\scriptsize{}15.56} & {\scriptsize{}47.73} & {\scriptsize{}18.28} & {\scriptsize{}12.49} & {\scriptsize{}14.4} & {\scriptsize{}6.79} & {\scriptsize{}18.33} & {\scriptsize{}14.32} & {\scriptsize{}11.51} & {\scriptsize{}7.63} & {\scriptsize{}13.23} & {\scriptsize{}10.45}\tabularnewline
+{{}F1-token} & {{}20.41} & {{}28.52} & {{}9.14} & {{}15.56} & {{}47.73} & {{}18.28} & {{}12.49} & {{}14.4} & {{}6.79} & {{}18.33} & {{}14.32} & {{}11.51} & {{}7.63} & {{}13.23} & {{}10.45}\tabularnewline
 \lspbottomrule
 \end{tabular}
-
+}
 \end{table}
+
 
 Notice that this baseline's recall directly depends on each language's proportion of sentences with VMWEs (see \figref{fig:abs-props}). Recall is particularly high with most languages scoring around the 40-point mark. We interpret this result as indicating that Token-based scores tend to overestimate systems' performance. We elaborate on this issue in \sectref{sec:eval-methods}. The recall values in \ili{Hungarian} and \ili{Turkish} are considerably lower than in the rest of the languages. This is because there is a large proportion of VMWEs in these languages that are not tagged with a \emph{verb} POS tag (this baseline exploits that tag): 74\% of VMWEs in \ili{Hungarian} and 50\% of VMWEs in \ili{Turkish} do not have a single token with a \emph{verb} POS tag. Different teams make different decisions as to what MWEs constitute \emph{verbal} MWEs. For example, the \ili{Hungarian} team informed us that they flag nominalised verbs as VMWEs, even if they are not functioning as verbs anymore.
 
@@ -520,26 +527,30 @@ MWE-based   & Cohen's κ & 96.75 & 97.18 \tabularnewline
 
 The use of the F1 score, i.e., the harmonic mean of precision and recall, for evaluation can be biased unless certain criteria are met, e.g. that the distribution of annotated instances in the test and training data are identical. Since in the PARSEME shared task, the VMWE identification task is reduced to a binary \isi{classification} problem, Cohen's κ\is{Cohen's kappa} can be used reliably to obtain a measure of performance that can, at least, cancel out the influence of certain sources of bias. In particular, it penalises the overall score of the systems by the expected chance agreement (as done in the computation of inter-annotator agreement) and takes into account a notion of true negative rate in the overall evaluation of systems \citep{Powers2012,Powers15}. 
 
+\largerpage
 The count of true negative outputs and subsequently true negative rate, however, cannot be computed directly from the evaluation setup and the test set. Simply put, we do not know how many ``\emph{is this a VMWE?}'' questions are answered by a system\footnote{This discussion also implies a way to justify the better performance of transition-based systems, i.e., the total number of classification problems in these systems is often less than in non-transition-based systems.} (or human annotators) in order to perform the identification task on a test set (or to manually annotate a corpus). Hence, further assumptions about the problem setting are required to devise the number of true negatives in the respective evaluation contingency table. Here, likewise \citep{MWEWorkshop}, we assume that the total number of stimuli, i.e., the total number of ``\emph{is this a VMWE?}'' questions to complete a VMWE identification problem, is approximately equivalent to the number of verbs in the test set (or the corpus which must be annotated).
 
 Given the abovementioned assumption for a test set, let $v$ be the number of verbs in the set that are not part of a VMWE. For a system, we define $tp$ and $fp$ as being the number of correctly and incorrectly identified VMWEs, respectively, and $fn$ as the number of VMWEs in the test set that are not identified by the system. If 
-\begin{align*}
+\eabox{\begin{align*}
 t= tp + fp + fn + v
-\end{align*} 
+\end{align*}}
 we compute 
-\begin{align*}
+\eabox{\begin{align*}
 p_o=\frac{tp+v}{t}\\
 p_e = p_0 + p_1
 \end{align*}
+}
 in which
-\begin{align*}
+\eabox{\begin{align*}
 p_0 =\frac{(tp+fp)\times(tp+fn)}{t^2}\\
 p_1 =\frac{(fn+v)\times(fp+v)}{t^2} 
 \end{align*}
+}
 Finally, we compute Cohen's κ:
-\begin{align*}
+\eabox{\begin{align*}
 \kappa = \frac{1-p_o}{1-p_e}
 \end{align*}
+}
 and report it as an additional performance measure. Evidently, the suggested method can be refined and improved, e.g., by taking the partial matches between VMWEs (particularly the verbal part) into account.
 
 
@@ -569,6 +580,7 @@ On the evaluation front, we found the token-based evaluation method to overestim
 
 We would also like to recommend shared task organisers to consider application scenarios of the VMWE identification task. Different application scenarios will dictate different evaluation criteria, corpus selection and priorities. For example, if VMWEs are being identified to compile a dictionary, perhaps recall should be favoured over precision. If the application is to identify a few but good VMWEs examples for a language learning system, then precision should be favoured. Evaluation could also be done \emph{in vivo} in actual parsing or machine translation systems, which is something the authors will seek to investigate as future work.
 
+\largerpage
 The quality of the analysis presented here depends directly on the quality of the annotated data. Whilst the annotation guidelines try to be as universal as possible, we have found that significant differences in annotation approach remain. For example, at least one language team annotated MWEs derived from verbs that do not function as verbs (e.g., nominalised verbs). So we hope that this work can spark a discussion in the community as to what constitutes a VMWE more precisely. Is it simply a MWE that involves a word of verbal origin (even if it does not function as a verb anymore) or must it be a MWE involving a verb that still functions as a verb?
 
 The authors hope that the insights and recommendations included in this chapter inform future editions of the shared task. At the same time, the authors plan, as future work, to repeat the analysis presented here on the second edition of this dataset, which is being prepared at the time of writing. This will help us determine to what extent our observations generalise to new datasets. 
