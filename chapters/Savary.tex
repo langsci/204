@@ -1,7 +1,4 @@
-\documentclass[output=paper,modfonts,]{langscibook} 
-
-\begin{document}
-\lehead{Savary et al.}%Needed to make the authors' headline shorter. Always place just after \begin{document}
+\documentclass[output=paper,modfonts]{langscibook} 
 \title{PARSEME multilingual corpus of verbal multiword expressions} 
 \author{
 Agata Savary$^1$,
@@ -26,7 +23,7 @@ Carlos Ramisch$^7$,
 Fe\-de\-ri\-co Sangati$^{17}$,
 Ivelina Stoyanova$^{18}$ \&
 Veronika Vincze$^{19}$
-\affiliation{
+\affiliation{%
 $^1$Université de Tours (France), 
 $^2$Université Paris Diderot (France), 
 $^3$Romanian Acad\-e\-my Research Institute for Artificial Intelligence (Romania), 
@@ -45,7 +42,7 @@ $^{15}$ADAPT Centre, Dublin City University (Ireland),
 $^{16}$University of Düsseldorf (Germany), 
 $^{17}$independent re\-sear\-cher (Italy), 
 $^{18}$Bulgarian Academy of Sciences in Sofia (Bulgaria), 
-$^{19}$University of Szeged (Hungary)
+$^{19}$Univer\-sity of Szeged (Hungary)
 }
 }
 
@@ -71,8 +68,17 @@ unified annotation guidelines, and a corpus\is{PARSEME!corpus}\is{multiword expr
 %which underlies a shared task on automatic identification of VMWEs. 
 }
 
+
+\renewcommand{\lsCollectionPaperCitationText}{Agata Savary et al. 2018. PARSEME multilingual corpus of verbal multiword expressions. 
+In Stella Markantonatou, Carlos Ramisch, Agata Savary \& Veronika Vincze (eds.), 
+Multiword expressions at length and in depth: Extended papers from the MWE 2017 workshop, 1–23. 
+Berlin: Language Science Press. DOI:\biberror{??}
+}
+\begin{document}
 \maketitle
 \label{SAVARY-CHAPTER}
+\lehead{Savary et al.}%Needed to make the authors' headline shorter. Always place just after \begin{document}
+
 
 %\lehead{Savary et al.}
 
@@ -1341,7 +1347,7 @@ The split into training and test corpora is indicated in \citet{MWEWorkshop}.} I
 %In total, the corpora contain 230,062 sentences for training and 44,314 sentences for testing. These correspond to 4,5M and 900K tokens, with 52,724 and 9,494 annotated VMWEs, respectively. 
 The amount and distribution of VMWEs over categories varies considerably across languages.
 
-\begin{table}[htp]
+\begin{table}[t]
 \centering
 \setlength{\tabcolsep}{0.9mm}
 
@@ -1498,6 +1504,7 @@ Finally, scripts for converting the parseme-tsv format into the FoLiA format and
 
 Inter-annotator agreement (IAA)\is{inter-annotator agreement} measures are meant to assess the hardness of the annotation task, as well as the quality of the annotation guidelines, of the annotation methodology, and of the resulting annotations. Defining such measures is not always straightforward due to the challenges listed in \sectref{sec:methodology}.
 
+\largerpage
 %In this respect, our annotation task is challenging since it enhances \citep{DBLP:journals/coling/MathetWM15}: (a) unitising (identifying boundaries of VMWEs in text), (b) categorization (assigning the identified VMWEs to one of the VMWE categories), (c) nesting, (d) free-overlap and (d) sporadicity (not all text tokens are subject to annotation). 
 %Two processes are to be assessed: (a) unitising, i.e. identifying boundaries of VMWEs in text, and (b) categorization, i.e. assigning the identified VMWEs to one of the VMWE categories ($\S$~\ref{sec:methodology}).  To this aim, for some languages, a number of sentences were annotated by two annotators.  
 %\cara{I added some details, OK?}
@@ -1789,6 +1796,7 @@ Therefore, in Slavic languages the verb in an LVC necessarily adds aspect to the
 Another finding concerns productivity. Some verbs admit arguments from large semantic classes, and, conversely, some nouns select various verbal operators. More precisely, we observed 
 the hardness of delimiting productive from non-productive\is{productivity} cases in VMWE categories: (i) whose semantic non-com\-po\-si\-tio\-na\-li\-ty is weak, or (ii) whose components are not content words. The former mainly concerns LVCs. We found no effective and reproducible way to distinguish lexical selection from selection of large semantic classes. For instance, (EN) \ile{to deliver} is often used with the class of nouns expressing formal speech acts such as \ile{speech}, \ile{lecture}, \ile{verdict}, etc. However, we can also use the verb \ile{to give} instead of \ile{to deliver} with the same class of nouns, which likely shows a productive rather than a strict lexical selection. Problem (ii) concerns VPCs, IReflVs and prepositional verbs. Namely, as the semantics of particles is hard to establish, we could come up with only one VPC-related test (\sectref{sec:vpcs}), which should clearly evolve in future work. Also, the ambiguity of various uses of the reflexive clitic, and the resulting hardness of the IReflV annotation, was stressed by many language teams. Finally, the non-compositionality of prepositional verbs was so hard to establish in the pilot annotation that we abandoned them in the final annotation.
 
+\largerpage
 We also underestimated the importance of modelling not only the semantic non-compositionality of idioms but their conventionalisation as well. As a result, we currently have no efficient way to distinguish MWEs from metaphors\is{metaphor}. The resemblance is strong since many idioms are metaphors, e.g. (PT) \exlitidio{ele \lex{abre mão}}{he opens hand}{he gives up}, but non-idiomatic metaphors, created for the need of a particular text, do occur, e.g. (PL) \exidio{podpisanie tej umowy to stryczek założony na szyję Polski}{signing this treaty is  a noose put around Poland's neck}. The difference is hard to tackle, and especially to test, since it seems to lie precisely in the fact that MWEs are conventionalised while metaphors are not necessarily so. A partial solution to this problem may probably stem from statistical estimations, although the ``long tail'' of conventionalised and still infrequent MWEs may largely resemble non-conventionalised metaphors. We put forward the MWE vs. metaphor distinction as a future research issue.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1861,7 +1869,7 @@ In \citet{Sheinfux17} the  hypothesis of \citet{nunberg-94} is questioned on a s
 
 \citet{Laporte:forth} formalises a MWE classification emerging from the lexicon-grammar theory and encoding practice \citep{Gross:1986:LRC:991365.991367,gross:hal-00621380}. Its specificity is to put the notion of support verb (roughly equivalent to light verb) in the heart of the classification, and push the MWE frontier far beyond what is admitted in other approaches. Namely, with the copula support verb \ile{to be}, large classes of nouns, adjectives and PPs are seen as predicates of support-verb constructions, which should, thus, be lexically described.
 
-Comparing our classification (\sectref{sec:typology}) to the above ones, as shown in \tabref{tab:mwe-classifications}, several facts are striking: (i) we restrict ourselves to verbal MWEs only, (ii) we perform a large-scale multilingual evaluation and enhancement of the classification via corpus annotation in 18 languages, (iii) we assess semantic non-compositionality via mostly syntactic tests, (iv) we define a novel VMWE category of IReflVs and linguistic tests delimiting its borders, we also display the quantitative importance of this category, mainly in Romance and Slavic languages, (v) we give access to detailed annotation guidelines organised as decision trees, with linguistic tests illustrated in many languages. As far as the scope of the MWE-related phenomena are concerned, recall that we exclude statistical collocations and retain only lexically, syntactically or semantically idiosyncratic expressions. This fact seemingly contrasts with other approaches shown in \tabref{tab:mwe-classifications}. Note, however, that some of these authors understand collocations\is{collocation} differently, as discussed in \sectref{sec:def-scope}. 
+Comparing our classification (\sectref{sec:typology}) to the above ones (\tabref{tab:mwe-classifications}), several facts are striking: (i) we restrict ourselves to verbal MWEs only, (ii) we perform a large-scale multilingual evaluation and enhancement of the classification via corpus annotation in 18 languages, (iii) we assess semantic non-compositionality via mostly syntactic tests, (iv) we define a novel VMWE category of IReflVs and linguistic tests delimiting its borders, we also display the quantitative importance of this category, mainly in Romance and Slavic languages, (v) we give access to detailed annotation guidelines organised as decision trees, with linguistic tests illustrated in many languages. As far as the scope of the MWE-related phenomena are concerned, recall that we exclude statistical collocations and retain only lexically, syntactically or semantically idiosyncratic expressions. This fact seemingly contrasts with other approaches shown in \tabref{tab:mwe-classifications}. Note, however, that some of these authors understand collocations\is{collocation} differently, as discussed in \sectref{sec:def-scope}. 
 %For \citep{Sag2002a}, collocations are any statistically significant co-occurrences, i.e. they include all forms of MWEs. For \citep{baldwin2010multiword}, collocations form a proper subset of MWEs. According to \citep{Melcuk10}, collocations are binary semantically compositional combinations of words subject to lexical selection constraints, i.e. they intersect with what is here understood as MWEs.
 %\capa{Shouldn't it be here the reference to the table comparing the different existing taxonomies that appears later on?}\as{According to the guidelines \textit{coser y cantar} does qualify as OTH - its a coordination of lexicalized verbs, so there is no unique head verb - see test 6.}
 %\capa{See my chapter from the WG1 book.}
@@ -1893,12 +1901,13 @@ As compared to this state of the art, the PARSEME effort aims at developing anno
 
 \subsection{Corpora and datasets with VMWEs}
 \label{sec:related-datasets}
+\largerpage
 
 As seen in the previous section, most efforts towards anotating MWEs were either language- or MWE category-specific. The same holds for verbal MWEs in particular. In this section we mention some outcomes of the previous VMWE annotation initiatives.
 
 %Most previous initiatives towards VMWE annotation are either  language- or VMWE category-specific. 
 
-The Wiki50 \citep{wiki50} corpus contains 50 English\il{English} Wi\-ki\-pe\-dia articles annotated for MWEs, including several VMWEs types.  The dataset of \citet{tu-roth:2011:MWE} consists of 2,162 sentences from the British National Corpus in which verb-object pairs formed with \textit{do}, \textit{get}, \textit{give}, \textit{have}, \textit{make}, and \textit{take} are marked as positive and negative examples of LVCs. \citet{Tu:2012} built a crowdsourced corpus in which VPCs are manually distinguished from compositional verb-preposition combinations, again for six selected verbs. \citet{baldwin08} presents another dataset of English VPCs. Finally, SZPFX \citep{paralellfx} is an English-Hungarian\il{Hungarian} parallel corpus with LVC annotations in both languages. 
+The Wiki50 \citep{wiki50} corpus contains 50 English\il{English} Wi\-ki\-pe\-dia articles annotated for MWEs, including several VMWEs types.  The dataset of \citet{tu-roth:2011:MWE} consists of 2,162 sentences from the British National Corpus in which verb-object pairs formed with \textit{do}, \textit{get}, \textit{give}, \textit{have}, \textit{make}, and \textit{take} are marked as positive and negative examples of LVCs. \citet{Tu:2012} built a crowdsourced corpus in which VPCs are manually distinguished from compositional verb-preposition combinations, again for six selected verbs. \citet{baldwin08} presents another data\-set of English VPCs. Finally, SZPFX \citep{paralellfx} is an English-Hungarian\il{Hungarian} parallel corpus with LVC annotations in both languages. 
 For German\il{German}, idiomatic combinations of verbs and prepositional phrases were described in a database by \citet{krenn} and annotated in the TIGER corpus by \citet{Brants2005}.
 
 In Slavic languages, a notable effort was made with the Prague Dependency Treebank of Czech\il{Czech} %citep{boh:etal:03}\eb{Why not to cite something newer? 
@@ -2004,14 +2013,14 @@ We also thank Mozhgan Neisani from University of Isfahan and Mojgan Seraji from 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
+
 \section*{Abbreviations}
 \label{sec:abbreviations}
 %\input{chapters/15.abbreviations}
-\begin{tabularx}{.45\textwidth}{lp{4cm}}
+\begin{tabularx}{.5\textwidth}{lQ}
 \textsc{fut} & future \\
 \textsc{gen} & genitive \\
-\textsc{iaa} & inter-annotator-agreement \\
+\textsc{iaa} & \mbox{inter-annotator-agreement} \\
 %\textsc{iav} & inherently adpositional verb \\
 \textsc{id} & idiom \\
 \textsc{IReflV} & inherently reflexive verb \\
@@ -2038,7 +2047,7 @@ We also thank Mozhgan Neisani from University of Isfahan and Mojgan Seraji from 
 \textsc{vid} & verbal idiom \\
 \textsc{vmwe} & verbal multiword expression \\
 \textsc{vpc} & verb-particle construction \\
-\textsc{1, 2, 3} & first, second, third person \\
+\textsc{1, 2, 3} & first, second, third person \\ 
 \end{tabularx}
 
 %\as{Add also index entries.}
