@@ -9,6 +9,8 @@ complete: index main.pdf
 index:  main.snd
  
 main.pdf: main.aux
+	sed -i "s/\\$\^[0-9]\+\\$//g" main.toc
+	sed -i "s/\\$^{[0-9]\+}\\$//g" main.toc
 	xelatex main 
 
 main.aux: $(SOURCE)
@@ -36,7 +38,7 @@ main.snd: main.bbl
 	mv mainmod.adx main.adx
 	makeindex -o main.and main.adx
 	makeindex -o main.lnd main.ldx
-	makeindex -o main.snd main.sdx 
+	makeindex -o main.snd main.sdx 	
 	xelatex main 
  
 
