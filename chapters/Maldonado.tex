@@ -78,7 +78,7 @@ To this end, we start our discussion in \sectref{sec:dataset} by computing stati
 
 We then turn our attention to the shared task official evaluation scores on the participating systems in \sectref{sec:systems}~and~\sectref{sec:eval-methods}. In \sectref{sec:systems}, we focus on the effect of the proportion of shared VMWEs between the training and test sets in each language corpus. We evaluate the systems on shared VMWEs and on VMWEs occurring exclusively in the test set. We also introduce two baseline systems (a system that simply tags every verb as a VMWE and a simple dictionary look-up system) and observe that the performance of the participating systems follows trends that the performance of these baselines shows. 
 
-In \sectref{sec:eval-methods}, we concentrate on the evaluation metrics used in the shared task: one that measures the ability of retrieving full VMWEs (MWE-based evaluation) and another that gives credit to systems on partially identified VMWEs (Token-based evaluation). We observe that the Token-based evaluation measure gives more weight to long VMWEs and, in addition, can be exploited by a system that simply detects verbs. Lastly, we use Cohen's $\kappa$ inter-annotator agreement measure as an evaluation metric based on the intuition that it provides a `chance-corrected' degree of similarity between a system output and a gold standard. 
+In \sectref{sec:eval-methods}, we concentrate on the evaluation metrics used in the shared task: one that measures the ability of retrieving full VMWEs (MWE-based evaluation) and another that gives credit to systems on partially identified VMWEs (Token-based evaluation). We observe that the Token-based evaluation measure gives more weight to long VMWEs and, in addition, can be exploited by a system that simply detects verbs. Lastly, we use Cohen's κ inter-annotator agreement measure as an evaluation metric based on the intuition that it provides a `chance-corrected' degree of similarity between a system output and a gold standard. 
 
 %%We produce an alternative version of the dataset in which the training and test sets in each language corpus are homogenised and the proportion of shared VMWEs and the relative \isi{sparsity} of VMWEs across langauge corpora are more balanced. We repeat the VMWE \isi{identification} experiment using one of the participant systems (the CRF-based ADAPT system) on this alternative dataset and obtain comparable results across languages. 
 
@@ -97,7 +97,7 @@ Before we delve into the analysis and discussion, it should be mentioned that sy
 This section explores several numerical properties of the dataset\is{PARSEME!corpus} developed for the shared task in order to gain an insight into differences among languages and to identify potential \emph{difficulty factors}\is{verbal multiword expression!difficulty factors} in the corpora. We consider difficulty factors to be corpus-specific characteristics (such as corpus size, sparsity\is{verbal multiword expression!sparsity} of VMWEs or corpus heterogeneity\is{corpus!heterogeneity}) that could potentially hinder an algorithm's ability to identify VMWEs. We assess a factor's degree of difficulty by observing the overall systems' performance on languages that present the factor in question, in comparison to languages that do not present that factor. The performance of the systems is measured by the official shared task evaluation F1 scores, shown in \tabref{tbl:official-f1}. That table also contains the averages all systems' scores for a given language (\emph{avg} column) and the ranks of the languages according to these averages (\emph{rnk} column). Recall that two evaluation modalities were measured in the shared task: MWE-based evaluation, which counts as a success the matching of a full VMWE, and Token-based evaluation, which gives partial credit to partially matched VMWEs. \figref{fig:sys-f1-boxplots} summarises these scores per language as box plots. 
 
 \begin{table}
-\caption{\label{tbl:official-f1}F1 evaluation scores by language and system with averages (avg), rank (rnk) in Token-based, MWE-based and Cohen's $\kappa$ evaluations. Baselines: dictionary look-up (BD) and verb detection (BV).}
+\caption{\label{tbl:official-f1}F1 evaluation scores by language and system with averages (avg), rank (rnk) in Token-based, MWE-based and Cohen's κ evaluations. Baselines: dictionary look-up (BD) and verb detection (BV).}
 
 {\scriptsize{}}%
 \setlength\tabcolsep{1.5pt} % col separation
@@ -111,94 +111,94 @@ This section explores several numerical properties of the dataset\is{PARSEME!cor
 \textbf{\scriptsize{}BG} & \textbf{\scriptsize{}Token-based} &  &  &  & {\scriptsize{}59.16} &  &  & {\scriptsize{}66.15} & \emph{\scriptsize{}62.66} & \textit{\scriptsize{}4} & {\scriptsize{}47.44} & \tabularnewline
  & \textbf{\scriptsize{}MWE-based} &  &  &  & {\scriptsize{}34.68} &  &  & {\scriptsize{}61.27} & \emph{\scriptsize{}47.98} & \textit{\scriptsize{}6} & 
  {\scriptsize{}34.67} & \tabularnewline
-  & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{}   &\scriptsize{}  &\scriptsize{}  & \scriptsize{21.36} &\scriptsize{}  &\scriptsize{}  &\scriptsize{53.57} &\scriptsize{37.47}  &\scriptsize{6} & \scriptsize{21.27} &\scriptsize{}  \tabularnewline
+  & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{}   &\scriptsize{}  &\scriptsize{}  & \scriptsize{21.36} &\scriptsize{}  &\scriptsize{}  &\scriptsize{53.57} &\scriptsize{37.47}  &\scriptsize{6} & \scriptsize{21.27} &\scriptsize{}  \tabularnewline
 \midrule 
 \textbf{\scriptsize{}CS} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}72.86} &  &  & {\scriptsize{}23.52} & {\scriptsize{}70.76} &  & {\scriptsize{}73.65} & \emph{\scriptsize{}60.20} & \textit{\scriptsize{}5} & {\scriptsize{}64.34} & {\scriptsize{}20.41}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}57.72} &  &  & {\scriptsize{}16.67} & {\scriptsize{}64.18} &  & {\scriptsize{}71.67} & \emph{\scriptsize{}52.56} & \textit{\scriptsize{}4} & {\scriptsize{}51.91} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &{\scriptsize{46.49}} &\scriptsize{}  &\scriptsize{}  & \scriptsize{8.82} &\scriptsize{55.04}  &\scriptsize{}  &\scriptsize{64.36} &\scriptsize{43.68}  &\scriptsize{5} & \scriptsize{37.87} &\scriptsize{-18.54} \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &{\scriptsize{46.49}} &\scriptsize{}  &\scriptsize{}  & \scriptsize{8.82} &\scriptsize{55.04}  &\scriptsize{}  &\scriptsize{64.36} &\scriptsize{43.68}  &\scriptsize{5} & \scriptsize{37.87} &\scriptsize{-18.54} \tabularnewline
 \midrule 
 \textbf{\scriptsize{}DE} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}40.48} &  &  & {\scriptsize{}34.45} & {\scriptsize{}28.30} & {\scriptsize{}45.45} & {\scriptsize{}41.09} & \emph{\scriptsize{}37.95} & \textit{\scriptsize{}13} & {\scriptsize{}40.70} & {\scriptsize{}28.52}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}22.80} &  &  & {\scriptsize{}21.14} & {\scriptsize{}19.17} & {\scriptsize{}40.53} & {\scriptsize{}41.10} & \emph{\scriptsize{}28.95} & \textit{\scriptsize{}13} & {\scriptsize{}41.34} & {\scriptsize{}9.22}\tabularnewline
-  & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{5.86}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{5.01} &\scriptsize{5.82}  &\scriptsize{24.97}  &\scriptsize{26.44} &\scriptsize{13.62}  &\scriptsize{16} & \scriptsize{26.42} &\scriptsize{-15.49}  \tabularnewline
+  & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{5.86}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{5.01} &\scriptsize{5.82}  &\scriptsize{24.97}  &\scriptsize{26.44} &\scriptsize{13.62}  &\scriptsize{16} & \scriptsize{26.42} &\scriptsize{-15.49}  \tabularnewline
 \midrule 
 \textbf{\scriptsize{}EL} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}43.14} &  &  & {\scriptsize{}42.17} & {\scriptsize{}38.71} & {\scriptsize{}40.75} & {\scriptsize{}46.88} & \emph{\scriptsize{}42.33} & \textit{\scriptsize{}12} & {\scriptsize{}34.16} & {\scriptsize{}9.14}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}31.34} &  &  & {\scriptsize{}23.08} & {\scriptsize{}31.74} & {\scriptsize{}31.88} & {\scriptsize{}40.07} & \emph{\scriptsize{}31.62} & \textit{\scriptsize{}12} & {\scriptsize{}21.81} & {\scriptsize{}0.02}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{23.28}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{12.46} &\scriptsize{25.2}  &\scriptsize{22.9}  &\scriptsize{31.57} &\scriptsize{23.08}  &\scriptsize{11} & \scriptsize{9.46} &\scriptsize{-7.41}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{23.28}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{12.46} &\scriptsize{25.2}  &\scriptsize{22.9}  &\scriptsize{31.57} &\scriptsize{23.08}  &\scriptsize{11} & \scriptsize{9.46} &\scriptsize{-7.41}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}ES} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}49.17} &  &  & {\scriptsize{}48.75} & {\scriptsize{}30.93} & {\scriptsize{}44.18} & {\scriptsize{}58.39} & \emph{\scriptsize{}46.28} & \textit{\scriptsize{}9} & {\scriptsize{}50.97} & {\scriptsize{}15.56}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}44.33} &  &  & {\scriptsize{}33.62} & {\scriptsize{}30.06} & {\scriptsize{}33.99} & {\scriptsize{}57.39} & \emph{\scriptsize{}39.88} & \textit{\scriptsize{}9} & {\scriptsize{}44.22} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{35.84}&\scriptsize{}  &\scriptsize{}  & \scriptsize{21.18} &\scriptsize{23.41}  &\scriptsize{17.81}  &\scriptsize{48.83} &\scriptsize{30.91}  &\scriptsize{9} & \scriptsize{32.7} &\scriptsize{-13.41}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{35.84}&\scriptsize{}  &\scriptsize{}  & \scriptsize{21.18} &\scriptsize{23.41}  &\scriptsize{17.81}  &\scriptsize{48.83} &\scriptsize{30.91}  &\scriptsize{9} & \scriptsize{32.7} &\scriptsize{-13.41}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}FA} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}85.36} &  &  &  &  &  & {\scriptsize{}90.20} & \emph{\scriptsize{}87.78} & \textit{\scriptsize{}1} & {\scriptsize{}65.75} & {\scriptsize{}47.73}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}80.08} &  &  &  &  &  & {\scriptsize{}86.64} & \emph{\scriptsize{}83.36} & \textit{\scriptsize{}1} & {\scriptsize{}55.92} & {\scriptsize{}0}\tabularnewline
-    & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{63.13} &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{}  &\scriptsize{}  &\scriptsize{74.77} &\scriptsize{68.95}  &\scriptsize{2} & \scriptsize{22.71} &\scriptsize{-50.01}  \tabularnewline
+    & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{63.13} &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{}  &\scriptsize{}  &\scriptsize{74.77} &\scriptsize{68.95}  &\scriptsize{2} & \scriptsize{22.71} &\scriptsize{-50.01}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}FR} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}61.52} & {\scriptsize{}54.61} & {\scriptsize{}10.00} & {\scriptsize{}29.40} & {\scriptsize{}50.09} & {\scriptsize{}33.64} & {\scriptsize{}60.28} & \emph{\scriptsize{}42.79} & \textit{\scriptsize{}10} & {\scriptsize{}45.73} & {\scriptsize{}18.28}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}50.88} & {\scriptsize{}47.46} & {\scriptsize{}10.82} & {\scriptsize{}9.29} & {\scriptsize{}47.55} & {\scriptsize{}5.73} & {\scriptsize{}57.74} & \emph{\scriptsize{}32.78} & \textit{\scriptsize{}11} & {\scriptsize{}38.42} & {\scriptsize{}0.21}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{40.12}&\scriptsize{33.77}  &\scriptsize{7.98}  & \scriptsize{-4.75} &\scriptsize{38.74}  &\scriptsize{-14.42}  &\scriptsize{48.98} &\scriptsize{21.49}  &\scriptsize{13} & \scriptsize{24.19} &\scriptsize{-15.99}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{40.12}&\scriptsize{33.77}  &\scriptsize{7.98}  & \scriptsize{-4.75} &\scriptsize{38.74}  &\scriptsize{-14.42}  &\scriptsize{48.98} &\scriptsize{21.49}  &\scriptsize{13} & \scriptsize{24.19} &\scriptsize{-15.99}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}HE} & \textbf{\scriptsize{}Token-based} &  &  &  & {\scriptsize{}0.00} &  &  & {\scriptsize{}31.30} & \emph{\scriptsize{}15.65} & \textit{\scriptsize{}16} & {\scriptsize{}33.80} & \tabularnewline
  & \textbf{\scriptsize{}MWE-based} &  &  &  & {\scriptsize{}0.00} &  &  & {\scriptsize{}33.44} & \emph{\scriptsize{}16.72} & \textit{\scriptsize{}16} & {\scriptsize{}37.44} & \tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{}  &\scriptsize{}  &\scriptsize{27.74} &\scriptsize{13.87}  &\scriptsize{14} & \scriptsize{32.69} &\scriptsize{}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{}  &\scriptsize{}  &\scriptsize{27.74} &\scriptsize{13.87}  &\scriptsize{14} & \scriptsize{32.69} &\scriptsize{}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}HU} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}66.10} &  &  & {\scriptsize{}68.86} & {\scriptsize{}62.26} & {\scriptsize{}70.81} & {\scriptsize{}67.47} & \emph{\scriptsize{}67.10} & \textit{\scriptsize{}3} & {\scriptsize{}68.13} & {\scriptsize{}12.49}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}66.89} &  &  & {\scriptsize{}62.21} & {\scriptsize{}65.08} & {\scriptsize{}74.01} & {\scriptsize{}69.87} & \emph{\scriptsize{}67.61} & \textit{\scriptsize{}3} & {\scriptsize{}68.09} & {\scriptsize{}2.44}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{50.6}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{42.13} &\scriptsize{49.45}  &\scriptsize{60.04}  &\scriptsize{52.03} &\scriptsize{50.85}  &\scriptsize{3} & \scriptsize{49.01} &\scriptsize{-35.81} \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{50.6}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{42.13} &\scriptsize{49.45}  &\scriptsize{60.04}  &\scriptsize{52.03} &\scriptsize{50.85}  &\scriptsize{3} & \scriptsize{49.01} &\scriptsize{-35.81} \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}IT} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}25.11} &  &  &  & {\scriptsize{}18.24} & {\scriptsize{}34.90} & {\scriptsize{}43.57} & \emph{\scriptsize{}30.46} & \textit{\scriptsize{}14} & {\scriptsize{}37.85} & {\scriptsize{}14.4}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}23.09} &  &  &  & {\scriptsize{}16.90} & {\scriptsize{}15.31} & {\scriptsize{}39.90} & \emph{\scriptsize{}23.80} & \textit{\scriptsize{}15} & {\scriptsize{}29.03} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{14.26}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{10.01}  &\scriptsize{-10.01}  &\scriptsize{25.33} &\scriptsize{9.9}  &\scriptsize{17} & \scriptsize{8.27} &\scriptsize{-14.44}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{14.26}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{10.01}  &\scriptsize{-10.01}  &\scriptsize{25.33} &\scriptsize{9.9}  &\scriptsize{17} & \scriptsize{8.27} &\scriptsize{-14.44}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}LT} & \textbf{\scriptsize{}Token-based} &  &  &  & {\scriptsize{}0.00} &  &  & {\scriptsize{}25.33} & \emph{\scriptsize{}12.67} & \textit{\scriptsize{}17} & {\scriptsize{}28.85} & \tabularnewline
  & \textbf{\scriptsize{}MWE-based} &  &  &  & {\scriptsize{}0.00} &  &  & {\scriptsize{}28.35} & \emph{\scriptsize{}14.18} & \textit{\scriptsize{}17} & {\scriptsize{}30.08} & \tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{}  &\scriptsize{}  &\scriptsize{27.25} &\scriptsize{13.62}  &\scriptsize{15} & \scriptsize{28.82} &\scriptsize{}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{}  &\scriptsize{}  &\scriptsize{27.25} &\scriptsize{13.62}  &\scriptsize{15} & \scriptsize{28.82} &\scriptsize{}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}MT} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}8.87} &  &  & {\scriptsize{}0.00} & {\scriptsize{}4.69} &  & {\scriptsize{}16.29} & \emph{\scriptsize{}7.46} & \textit{\scriptsize{}18} & {\scriptsize{}11.42} & {\scriptsize{}6.79}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}6.41} &  &  & {\scriptsize{}0.00} & {\scriptsize{}5.00} &  & {\scriptsize{}14.44} & \emph{\scriptsize{}6.46} & \textit{\scriptsize{}18} & {\scriptsize{}6.75} & {\scriptsize{}0.02}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{3.5}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{2.99}  &\scriptsize{}  &\scriptsize{6.6} &\scriptsize{3.27}  &\scriptsize{18} & \scriptsize{-5.25} &\scriptsize{-5.74}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{3.5}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{0.00} &\scriptsize{2.99}  &\scriptsize{}  &\scriptsize{6.6} &\scriptsize{3.27}  &\scriptsize{18} & \scriptsize{-5.25} &\scriptsize{-5.74}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}PL} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}72.74} &  &  & {\scriptsize{}69.77} &  & {\scriptsize{}0.00} & {\scriptsize{}70.56} & \emph{\scriptsize{}53.27} & \textit{\scriptsize{}7} & {\scriptsize{}74.40} & {\scriptsize{}18.33}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}67.95} &  &  & {\scriptsize{}59.61} &  & {\scriptsize{}0.00} & {\scriptsize{}69.09} & \emph{\scriptsize{}49.16} & \textit{\scriptsize{}5} & {\scriptsize{}69.98} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{61.53}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{51.33} &\scriptsize{}  &\scriptsize{0.00}  &\scriptsize{62.72} &\scriptsize{43.9}  &\scriptsize{4} & \scriptsize{63.46} &\scriptsize{-15.01} \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{61.53}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{51.33} &\scriptsize{}  &\scriptsize{0.00}  &\scriptsize{62.72} &\scriptsize{43.9}  &\scriptsize{4} & \scriptsize{63.46} &\scriptsize{-15.01} \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}PT} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}70.18} &  &  & {\scriptsize{}60.01} &  & {\scriptsize{}30.79} & {\scriptsize{}70.94} & \emph{\scriptsize{}57.98} & \textit{\scriptsize{}6} & {\scriptsize{}59.97} & {\scriptsize{}14.32}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}58.14} &  &  & {\scriptsize{}44.05} &  & {\scriptsize{}0.99} & {\scriptsize{}67.33} & \emph{\scriptsize{}42.63} & \textit{\scriptsize{}8} & {\scriptsize{}54.49} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{51.35}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{35.98} &\scriptsize{}  &\scriptsize{-11.52}  &\scriptsize{62.03} &\scriptsize{34.46}  &\scriptsize{7} & \scriptsize{46.35} &\scriptsize{-11.86}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{51.35}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{35.98} &\scriptsize{}  &\scriptsize{-11.52}  &\scriptsize{62.03} &\scriptsize{34.46}  &\scriptsize{7} & \scriptsize{46.35} &\scriptsize{-11.86}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}RO} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}81.90} &  &  & {\scriptsize{}83.58} & {\scriptsize{}77.99} &  & {\scriptsize{}79.12} & \emph{\scriptsize{}80.65} & \textit{\scriptsize{}2} & {\scriptsize{}63.76} & {\scriptsize{}11.51}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}73.38} &  &  & {\scriptsize{}77.21} & {\scriptsize{}77.75} &  & {\scriptsize{}75.31} & \emph{\scriptsize{}75.91} & \textit{\scriptsize{}2} & {\scriptsize{}57.74} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{71.28}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{75.35} &\scriptsize{76.12}  &\scriptsize{}  &\scriptsize{73.18} &\scriptsize{73.98}  &\scriptsize{1} & \scriptsize{53.75} &\scriptsize{-7.32}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{71.28}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{75.35} &\scriptsize{76.12}  &\scriptsize{}  &\scriptsize{73.18} &\scriptsize{73.98}  &\scriptsize{1} & \scriptsize{53.75} &\scriptsize{-7.32}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}SL} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}45.06} &  &  & {\scriptsize{}45.62} & {\scriptsize{}33.20} &  & {\scriptsize{}46.55} & \emph{\scriptsize{}42.61} & \textit{\scriptsize{}11} & {\scriptsize{}28.47} & {\scriptsize{}0.08}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}37.08} &  &  & {\scriptsize{}31.08} & {\scriptsize{}30.19} &  & {\scriptsize{}43.22} & \emph{\scriptsize{}35.39} & \textit{\scriptsize{}10} & {\scriptsize{}21.65} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{29}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{20.49} &\scriptsize{23.45}  &\scriptsize{}  &\scriptsize{33.17} &\scriptsize{26.53}  &\scriptsize{10} & \scriptsize{5.23} &\scriptsize{-0.07}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{29}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{20.49} &\scriptsize{23.45}  &\scriptsize{}  &\scriptsize{33.17} &\scriptsize{26.53}  &\scriptsize{10} & \scriptsize{5.23} &\scriptsize{-0.07}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}SV} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}31.49} &  &  &  & {\scriptsize{}26.69} & {\scriptsize{}31.19} & {\scriptsize{}30.70} & \emph{\scriptsize{}30.02} & \textit{\scriptsize{}15} & {\scriptsize{}8.94} & {\scriptsize{}13.23}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}30.32} &  &  &  & {\scriptsize{}25.17} & {\scriptsize{}27.03} & {\scriptsize{}30.36} & \emph{\scriptsize{}28.22} & \textit{\scriptsize{}14} & {\scriptsize{}7.32} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{24.44}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{20.78}  &\scriptsize{16.56}  &\scriptsize{24.75} &\scriptsize{21.63}  &\scriptsize{12} & \scriptsize{-5.62} &\scriptsize{-10.29}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{24.44}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{} &\scriptsize{20.78}  &\scriptsize{16.56}  &\scriptsize{24.75} &\scriptsize{21.63}  &\scriptsize{12} & \scriptsize{-5.62} &\scriptsize{-10.29}  \tabularnewline
 \midrule 
 
 \textbf{\scriptsize{}TR} & \textbf{\scriptsize{}Token-based} & {\scriptsize{}52.85} &  &  & {\scriptsize{}45.40} & {\scriptsize{}51.59} &  & {\scriptsize{}55.28} & \emph{\scriptsize{}51.28} & \textit{\scriptsize{}8} & {\scriptsize{}16.60} & {\scriptsize{}10.45}\tabularnewline
  & \textbf{\scriptsize{}MWE-based} & {\scriptsize{}42.83} &  &  & {\scriptsize{}34.49} & {\scriptsize{}51.76} &  & {\scriptsize{}55.40} & \emph{\scriptsize{}46.12} & \textit{\scriptsize{}7} & {\scriptsize{}5.95} & {\scriptsize{}0}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} &\scriptsize{25.88}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{19.05} &\scriptsize{38.88}  &\scriptsize{}  &\scriptsize{42.14} &\scriptsize{31.49}  &\scriptsize{8} & \scriptsize{-8.57}&\scriptsize{-17.81}  \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} &\scriptsize{25.88}  &\scriptsize{}  &\scriptsize{}  & \scriptsize{19.05} &\scriptsize{38.88}  &\scriptsize{}  &\scriptsize{42.14} &\scriptsize{31.49}  &\scriptsize{8} & \scriptsize{-8.57}&\scriptsize{-17.81}  \tabularnewline
 \midrule 
 
 \textbf{\emph{\scriptsize{}avg}} & \textbf{\emph{\scriptsize{}Token-based}} & \emph{\scriptsize{}53.79} & \emph{\scriptsize{}54.61} & \emph{\scriptsize{}10.00} & \emph{\scriptsize{}40.71} & \emph{\scriptsize{}41.12} & \emph{\scriptsize{}36.86} & \emph{\scriptsize{}54.10} &  &  & \textit{\scriptsize{}43.40} & \textit{\scriptsize{}16.08}\tabularnewline
  & \textbf{\emph{\scriptsize{}MWE-based}} & \emph{\scriptsize{}46.22} & \emph{\scriptsize{}47.46} & \emph{\scriptsize{}10.82} & \emph{\scriptsize{}29.81} & \emph{\scriptsize{}38.71} & \emph{\scriptsize{}25.50} & \emph{\scriptsize{}52.37} &  &  & \textit{\scriptsize{}37.60} & \textit{\scriptsize{}0.79}\tabularnewline
-   & \textbf{\scriptsize{}Cohen's $\kappa$} & \emph{\scriptsize{36.44} } & \emph{\scriptsize{33.77} } & \emph{\scriptsize{7.98}}  & \emph{ \scriptsize{20.56}} & \emph{\scriptsize{30.82} } & \emph{\scriptsize{11.82}}  &\scriptsize{43.64} &\scriptsize{}  &\scriptsize{} & \scriptsize{24.6} &\scriptsize{-16.92} \tabularnewline
+   & \textbf{\scriptsize{}Cohen's κ} & \emph{\scriptsize{36.44} } & \emph{\scriptsize{33.77} } & \emph{\scriptsize{7.98}}  & \emph{ \scriptsize{20.56}} & \emph{\scriptsize{30.82} } & \emph{\scriptsize{11.82}}  &\scriptsize{43.64} &\scriptsize{}  &\scriptsize{} & \scriptsize{24.6} &\scriptsize{-16.92} \tabularnewline
 \lspbottomrule
 
 \end{tabular}{\scriptsize \par}
@@ -513,9 +513,9 @@ By definition, every single VMWE will involve a verb. So, the verb baseline syst
 
 Even though Token-based scores are expected to be higher than MWE-based scores, the system rankings differ across modalities. Because of these issues, we cannot categorically say that system $A$, which scored higher than system $B$ in Token-based evaluation, is better at detecting partial VMWEs. It could well be that system $A$ is good at identifying simple verbs and/or long and formulaic VMWEs but not necessarily at detecting partial VMWEs. One solution would be giving a fraction of a point corresponding to the proportion of a matched VMWE, as well as subtracting a fraction of a point proportional to matched non-VMWE tokens. 
 
-On a slightly different note, we would like to propose an alternative evaluation metric: Cohen's $\kappa$ measure\is{Cohen's kappa}, which is commonly used to measure inter-annotator agreement. We use it here to measure the degree to which systems agree with gold standards. The obtained $\kappa$ score is similar to the MWE-based F1 score, but with a correction that removes the possible bias from chance agreement. 
+On a slightly different note, we would like to propose an alternative evaluation metric: Cohen's κ measure\is{Cohen's kappa}, which is commonly used to measure inter-annotator agreement. We use it here to measure the degree to which systems agree with gold standards. The obtained $\kappa$ score is similar to the MWE-based F1 score, but with a correction that removes the possible bias from chance agreement. 
 
-We compare the similarity between systems' rankings given by the averaged results per language per performance measure, by reporting their Spearman's rank correlation $\rho$ and Pearson's moment correlation. As shown in \tabref{similarity-of-measures}, the rankings and assigned scores to systems remain very similar across performance measures. However, overall, the Token-based and MWE-based measures show the highest correlation (both in terms of ranking, $\rho$, and the relative magnitude of the assigned scores, $r$). With respect to Cohen's $\kappa$, while it yields a ranking more similar to the MWE-based measure, the distribution of the assigned Cohen's $\kappa$ scores are more similar to the token-based method (i.e., their linear relationship signified by $r$).
+We compare the similarity between systems' rankings given by the averaged results per language per performance measure, by reporting their Spearman's rank correlation $\rho$ and Pearson's moment correlation. As shown in \tabref{similarity-of-measures}, the rankings and assigned scores to systems remain very similar across performance measures. However, overall, the Token-based and MWE-based measures show the highest correlation (both in terms of ranking, $\rho$, and the relative magnitude of the assigned scores, $r$). With respect to Cohen's κ, while it yields a ranking more similar to the MWE-based measure, the distribution of the assigned Cohen's κ scores are more similar to the token-based method (i.e., their linear relationship signified by $r$).
 
 \begin{table}
 \centering
@@ -530,9 +530,9 @@ Measure & Measure & $\rho$ & $r$ \tabularnewline
 \midrule
 Token-based & MWE-based        & 98.14 & 97.48 \tabularnewline
 %& 97.81 
-Token-based & Cohen's $\kappa$ & 94.06 & 93.28 \tabularnewline
+Token-based & Cohen's κ & 94.06 & 93.28 \tabularnewline
 %& 93.67 
-MWE-based   & Cohen's $\kappa$ & 96.75 & 97.18 \tabularnewline
+MWE-based   & Cohen's κ & 96.75 & 97.18 \tabularnewline
 %& 96.97
 %\\\midrule
 \lspbottomrule
@@ -541,9 +541,9 @@ MWE-based   & Cohen's $\kappa$ & 96.75 & 97.18 \tabularnewline
 
 
 
-\subsection{On Using the Cohen's $\kappa$ as an evaluation score}
+\subsection{On Using the Cohen's κ as an evaluation score}
 
-The use of the F1 score, i.e., the harmonic mean of precision and recall, for evaluation can be biased unless certain criteria are met, e.g. that the distribution of annotated instances in the test and training data are identical. Since in the PARSEME shared task, the VMWE identification task is reduced to a binary \isi{classification} problem, Cohen's $\kappa$\is{Cohen's kappa} can be used reliably to obtain a measure of performance that can, at least, cancel out the influence of certain sources of bias. In particular, it penalises the overall score of the systems by the expected chance agreement (as done in the computation of inter-annotator agreement) and takes into account a notion of true negative rate in the overall evaluation of systems \citep{Powers2012,Powers15}. 
+The use of the F1 score, i.e., the harmonic mean of precision and recall, for evaluation can be biased unless certain criteria are met, e.g. that the distribution of annotated instances in the test and training data are identical. Since in the PARSEME shared task, the VMWE identification task is reduced to a binary \isi{classification} problem, Cohen's κ\is{Cohen's kappa} can be used reliably to obtain a measure of performance that can, at least, cancel out the influence of certain sources of bias. In particular, it penalises the overall score of the systems by the expected chance agreement (as done in the computation of inter-annotator agreement) and takes into account a notion of true negative rate in the overall evaluation of systems \citep{Powers2012,Powers15}. 
 
 The count of true negative outputs and subsequently true negative rate, however, cannot be computed directly from the evaluation setup and the test set. Simply put, we do not know how many ``\emph{is this a VMWE?}'' questions are answered by a system\footnote{This discussion also implies a way to justify the better performance of transition-based systems, i.e., the total number of classification problems in these systems is often less than in non-transition-based systems.} (or human annotators) in order to perform the identification task on a test set (or to manually annotate a corpus). Hence, further assumptions about the problem setting are required to devise the number of true negatives in the respective evaluation contingency table. Here, likewise \citep{MWEWorkshop}, we assume that the total number of stimuli, i.e., the total number of ``\emph{is this a VMWE?}'' questions to complete a VMWE identification problem, is approximately equivalent to the number of verbs in the test set (or the corpus which must be annotated).
 
@@ -561,7 +561,7 @@ in which
 p_0 =\frac{(tp+fp)\times(tp+fn)}{t^2}\\
 p_1 =\frac{(fn+v)\times(fp+v)}{t^2} 
 \end{align*}
-Finally, we compute Cohen's $\kappa$:
+Finally, we compute Cohen's κ:
 \begin{align*}
 \kappa = \frac{1-p_o}{1-p_e}
 \end{align*}
@@ -585,7 +585,7 @@ We also saw that it is advisable to design systems capable of detecting disconti
 Shuffling corpora before splitting into training and test portions will also reduce its heterogeneity
  ratio and help put all languages on a similar footing. 
 
-On the evaluation front, we found the token-based evaluation method to overestimate the performance of systems. As future work, the authors will investigate alternative partial-matching measures, especially those that favour number of the detected VMWEs over their lengths. And finally, this chapter described the use of Cohen's $\kappa$ metric to produce less biased estimations of systems' performance.
+On the evaluation front, we found the token-based evaluation method to overestimate the performance of systems. As future work, the authors will investigate alternative partial-matching measures, especially those that favour number of the detected VMWEs over their lengths. And finally, this chapter described the use of Cohen's κ metric to produce less biased estimations of systems' performance.
 
 %We also found that having too few VMWE examples (high VMWE \isi{sparsity}) in the training set has a negative effect on systems. Another related factor that affects the performance of systems is the \isi{frequency distribution} of VMWEs. While VMWEs will tend to have a Zipfian distribution, it is better to make sure to have a few examples of the majority of VMWEs in the training set to maximise the systems' ability to learn. We also found that the Token-based evaluation modality overestimates the performance of systems and propose instead the usage of the kappa agreement score.
 
@@ -612,11 +612,11 @@ Representations in Language, Cognition, and Science''.
 \textsc{bv} & baseline: verb detection \\
 \textsc{crf} & conditional random fields \\
 \textsc{f1} & F1 score aka F-measure \\
-\textsc{$\kappa$} & Cohen's inter-annotation agreement measure \\
+\textsc{κ} & Cohen's inter-annotation agreement measure \\
 \textsc{mwe} & multiword expression \\
 \textsc{pos} & part of speech \\
 \textsc{$r$} & Pearson's correlation coefficient \\
-\textsc{$\rho$} & Spearman's rank correlation coefficient \\
+\textsc{ρ} & Spearman's rank correlation coefficient \\
 \textsc{rnk} & rank \\
 \textsc{trn} & training \\
 \textsc{tst} & test \\
