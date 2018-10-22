@@ -52,6 +52,7 @@ and from comparable or even from non-related monolingual resources \citep{lu2004
 often combining statistical approaches with the use of bilingual dictionaries to
 find equivalents of each base.
 
+\newpage 
 This chapter explores the use of \isi{distributional semantics} (by means of bilingual
 \isi{word embeddings}) for identifying bilingual equivalents of monolingual collocations:
 On the one hand, monolingual \isi{collocation} candidates are extracted using a harmonized
@@ -83,7 +84,7 @@ and further work are discussed in \sectref{garcia:sec:conclusions}.
 \label{garcia:sec:rw}
 
 The extraction of monolingual \isi{collocation} candidates (as well as other MWEs)
-from corpora is a well-known topic in corpus and computational linguistics which was the focus of a significant body of work in different languages.
+from corpora is a well-known topic in corpus and computational linguistics and was the focus of a significant body of work in different languages.
 
 In this respect, most strategies use statistical association measures on windows of
 n-grams with different sizes \citep{church1990, smadja1993}. Other methods, such as the
@@ -121,12 +122,13 @@ The method also uses the position of the \isi{collocation} in the corpus, and re
 by assuming that equivalent collocations will occur with the same syntactic relations within the collocations in both languages.
 
 \citet{Rivera2013} present a framework for bilingual \isi{collocation} retrieval
-which can be applied (using different modules) to both parallel and comparable corpora.
+that can be applied (using different modules) to both parallel and comparable corpora.
 As in other works, monolingual collocations based on n-grams are extracted in a first
 step, and then bilingual dictionaries (or WordNet, in the comparable corpora scenario) are used
 to find the equivalents of the base in the aligned sentence or in a small window of
 adjacent sentences of the source \isi{collocation}.
 
+\largerpage
 A different approach, which uses non-related monolingual corpora for finding bilingual
 collocations, was presented in \citet{lu2004}. Here, the authors apply dependency parsing
 and the log-likelihood ratio for obtaining \ili{English} and Chinese collocations. Then,
@@ -275,7 +277,7 @@ The bilingual models are built
 using \emph{MultiVec},
 an implementation of \emph{word2vec} and \emph{BiSkip} \citep{MultiVec}. As the approach
 is evaluated in three languages, three different bilingual models are needed:
-\ili{Spanish}-\ili{English}, \ili{Spanish}-\ili{Portuguese}, and \ili{Portuguese}-\ili{English}.
+\ili{Spanish}-\ili{English},  \ili{Portuguese}-\ili{English}, and \ili{Spanish}-{Portu\-guese}.
 
 As it will be shown, the obtained models can predict the similarity between words
 in bilingual scenarios by computing the cosine similarity between their vectors. As
@@ -316,7 +318,7 @@ method (henceforth \textsc{DiS}) in the three analyzed languages, using the five
 patterns defined in \sectref{garcia:sec:monolingual}. The approach presented in this chapter is
 compared to a baseline system (\textsc{Bas}), which uses hand-crafted bilingual dictionaries,
 and to probabilistic translation dictionaries (\textsc{Nat}).\footnote{The extractions
-  of these three methods are available at\\\scriptsize{\url{http://www.grupolys.org/~marcos/pub/pmwe-dis.tar.bz2}}}
+  of these three methods are available at {\url{http://www.grupolys.org/~marcos/pub/pmwe-dis.tar.bz2}}}
 
 \paragraph*{Corpora:} Monolingual collocations were extracted from a subset of the
 OpenSubtitles2016 corpus \citep{opus}, which contains \isi{parallel corpora} from TV and Movie
@@ -331,12 +333,11 @@ languages were selected, for a total of 13,017,016 sentences. These sentences we
 and POS-tagged with a multilingual NLP pipeline~\citep{Citius}, obtaining three corpora of about $91$M (ES and PT), and about $98$M (EN) tokens. The resulting data
 were enriched with syntactic annotation using statistical models trained with MaltParser \citep{MaltParser} on version 1.4 of the UD\is{Universal Dependencies} treebanks \citep{univdep}.
 
-\begin{table}
-  \begin{center}
+\begin{table} 
     %\setlength\tabcolsep{4pt}
-    {\small{
         \caption{\label{tab:mono} Number of unique input dependencies for each syntactic pattern (\emph{deps}),
           and final monolingual collocation candidates (\emph{colls}).}
+    \fittable{{
     \begin{tabular}{lrrrrrrrrrr}
       \lsptoprule
       \textbf{\multirow{2}{*}{Lg}} & \multicolumn{2}{c}{\textbf{\textsc{amod}}} & \multicolumn{2}{c}{\textbf{\textsc{nmod}}} & \multicolumn{2}{c}{\textbf{\textsc{vobj}}} & \multicolumn{2}{c}{\textbf{\textsc{vsubj}}} & \multicolumn{2}{c}{\textbf{\textsc{advmod}}} \\
@@ -347,8 +348,7 @@ were enriched with syntactic annotation using statistical models trained with Ma
       \emph{EN}   & 381K & 14,175   & 517K & 3,133   & 483K & 15,492 & 264K & 2,663 & 162K & 6,711 \\
       \lspbottomrule
     \end{tabular}
-    }}
-  \end{center}
+    }} 
 \end{table}
 
 \paragraph*{Collocations:} From each corpus, five patterns of \isi{collocation} candidates
@@ -728,6 +728,7 @@ multilingual collocations.
 
 %
 \section{Conclusions}
+\largerpage
 \label{garcia:sec:conclusions}
 This chapter presents a new strategy to automatically discover multilingual collocation
 equivalents from both parallel and comparable corpora. First, monolingual collocation candidates of five different patterns are
@@ -786,6 +787,7 @@ collocation equivalents.
 
 
 \section*{Acknowledgements}
+\largerpage
 This work has been supported by the Spanish Ministry of Economy, Industry and
 Competitiveness through the project with reference FFI2016-78299-P,
 by two \emph{Juan de la Cierva} grants (FJCI-2014-22853 and IJCI-2016-29598),
