@@ -37,7 +37,7 @@ verb-noun idiomatic constructions (also referred to as VP idioms), e.g.,
 \end{itemize}
 
 
-In this chapter, we focus on two particular types of \ili{Czech} verbal MWEs, namely
+In this chapter, we focus on two particular types of \ili{Czech} verbal MWEs: 
 light-verb constructions (LVCs) and idiomatic verbal constructions (IVCs) as 
 they also represent MWEs in Czech in contrast to the first two types that are 
 primarily expressed as~single prefixed verbs. 
@@ -127,12 +127,13 @@ predicative nouns allow for the expression of several meanings that cannot be
 expressed with single verbs; these cases require lexical modification, see 
 \tabref{aspect}.
 
-\begin{table}[tb]
-	\centering
-	\begin{tabular}{lccc}
+\begin{table}[b]
+	\begin{tabularx}{\textwidth}{lp{18mm}p{20mm}Q}
 	 \lsptoprule
-	   \multirow{2}{*}{LVC} & Single verb & Lexical        & \multirow{2}{*}{Example\footnotemark} \\
-	                     & paraphrase &  modification   &   \\ \midrule
+	   \multirow{2}{*}{LVC} & Single verb paraphrase& Lexical\newline      modification    & \multirow{2}{*}{Example\footnote{Let us emphasize that the single verb paraphrases of 
+	the last two combinations require to be lexically modified -- by the words 
+	\textit{několikrát}  `several times' and \textit{právě} `just', respectively.}} \\
+	                     \midrule
 		\multirow{4}{*}{sg \& pf}   & \multirow{4}{*}{pf} &  \multirow{4}{*}{no} &  \textit{Petr dal Janě polibek}. \\ 
 		                            &                     &                      &  `Peter gave a~kiss to Jane.' \\
 		                            &                     &                      &   $\thicksim$ \textit{Petr Janu políbil}. \\
@@ -150,11 +151,11 @@ expressed with single verbs; these cases require lexical modification, see
 		                            &                       &                       &   $\thicksim$ \textit{Petr Janu právě líbal.}  \\
 		                            &                       &                       &    `Peter was just kissing Jane.'\\    
 	\lspbottomrule       
-	\end{tabular}
+	\end{tabularx}
 	\caption{Possible combinations of the grammatical aspect of the light verbs 
-	\textit{dát}$^{pf}$, \textit{dávat}$^{pf}$ `to give' and the number of the 
+	\textit{dát}\textsuperscript{pf}, \textit{dávat}\textsuperscript{pf} `to give' and the number of the 
 	noun \textit{polibek} `kiss' and their paraphrasability by the perfective and 
-	imperfective single verbs \textit{políbit}$^{pf}$ and \textit{líbat}$^{impf}$ 
+	imperfective single verbs \textit{políbit}\textsuperscript{pf} and \textit{líbat}\textsuperscript{impf} 
 	`to~kiss', respectively.}
 %\footnote{Let us emphasize that the single verb paraphrases of 
 %	the last two combinations require to be lexically modified -- by the words 
@@ -163,9 +164,6 @@ expressed with single verbs; these cases require lexical modification, see
 	\label{aspect}
 \end{table}
 
-\footnotetext{Let us emphasize that the single verb paraphrases of 
-	the last two combinations require to be lexically modified -- by the words 
-	\textit{několikrát}  `several times' and \textit{právě} `just', respectively.}
 	
 Finally, in many cases, the selection of~different light verbs\is{light-verb construction!selection} allows for 
  perspectivization of the expressed event from the point of view of 
@@ -265,7 +263,7 @@ exhibit the following specific properties, see e.g. \citet{burger-07},
 \begin{itemize}
 \item
 markedness at the syntactic and/or morphological level: e.g., \exlitidio{vzít za 
-své}{take as one's own}{to be no more} (syntactically marked as the reflexive 
+své }{take as one's own}{to be no more} (syntactically marked as the reflexive 
 adjective \textit{své} does not modify any noun), and \exlitidio{nalít někomu 
 čistého vína}{to pour someone pure wine}{to tell someone the honest truth} 
 (morphologically marked due to the partitive genitive of the noun \textit{víno} 
@@ -370,12 +368,11 @@ extracted candidates is necessary (\sectref{baran:sec:annotation}).
 \subsection{Data selection}
 \label{sec:datasets}
 
-\subsubsection{LVCs Selection}
+\subsubsection{LVCs selection}
 \label{sect:lvc-selection}
 
-Three different datasets of LVCs\is{light-verb construction!selection} -- containing together 2,389 unique LVCs 
-(counting aspectual counterparts separately, the number increases to 3,509 
-unique LVCs) -- were used in our experiment. As all the datasets were 
+Three different datasets of LVCs\is{light-verb construction!selection} -- containing together 2,389 unique LVCs\footnote{When counting aspectual counterparts separately, the number increases to 3,509 
+unique LVCs} -- were used in our experiment. As all the datasets were 
 manually created, they allow us to achieve the desired quality of the resulting 
 data. 
 
@@ -390,7 +387,7 @@ as an adverbial by a~simple prepositional case (e.g., \textit{dát do pořádku}
 \textit{ze smíchu do pláče} `from laughing to crying'). 
 
 The second dataset resulted from a project aiming to enhance the high coverage
-valency lexicon of \ili{Czech} verbs VALLEX\footnote{\texttt{http://ufal.mff.cuni.cz/vallex/3.0/}} 
+valency lexicon of \ili{Czech} verbs VALLEX\footnote{\url{http://ufal.mff.cuni.cz/vallex/3.0/}} 
 with the information on~LVCs \citep{KeBaLoLexicographicDescription2016}. 
 In this case, only the predicative nouns expressed as the direct object by the 
 prepositionless accusative were selected. For identification of LVCs, the 
@@ -421,17 +418,19 @@ as their automatic identification\is{multiword expression!identification} could 
 595 IVCs (counting aspectual counterparts separately 621 IVCs), see the 
 statistics provided in \tabref{statistics}. 
 
-\begin{table}[tb]
-	\centering
-	\begin{tabular}{lcccc}
+\begin{table}
+	
+	\begin{tabularx}{\textwidth}{XCCCr}
 	 \lsptoprule
-     Dataset  & LVCs        & IVCs    & Verbs   & Nominal Components \\ \midrule
+     Dataset  & LVCs        & IVCs    & Verbs   & Nominal components \\ 
+     \midrule
      First    & 726/1,167   & 0/0     & 49/84   & 612   \\ %\hline
      Second   & 1,640/2,366 & 0/0     & 126/131 & 699   \\ %\hline
      Third    & 104/106     & 595/621 & 310/324 & 324   \\ %\hline
-     Union\footnotemark    & 2,389/3,509 & 595/621 & 417/446 & 1444  \\ 
+     Union\footnote{The numbers do not add up due to a small 
+	overlap among the datasets.}    & 2,389/3,509 & 595/621 & 417/446 & 1444  \\ 
 	\lspbottomrule  
-	\end{tabular} 
+	\end{tabularx} 
 	\caption{The number of LVCs and IVCs, verbs and nominal components in the 
 	three datasets described in \sectref{sect:lvc-selection}, before (first number) and after (second number) the aspectual counterparts expansion.}%\footnotemark }
 	\label{statistics}
@@ -439,10 +438,8 @@ statistics provided in \tabref{statistics}.
 
 % \footnotetext{The first number represents 
 %	counts in the original datasets, the second one corresponds to counts after 
-	aspectual counterparts expansion. 
-
-\footnotetext{The numbers do not add up due to a small 
-	overlap among the datasets.}
+% 	aspectual counterparts expansion. 
+ 
 	
 \subsection{Data preprocessing} 
 \label{sec:preprocess}
@@ -453,9 +450,8 @@ data from the Czech Press -- a~large collection of~contemporary news texts
 containing more than 2,000 million lemmatized and POS-tagged tokens. The 
 overall statistics on all datasets is presented in \tabref{data}.
 
-\begin{table}[tb]
-\centering
-\begin{tabular}{lrr}
+\begin{table} 
+\begin{tabularx}{.8\textwidth}{XYr}
 \lsptoprule
 Corpus & Sentences & Tokens \\ 
 \midrule
@@ -466,7 +462,7 @@ Czeng 1.0 & 14.83 & 206.05 \\
 Czech Press & 57.03 & 2447.68 \\ \midrule
 Total & 90.77 & 3021.01 \\
 \lspbottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Basic statistics of datasets (numbers in~millions of units).}
 \label{data}
 \end{table}
@@ -499,10 +495,10 @@ positions in sentences.
 Further, to compensate sparsity\is{verbal multiword expression!sparsity} of LVCs and IVCs in the data, after identifying 
 a verb from the selected LVCs and IVCs in the data, its aspectual counterpart 
 -- if relevant -- has been automatically added. For example, after detecting 
-the imperfective verb \textit{vcházet}$^{impf}$ `enter' in the data and the 
+the imperfective verb \textit{vcházet}\textsuperscript{impf} `enter' in the data and the 
 prepositional noun phrase \textit{do dějin} `to history' in its context, not 
 only the given imperfective verb, but also its perfective counterpart 
-\textit{vejít}$^{pf}$ have been connected with the given noun phrase into the 
+\textit{vejít}\textsuperscript{pf} have been connected with the given noun phrase into the 
 resulting unit \textit{vcházet\_vejít\_do\_dějin}. We refer to such 
 an~artificially constructed unit as an \emph{abstract unit} from now on. The 
 abstract unit \textit{vcházet\_vejít\_do\_dějin} then replaced the verb 
@@ -511,8 +507,7 @@ was deleted from the sentence. Each LVC and IVC identified in the data is thus
 represented by a single abstract unit representing also its relevant aspectual 
 counterparts. 
 
-\begin{table}[tb]
-\centering
+\begin{table}[p]
 \caption{The number of LVCs and IVCs detected in the data. The first row shows 
 the total number of LVC and IVC abstract units identified in the data. The second 
 row represents the number of their unique instances. The third row provides the 
@@ -522,13 +517,15 @@ counterparts expansion, i.e. after splitting the generated abstract units back
 to a~single verb--a~single noun phrase pairs.}
 
 \label{data_preprocessing}
-\begin{tabular}{lcc}
-\lsptoprule        & LVCs        & IVCs \\ \midrule
+\begin{tabularx}{.8\textwidth}{XYr}
+\lsptoprule        & LVCs        & IVCs \\ 
+\midrule
 abstract units     & 6,541,394   & 374,493    \\ %\hline
 unique abstract units       & 1,776       &  211    \\ %\hline
 unique abstract units > 100 & 1,361       &  153    \\ %\hline
-unique MWEs        & 2,954       & 353    \\ \lspbottomrule
-\end{tabular}
+unique MWEs        & 2,954       & 353    \\
+\lspbottomrule
+\end{tabularx}
 \end{table}
 
 %\footnotetext{Total number of LVC and IVC abstract units identified in the data.}
@@ -536,34 +533,38 @@ unique MWEs        & 2,954       & 353    \\ \lspbottomrule
 %\footnotetext{Number of the unique units with higher frequency than 100 occurrences.}
 %\footnotetext{Number of unique LVCs and IVCs without aspectual counterparts expansion.}
 
+\largerpage
 On this basis, almost 7 million instances of~LVC and IVC abstract units were 
 generated in~the corpora, see \tabref{data_preprocessing}. The rank and 
 frequency of the most and the least common ones are presented in 
 \tabref{lvc_frequency}.
 
-\begin{table}[tb]
-	\centering
-        \begin{tabular}{rccr}
+\begin{table}[p]	
+        \begin{tabularx}{\textwidth}{rlXr}
         \lsptoprule  
 	       rank                 & type     &  abstract unit                         & frequency       \\  \midrule
            \multirow{2}{*}{1.}  & \multirow{2}{*}{LVC}    & \textit{mít\_problém}        & \multirow{2}{*}{211,296} \\   
 	                            &                           & `have a problem'           &                         \\ 
+\tablevspace	                            
 	       \multirow{2}{*}{2.}  & \multirow{2}{*}{LVC}     & \textit{mít\_možnost}        & \multirow{2}{*}{207,330} \\   
 	            	             &                          & `have a possibility'        &                         \\ 
-	        ...                 & ...                         & ...                      &  ... \\     	              
+	        \vdots                 & \vdots                         & \vdots                      &  \vdots \\     	              
+\tablevspace	                            
            \multirow{2}{*}{29.} & \multirow{2}{*}{IVC} & \textit{mít\_na\_mysli}      & \multirow{2}{*}{43,521}     \\ 
     	 	                    &                              & `have in mind'             &                          \\  
-            ...                 & ...                         & ...                     &  ... \\ 
+            \vdots                 & \vdots                         & \vdots                     &  \vdots \\ 
+\tablevspace	                            
           \multirow{2}{*}{1986.} & \multirow{2}{*}{IVC} & \textit{chytnout\_chytat\_chytit\_za\_špatný\_konec} & \multirow{2}{*}{1}    \\ 
                                  &  & `get hold of the wrong end of the stick'     &  \\            	                   
     	              
+\tablevspace	                            
 	       \multirow{2}{*}{1987.} & \multirow{2}{*}{LVC} & \textit{přechodit\_přecházet\_přejít\_ze\_smíchu\_do\_pláče} & \multirow{2}{*}{1}    \\ 
            	 	                  & & `go from laughing to crying'     &  \\    \lspbottomrule       
-	\end{tabular}
+	\end{tabularx}
 	\caption{The ranking of LVC and IVC abstract units identified in the data, based on their frequency.}
 	\label{lvc_frequency}
 \end{table}
-
+\clearpage 
 
 \subsection{Word2vec model}
 \label{sec:word2vec}
@@ -591,7 +592,7 @@ back to individual IVCs or LVCs and their paraphrase candidates were again
 enriched with their aspectual counterparts from the VALLEX lexicon. This way, annotators 
 could select a paraphrase with a proper aspect for each verbal MWE.
 
-%\begin{table}[tb]
+%\begin{table}
 %\centering
 %\caption{The number of paraphrase candidates extracted using the \emph{word2vec} model.}
 %\label{extracted_verbs}
@@ -610,7 +611,7 @@ could select a paraphrase with a proper aspect for each verbal MWE.
 
 \subsection{Annotation process}
 \label{baran:sec:annotation}
-
+\largerpage
 In this section, the annotation process\is{annotation!manual} of the candidates for single verb 
 paraphrases of LVCs and IVCs is thoroughly described. Let us repeat that 
 \emph{word2vec} generates semantically similar words depending on~the context 
@@ -724,8 +725,8 @@ number of the indicated single verb paraphrases of LVCs and IVCs was 2,912 and
 including the frequency of the additional morphological, syntactic and semantic 
 features used in the annotation.
 
-\begin{table}[tb]
-	\centering
+\begin{table}
+	
 	\begin{tabular}{lcc}
 		\lsptoprule
 		                       & LVC   & IVC \\ \midrule
@@ -822,8 +823,8 @@ randomized order. The annotation interface\is{annotation!manual} is displayed in
 For each translated sentence, the annotators had to indicate its quality, 
 allowing for the same ranking of more than one translated sentences.
 
-\begin{figure}[tb]
-\includegraphics[scale=0.33]{figures/anotovatko.png} 
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{figures/anotovatko.png} 
 \caption{Example of the annotation interface for the MT experiment.}
 \label{interface}
 \end{figure}
@@ -839,21 +840,23 @@ translations with single verbs) to BEFORE (i.e. with LVCs), in 45\% of cases
 for Moses and in 44\% of cases for Google Translate. The results are consistent
 for both translation systems, see \tabref{annotation}.
 
-\begin{table}[tb]
-	\centering
-	\begin{tabular}{ccc}
+\begin{table}
+	
+	\begin{tabularx}{.8\textwidth}{XrY}
 	\lsptoprule
 		Source & Moses   & GT    \\ \midrule
 		BEFORE & 30\%    & 33\%  \\
 		AFTER  & 45\%    & 44\%  \\
 		TIE    & 25\%    & 23\%  \\
 	\lspbottomrule
-	\end{tabular}
+	\end{tabularx}
 	\caption{Results of the manual evaluation of the MT experiment. The first 
 	column shows the~source of the better ranked sentence in the pairwise 
 	comparison within one translation model or whether they tied.}
 	\label{annotation}
 \end{table}
+
+
 
 However, the example in \tabref{example} illustrates that even minimal change in 
 a source sentence can substantially change its translations as both the 
@@ -866,28 +869,6 @@ of the translations, which is inevitably reflected in the lower inter-annotator
 agreement, typical of \isi{machine translation} evaluation \citep{wmt13}. 
 The judges unanimously agreed that the translations of the AFTER source sentence are better than the translations of the BEFORE source sentence. Both systems exhibited a tendency to translate the LVC \textit{dát branku} literally word by word, resulting in incorrect translations of the BEFORE source sentence.
 
-\begin{table}[tb]
-  \centering
-	\scalebox{0.97}{
-	\begin{tabular}{llccccc}
-		\lsptoprule
-		\multirow{6}{*}{Source} & \multirow{3}{*}{BEFORE} & \multicolumn{1}{c}{Fotbalisté}       & Budějovic  & opět  & \multicolumn{1}{c}{\textbf{nedali}} & \textbf{branku} \\
-		&                         & \multicolumn{1}{c}{Footballers} & Budějovice & again & \multicolumn{1}{c}{did not give}      & gate   \\
-		&                         & \multicolumn{5}{l}{Footballers of Budějovice didn't make a goal again}                               \\ \cmidrule{2-7} 
-		& \multirow{3}{*}{AFTER}  & \multicolumn{1}{c}{Fotbalisté}       & Budějovic  & opět  & \multicolumn{2}{l}{\textbf{neskórovali}}               \\
-		&                         & \multicolumn{1}{c}{Footballers} & Budějovice & again & \multicolumn{2}{l}{did not score}             \\
-		&                         & \multicolumn{5}{l}{Footballers of Budějovice didn't score again}                                     \\ \midrule
-		\multirow{2}{*}{GT}     & BEFORE                  & \multicolumn{5}{l}{Footballers Budejovice again not given goal}                                           \\ \cmidrule{2-7} 
-		& AFTER                   & \multicolumn{5}{l}{Footballers did not score again Budejovice}                                            \\ \midrule
-		\multirow{2}{*}{Moses}  & BEFORE                  & \multicolumn{5}{l}{Footballers Budějovice again gave the gate}                                            \\ \cmidrule{2-7} 
-		& AFTER                   & \multicolumn{5}{l}{Footballers Budějovice score again}                                                    \\ \lspbottomrule
-	\end{tabular}
-	}
-	\caption{An example of translated sentences.}%\footnotemark }
-	\label{example}
-\end{table}
-
-%\footnotetext{The judges unanimously agreed that the translations of the AFTER source sentence are better than the translations of the BEFORE source sentence. Both systems exhibited a tendency to translate the LVC \textit{dát branku} literally word by word, resulting in incorrect translations of the BEFORE source sentence.}
 
 \section{Conclusion}
 We have explored the paraphrasability\is{verbal multiword expression!paraphrasability} of  \ili{Czech} light-verb constructions and 
@@ -900,6 +881,52 @@ units exhibit different linguistic properties, the possibility to paraphrase
 them\is{verbal multiword expression!paraphrasability} is very similar; for about one half of the selected light-verb constructions 
 and idiomatic verbal constructions single verb paraphrases have been detected.
 
+\begin{table}[t]
+  \begin{tabularx}{\textwidth}{Xlp{8.5cm}}
+	    \lsptoprule
+	    \multirow{2}{15mm}{\newline  Source} 
+	    & {BEFORE} &    
+	    \parbox{8.5cm}{
+	    \gll    Fotbalisté Budějovic  opět  \textbf{nedali} \textbf{branku}\\
+		    Footballers Budějovice  again did.not.give      gate\\
+	    \glt `Footballers of Budějovice didn't make a goal again.'	   
+	    }
+	    \\	
+	     \cmidrule{2-3} 
+	    & {AFTER}  &    
+	    \parbox{8.5cm}{
+	    \gll    Fotbalisté Budějovic  opět  \textbf{neskórovali}\\
+		    Footballers Budějovice  again did.not.score\\
+	    \glt  `Footballers of Budějovice didn't score again.'
+	    }
+	    \\  
+	    \midrule
+	    \multirow{2}{*}{GT}     & BEFORE                  &{Footballers Budejovice again not given goal}                                           \\ \cmidrule{2-3} 
+	    & AFTER                   &{Footballers did not score again Budejovice}                                            \\ \midrule
+	    \multirow{2}{*}{Moses}  & BEFORE                  &{Footballers Budějovice again gave the gate}                                            \\ \cmidrule{2-3} 
+	    & AFTER                   &{Footballers Budějovice score again}                                                    \\ \lspbottomrule
+    \end{tabularx} 
+
+% 	\begin{tabularx}{\textwidth}{llccccc}
+% 		\lsptoprule
+% 		\multirow{6}{*}{Source} & \multirow{3}{*}{BEFORE} & \multicolumn{1}{c}{Fotbalisté}       & Budějovic  & opět  & \multicolumn{1}{c}{\textbf{nedali}} & \textbf{branku} \\
+% 		&                         & \multicolumn{1}{c}{Footballers} & Budějovice & again & \multicolumn{1}{c}{did not give}      & gate   \\
+% 		&                         & \multicolumn{5}{l}{Footballers of Budějovice didn't make a goal again}                               \\ \cmidrule{2-7} 
+% 		& \multirow{3}{*}{AFTER}  & \multicolumn{1}{c}{Fotbalisté}       & Budějovic  & opět  & \multicolumn{2}{l}{\textbf{neskórovali}}               \\
+% 		&                         & \multicolumn{1}{c}{Footballers} & Budějovice & again & \multicolumn{2}{l}{did not score}             \\
+% 		&                         & \multicolumn{5}{l}{Footballers of Budějovice didn't score again}                                     \\ \midrule
+% 		\multirow{2}{*}{GT}     & BEFORE                  & \multicolumn{5}{l}{Footballers Budejovice again not given goal}                                           \\ \cmidrule{2-7} 
+% 		& AFTER                   & \multicolumn{5}{l}{Footballers did not score again Budejovice}                                            \\ \midrule
+% 		\multirow{2}{*}{Moses}  & BEFORE                  & \multicolumn{5}{l}{Footballers Budějovice again gave the gate}                                            \\ \cmidrule{2-7} 
+% 		& AFTER                   & \multicolumn{5}{l}{Footballers Budějovice score again}                                                    \\ \lspbottomrule
+% 	\end{tabularx} 
+  \caption{An example of translated sentences.}%\footnotemark }
+  \label{example}
+\end{table}
+
+%\footnotetext{The judges unanimously agreed that the translations of the AFTER source sentence are better than the translations of the BEFORE source sentence. Both systems exhibited a tendency to translate the LVC \textit{dát branku} literally word by word, resulting in incorrect translations of the BEFORE source sentence.}
+
+
 The results of our experiment form the lexical stock of a new version of the 
 freely available \textit{ParaDi} dictionary. We have demonstrated one of its 
 possible applications, namely an experiment with improving \isi{machine translation} 
@@ -909,18 +936,18 @@ independent methods, a similar dictionary can be thus created for other
 languages as well.
 
 \section*{Acknowledgments}
-The research reported in this chapter has been supported by the \ili{Czech} Science 
-Foundation GA ČR, grant No. GA15-09979S. This work has been using language 
+The research reported in this chapter was supported by the \ili{Czech} Science 
+Foundation GA ČR, grant No. GA15-09979S. This work used language 
 resources developed and/or stored and/or distributed by the LINDAT-Clarin 
 project of the Ministry of Education, Youth and Sports of the \ili{Czech} Republic, 
 project No. LM2015071.
 
 \section*{Abbreviations}
-\begin{tabularx}{.49\textwidth}{ll}
+\begin{tabularx}{.5\textwidth}{ll}
 \textsc{gt} & Google Translate \\
 \textsc{ivc}s & idiomatic verbal constructions \\
 \end{tabularx}
-\begin{tabularx}{.49\textwidth}{ll}
+\begin{tabularx}{.45\textwidth}{ll}
 \textsc{lvc}s & light-verb constructions \\
 \textsc{mt} & Machine Translation \\
 \end{tabularx}
