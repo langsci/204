@@ -2,7 +2,7 @@
 \sidecaptionvpos{figure}{c}
 \sidecaptionvpos{table}{c}
 \title{Semantic reranking of CRF label sequences for verbal multiword expression identification} 
-\author{ Erwan Moreau\affiliation{ADAPT Centre, Trinity College Dublin}\and Ashjan Alsulaimani\affiliation{Trinity College Dublin}\and Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\and 
+\author{Erwan Moreau\affiliation{ADAPT Centre, Trinity College Dublin}\and Ashjan Alsulaimani\affiliation{Trinity College Dublin}\and Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\and 
  Lifeng Han\affiliation{ADAPT Centre, Dublin City University}\and  Carl Vogel\affiliation{Trinity Centre for Computing and Language Studies, Trinity College Dublin}\lastand Koel Dutta Chowdhury\affiliation{ADAPT Centre, Dublin City University}}
 
 \abstract{ Verbal multiword Expressions (VMWE) identification can be  addressed successfully as a sequence labelling problem via  conditional random fields (CRFs) by returning the one label sequence  with maximal probability. This work describes a system that reranks  the top 10 most likely CRF candidate VMWE sequences using a decision  tree regression model.  The reranker aims to operationalise the intuition that a  non-compositional MWE can have a different distributional behaviour  than that of its constituent words. This is why it uses semantic  features based on comparing the context vector of a candidate
@@ -11,9 +11,10 @@
 
 
 \begin{document}
-\rohead{Semantic reranking of CRF label sequences for VMWE identification}%Needed to make the authors' headline shorter. Always place just after \begin{document}
 
 \maketitle
+\shorttitlerunninghead{Semantic reranking of CRF label sequences for VMWE identification}
+\lehead{Moreau, Alsulaimani, Maldonado, Han, Vogel \& Dutta Chowdhury}
 \label{MOREAU-CHAPTER}
 
 
@@ -21,7 +22,7 @@
 
 
 \section{Introduction} 
-
+\largerpage
 The automatic identification of multiword expressions\is{multiword expression!identification} (MWEs) is an important but challenging task in natural language processing (NLP) \citep{Sinclair1991,Sag2002a}. An effort in response to this challenge is the shared task\is{PARSEME!shared task} on detecting multiword verbal constructions \citep{MWEWorkshop} organised by the PARSing and Multiword Expressions (\isi{PARSEME}) European COST Action.\footnote{\url{http://www.parseme.eu}.} The shared task consisted of two tracks: a closed one, restricted to the data provided by the organisers, and an open track that permitted participants to employ additional external data.
 
 The ADAPT team participated in the closed track with a system that exploited syntactic dependency features in a Conditional Random Fields\is{conditional random fields} (CRF) \isi{sequence model} \citep{Lafferty2001} and ranked 2nd in the detection of full MWEs in most languages \citep{maldonado2017}.\footnote{\label{fn:github}Official results: \url{http://multiword.sourceforge.net/sharedtask2017/}; system details, feature templates, code and experiment instructions: \url{https://github.com/alfredomg/ADAPT-MWE17}.} In addition to extending the description of our CRF-based solution in \sectref{subsec:CRF}, this chapter focuses on a second component aimed at \isi{reranking} the top 10 sequences predicted by the CRF decoder, using a regression model. This component, called a {\em semantic reranker}\is{reranking} and described in \sectref{subsec:Sem}, increases the performance of the system by an average 12\% in F1-score over the datasets at the MWE level. Because the reranker requires a third-party corpus, the system using both components (the CRF-based and the reranker) would compete in the open track task.
@@ -33,7 +34,7 @@ The design of the semantic reranker was originally oriented towards detecting no
 
 
 \section{Related work}
-
+\largerpage
 MWEs have long been discussed in NLP research and a myriad of processing techniques have been developed, such as combining statistical and symbolic methods \citep{Sag2002a}, single and multi-prototype \isi{word embeddings} \citep{conf/naacl/SalehiCB15}, and integrating MWE identification\is{multiword expression!identification} within larger NLP tasks, such as parsing \citep{green:emnlp:2011,Green:2013:PMI:2464100.2464109,Constant2012} and \isi{machine translation} \citep{Tsvetkov:2010:EME:1944566.1944710,DBLP:conf/emnlp/SalehiCB14,DBLP:conf/eacl/SalehiCB14}. 
 
 %% NLP tasks e.g. word alignment: 
@@ -49,7 +50,7 @@ In relation to our open-track approach, \cite{attia2010automatic} demonstrated t
 We decided to model the problem of VMWE identification\is{multiword expression!identification} as a sequence
 labelling and \isi{classification} problem. We operationalise our solution
 through CRFs \citep{Lafferty2001}, implemented using the
-CRF++ system.\footnote{\url{https://taku910.github.io/crfpp/}. Release 0.58, Last verified 19th December 2017.} CRFs have
+CRF++ system.\footnote{\url{https://taku910.github.io/crfpp/}. Release 0.58, Last verified 2017-12-29.} CRFs have
 been successfully applied to such sequence-sensitive NLP tasks such as
 segmentation, named-entity
 recognition \citep{han2013chinese,han2015chinese} and part-of-speech (POS)
@@ -86,11 +87,8 @@ head (DR). It is possible to create CRF++ feature templates\is{feature!template}
 combine these features. In addition, it is also possible to use the
 predicted output label of the previous token (B). 
 
-The three final feature templates\is{feature!template}, which we call FT3, FT4 and FT5,\footnote{The feature template numbering starts at 3 for consistency with their original description in \cite{maldonado2017}.} are shown in \tabref{tbl:crf-templates}. Whilst the feature templates in this table are expressed in the CRF++ format, a comment (starting with \texttt{\#}) at each feature (line) expresses the type of feature and its relative position to the current token. For instance, \texttt{L-2} refers to the lemma of the token at position $i-2$ relative to the current token at position~$i$, \texttt{P+1} refers to the part of speech of the token at position $i+1$, and \texttt{HL/DR} refers to the combination of head's lemma of the current token and the dependency relation\is{dependency!relation} between the current token and its head.\footnote{CRF++ feature template format described in \url{https://taku910.github.io/crfpp/\#templ} Last verified 19th December 2017.}
 
-FT5 is based on FT4, which in turn, is based on FT3. FT3 is itself based on the CRF++ example feature template, commonly used in NER experiments. The difference between FT3 and this example feature template is that FT3 exploits syntactic dependency information. 
-
-\begin{table}
+\begin{table}[p]
 
 %{\bf[TODO: detail columns nos?]}
 
@@ -250,6 +248,12 @@ U52:%x[0,3]/%x[0,5]
 } 
 \end{table}
 
+The three final feature templates\is{feature!template}, which we call FT3, FT4 and FT5,\footnote{The feature template numbering starts at 3 for consistency with their original description in \cite{maldonado2017}.} are shown in \tabref{tbl:crf-templates}. Whilst the feature templates in this table are expressed in the CRF++ format, a comment (starting with \texttt{\#}) at each feature (line) expresses the type of feature and its relative position to the current token. For instance, \texttt{L-2} refers to the lemma of the token at position $i-2$ relative to the current token at position~$i$, \texttt{P+1} refers to the part of speech of the token at position $i+1$, and \texttt{HL/DR} refers to the combination of head's lemma of the current token and the dependency relation\is{dependency!relation} between the current token and its head.\footnote{CRF++ feature template format described in \url{https://taku910.github.io/crfpp/#templ} Last verified 2017-12-19.}
+ 
+
+FT5 is based on FT4, which in turn, is based on FT3. FT3 is itself based on the CRF++ example feature template, commonly used in NER experiments. The difference between FT3 and this example feature template is that FT3 exploits syntactic dependency information. 
+
+
 We conducted preliminary 5-fold cross validation experiments on \ili{German}, \ili{French} and
 \ili{Polish} training data using the FT3 template. We then started tweaking the template independently for each of these three languages based on successive 5-fold cross validation results. This exercise resulted in the three final templates: FT3 for \ili{French} and FT5 for \ili{German} and \ili{Polish}. Given that FT4's performance was very similar to that of FT5, we decided not to discard it. 
 
@@ -259,60 +263,60 @@ based on token lemmas (L) and POS (P). Templates using head features
 (HL, HP, DR) in addition to token features (L, P) fared better than
 those relying on token features only. 
 
+ 
 We also attempted to test the assumption that these feature templates\is{feature!template} would perform similarly in other languages of the same language family. That is, that FT3 would also perform better than FT4 and FT5 in other Romance languages and that FT5 would score higher than FT3 and FT4 in the rest of the languages. So we conducted a final set of 5-fold cross validation experiments on all 15 languages, this time trying each feature template\is{feature!template} (FT3, FT4 and FT5) independently on each language. The results are shown in \tabref{tbl:crf-cv}. The F1 scores in bold italic are the maximum scores per language. For each given language, the results of the three templates are very similar. Therefore we are not able to comfortably confirm or refute our language family assumption. Nonetheless, we decided to choose for the final challenge the template that maximised the MWE-based F1 score for each language.
+ 
 
 \begin{table}
 \caption{\label{tbl:crf-cv}F1 scores from cross validation experiments on
 15 languages using feature templates FT3, FT4 and FT5.}
-
-\scalebox{1.5}{
+{
 \setlength{\tabcolsep}{0.5pt} % col separation
-\global\long\def\arraystretch{0.6}
- % row separation
-\begin{tabular}{ccccccccccc}
- 
+\small
+\begin{tabular}{lrrrrrrrrrr}
 \lsptoprule
-{\tiny{}Lang } & \multicolumn{2}{c}{{\tiny{}CS}} & \multicolumn{2}{c}{{\tiny{}DE}} & \multicolumn{2}{c}{{\tiny{}EL}} & \multicolumn{2}{c}{{\tiny{}ES}} & \multicolumn{2}{c}{{\tiny{}FA}}\tabularnewline
+{Lang} & \multicolumn{2}{c}{{CS}} & \multicolumn{2}{c}{{DE}} & \multicolumn{2}{c}{{EL}} & \multicolumn{2}{c}{{ES}} & \multicolumn{2}{c}{{FA}}\tabularnewline
  
  
-{\tiny{}Eval. Type } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token }\tabularnewline
+{Eval. Type} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token }\tabularnewline
 \midrule
  
-{\tiny{}FT3 } & {\tiny{}54.23 } & {\tiny{}70.79 } & {\tiny{}23.84 } & {\tiny{}39.02 } & \textbf{\emph{\tiny{}50.41 }} & \textbf{\emph{\tiny{}62.03}}\emph{\tiny{} } & \textbf{\emph{\tiny{}56.04}}\emph{\tiny{} } & {\tiny{}60.74 } & {\tiny{}76.09 } & {\tiny{}83.52 }\tabularnewline
+{FT3} & {54.23} & {70.79} & {23.84} & {39.02} & \textbf{\emph{50.41}} & \textbf{\emph{62.03}}  & \textbf{\emph{56.04}}  & {60.74} & {76.09} & {83.52 }\tabularnewline
  
-{\tiny{}FT4 } & {\tiny{}55.91 } & {\tiny{}71.81 } & {\tiny{}24.41 } & {\tiny{}39.62 } & {\tiny{}50.16 } & {\tiny{}61.76 } & {\tiny{}55.72 } & {\tiny{}60.77 } & {\tiny{}77.88 } & {\tiny{}84.75 }\tabularnewline
+{FT4} & {55.91} & {71.81} & {24.41} & {39.62} & {50.16} & {61.76} & {55.72} & {60.77} & {77.88} & {84.75 }\tabularnewline
  
-{\tiny{}FT5 } & \textbf{\emph{\tiny{}57.12}}\emph{\tiny{} } & \textbf{\emph{\tiny{}72.57}}\emph{\tiny{} } & \textbf{\emph{\tiny{}25.23}}\emph{\tiny{} } & \textbf{\emph{\tiny{}40.53}}\emph{\tiny{} } & {\tiny{}49.72 } & {\tiny{}62.02 } & {\tiny{}55.70 } & \textbf{\emph{\tiny{}61.00}}\emph{\tiny{} } & \textbf{\emph{\tiny{}78.61 }} & \textbf{\emph{\tiny{}85.24}}\emph{\tiny{} }\tabularnewline
+{FT5} & \textbf{\emph{57.12}}  & \textbf{\emph{72.57}}  & \textbf{\emph{25.23}}  & \textbf{\emph{40.53}}  & {49.72} & {62.02} & {55.70} & \textbf{\emph{61.00}}  & \textbf{\emph{78.61}} & \textbf{\emph{85.24}} \tabularnewline
 \lspbottomrule
 & &&&&&&&&&  \tabularnewline
  
 \lsptoprule
-{\tiny{}Lang } &  \multicolumn{2}{c}{{\tiny{}FR}} & \multicolumn{2}{c}{{\tiny{}HU}} & \multicolumn{2}{c}{{\tiny{}IT}} & \multicolumn{2}{c}{{\tiny{}MT}} & \multicolumn{2}{c}{{\tiny{}PL}} \tabularnewline
+{Lang} &  \multicolumn{2}{c}{{FR}} & \multicolumn{2}{c}{{HU}} & \multicolumn{2}{c}{{IT}} & \multicolumn{2}{c}{{MT}} & \multicolumn{2}{c}{{PL}} \tabularnewline
  
  
-{\tiny{}Eval. Type } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token }\tabularnewline
+{Eval. Type} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token }\tabularnewline
 \midrule
  
-{\tiny{}FT3 } & {\tiny{}3.99 } & {\tiny{}6.71 } & {\tiny{}66.03 } & {\tiny{}70.24 } & \textbf{\emph{\tiny{}65.85 }} & {\tiny{}75.81 } & {\tiny{}81.44 } & {\tiny{}80.96 } & \multicolumn{1}{c}{{\tiny{}28.31}} & \multicolumn{1}{c}{{\tiny{}31.12}}\tabularnewline
+{FT3} & {3.99} & {6.71} & {66.03} & {70.24} & \textbf{\emph{65.85}} & {75.81} & {81.44} & {80.96} & \multicolumn{1}{c}{{28.31}} & \multicolumn{1}{c}{{31.12}}\tabularnewline
  
-{\tiny{}FT4 } & {\tiny{}4.20 } & {\tiny{}6.92 } & {\tiny{}65.70 } & {\tiny{}70.56 }& {\tiny{}65.62 } & {\tiny{}76.07 } & {\tiny{}81.30 } & {\tiny{}81.00 } & \multicolumn{1}{c}{{\tiny{}28.19}} & \multicolumn{1}{c}{{\tiny{}30.80}}\tabularnewline
+{FT4} & {4.20} & {6.92} & {65.70} & {70.56 }& {65.62} & {76.07} & {81.30} & {81.00} & \multicolumn{1}{c}{{28.19}} & \multicolumn{1}{c}{{30.80}}\tabularnewline
  
-{\tiny{}FT5 } & \textbf{\emph{\tiny{}5.35}}\emph{\tiny{} } & \textbf{\emph{\tiny{}7.96}}\emph{\tiny{} } & \textbf{\emph{\tiny{}66.28}}\emph{\tiny{} } & \textbf{\emph{\tiny{}71.21}}\emph{\tiny{} }& {\tiny{}65.6 } & \textbf{\emph{\tiny{}76.08 }} & \textbf{\emph{\tiny{}81.86}}\emph{\tiny{} } & \textbf{\emph{\tiny{}81.76}}\emph{\tiny{} } & \multicolumn{1}{c}{\textbf{\emph{\tiny{}28.68}}} & \multicolumn{1}{c}{\textbf{\emph{\tiny{}31.51}}}\tabularnewline
+{FT5} & \textbf{\emph{5.35}}  & \textbf{\emph{7.96}}  & \textbf{\emph{66.28}}  & \textbf{\emph{71.21}} & {65.6} & \textbf{\emph{76.08}} & \textbf{\emph{81.86}}  & \textbf{\emph{81.76}}  & \multicolumn{1}{c}{\textbf{\emph{28.68}}} & \multicolumn{1}{c}{\textbf{\emph{31.51}}}\tabularnewline
  
 \lspbottomrule
  & &&&&&&&&&  \tabularnewline
 \lsptoprule
-{\tiny{}Lang }& \multicolumn{2}{c}{{\tiny{}PT}} & \multicolumn{2}{c}{{\tiny{}RO}} & \multicolumn{2}{c}{{\tiny{}SL}} & \multicolumn{2}{c}{{\tiny{}SV}} & \multicolumn{2}{c}{{\tiny{}TR}}  \tabularnewline
-{\tiny{}Eval. Type } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token } & {\tiny{}MWE } & {\tiny{}Token }   \tabularnewline
+{Lang }& \multicolumn{2}{c}{{PT}} & \multicolumn{2}{c}{{RO}} & \multicolumn{2}{c}{{SL}} & \multicolumn{2}{c}{{SV}} & \multicolumn{2}{c}{{TR}}  \tabularnewline
+{Eval. Type} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token} & {MWE} & {Token}   \tabularnewline
 \midrule
-{\tiny{}FT3 } & {\tiny{}56.56 } & {\tiny{}64.81 } & {\tiny{}75.87 } & \textbf{\emph{\tiny{}83.76}}\emph{\tiny{} } & \textbf{\emph{\tiny{}37.06}}\emph{\tiny{} } & \textbf{\emph{\tiny{}48.90}}\emph{\tiny{} } & {\tiny{}19.68 } & {\tiny{}20.09 } & \textbf{\emph{\tiny{}49.71}}\emph{\tiny{} } & {\tiny{}59.42 }    \tabularnewline
-{\tiny{}FT4 }  & \textbf{\emph{\tiny{}56.73}}\emph{\tiny{} } & {\tiny{}65.32 } & {\tiny{}75.91 } & {\tiny{}83.47 } & {\tiny{}34.04 } & {\tiny{}46.70 } & \textbf{\emph{\tiny{}24.47}}\emph{\tiny{} } & \textbf{\emph{\tiny{}24.56}}\emph{\tiny{} } & {\tiny{}49.49 } & \textbf{\emph{\tiny{}59.43}}{\tiny{} }   \tabularnewline
-{\tiny{}FT5 }  & {\tiny{}56.64 } & \textbf{\emph{\tiny{}65.52}}{\tiny{} } & \textbf{\emph{\tiny{}76.00}}\emph{\tiny{} } & {\tiny{}83.69 } & {\tiny{}34.65 } & {\tiny{}47.57 } & {\tiny{}22.09 } & {\tiny{}22.33 } & {\tiny{}49.46 } & {\tiny{}59.38 }    \tabularnewline
+{FT3} & {56.56} & {64.81} & {75.87} & \textbf{\emph{83.76}}  & \textbf{\emph{37.06}}  & \textbf{\emph{48.90}}  & {19.68} & {20.09} & \textbf{\emph{49.71}}  & {59.42}    \tabularnewline
+{FT4}  & \textbf{\emph{56.73}}  & {65.32} & {75.91} & {83.47} & {34.04} & {46.70} & \textbf{\emph{24.47}}  & \textbf{\emph{24.56}}  & {49.49} & \textbf{\emph{59.43}}{}   \tabularnewline
+{FT5}  & {56.64} & \textbf{\emph{65.52}}{} & \textbf{\emph{76.00}}  & {83.69} & {34.65} & {47.57} & {22.09} & {22.33} & {49.46} & {59.38}    \tabularnewline
 \lspbottomrule
 \end{tabular}
 }
 \end{table}
 
+  
 In order to use these templates with the provided data, we combined
 the supplied PARSEMETSV (VMWE annotations) and CONLLU files
 (linguistic features) into a single file. The training and blind test
@@ -342,8 +346,7 @@ Our system does not distinguish among the different categories of VMWEs, treatin
 the position of the current token and the column in which they appear
 in the input file.
 
-\subsection{CRF results}
-
+\subsection{CRF results} 
 %% [ALFREDO] COMMENTING OUT THIS PARAGRAPH AS IT IS NOW REDUNDANT. INFO SUBSUMED IN PREVIOUS SECTION.
 % After developing these \isi{feature templates} through preliminary
 % experimentation, a further 5-fold cross validation experiment on
@@ -360,6 +363,13 @@ in the input file.
 % scores resulting from the cross validation experiment that led to
 % choosing these templates.
 
+
+
+
+%\begin{SCtable}
+
+
+
 \tabref{tab:perfByLang} shows, under the ``CRF only'' category, the Precision (P), Recall (R) and F1 (F) scores on the test set based on the shared task two evaluation modalities, MWE-based and token-based.\footnote{We did not include the languages for which there is no
   Europarl data in this table.} On token-based evaluation, our system was ranked in first place in \ili{French}, \ili{Polish} and \ili{Swedish}, second place in eight languages (\ili{Czech}, \ili{Greek}, \ili{Farsi}, \ili{Maltese}, Portuguese\il{Portuguese!Brazilian}, \ili{Romanian}, \ili{Spanish} and \ili{Turkish}) and third in three (\ili{German}, \ili{Italian} and Slovenian). For MWE-based scores, our system ranked second place in nine languages (\ili{Farsi}, \ili{French}, \ili{Italian}, \ili{Maltese}, \ili{Polish}, Portuguese\il{Portuguese!Brazilian}, Slovenian, \ili{Spanish} and \ili{Swedish}) and third in four languages (\ili{Czech}, \ili{German}, \ili{Hungarian} and \ili{Turkish}). If all languages' scores are averaged per system, our system ranks in third place on both token-based and MWE-based evaluation (see \citealtv{Maldonadotv} for average scores per system).
 
@@ -367,10 +377,34 @@ in the input file.
 
 
 
-%\begin{SCtable}
-\begin{table}
-\scalebox{.9}{
+
+
+%%%%
+% Token-based: 3_rank1; 10_rank2; 2_rank3
+% MWE-based: 11_rank2; 3_rank3; 1_rank4th.
+
+%for PT, the token-based score of us (0.7018 second) is almost no difference with TRANSITION (0.7094 first)
+% the difference is (0.7094-0.7018)/0.7018 = 0.0108, so 1.08% margin only.
+% We can also mention this PT performance in token-based, so almost 4 languages rank1.
+
+% for SV, our MWE-based score is even no difference with the TRANSITION (0.3032 vs 0.3036), and we rank 1st on token-based on SV:
+%  so, actually, we win SV language.  :D
+%%%%
+
+%\begin{table*}
+%\caption{\label{tab:Results}F1 scores (per category and overall) on the test set for our official CRF-based (``crf") and our unofficial Semantic Re-Ranking (``sem") systems, with per category and overall MWE counts (``n") in the test set. PS refers to the MWEs in the test set that were \emph{Previously Seen} in the training set: the \% of Previously Seen MWEs and the F1 Score obtained by interpreting \% as a Recall score and assuming a 100\% Precision score.}
+
+%\centering{}\includegraphics[scale=0.645]{all-scores-mega-table.pdf}
+%\end{table*}
+
+
+% space saving
+%\subsection{Semantic Reranking using a Third-Party Corpus}
+\section{\label{subsec:Sem}Semantic reranker}
+
+\begin{table}[p] 
 %  \begin{tabular}{|c|c|rrr|rrr||rrr|}
+\fittable{
   \begin{tabular}{ccrrrrrrrrr}
 %    \hrule
 \lsptoprule
@@ -422,47 +456,18 @@ in the input file.
 {\scriptsize average} & Token&  74.5 & 45.3 & 56.3 &      76.0  &     45.5  &     56.9 &     +2.0 &     +0.6 &     +1.1\\
 %    \midrule
 \lspbottomrule
-  \end{tabular}
-}
-\caption{{ Performance by language according to official evaluation
+  \end{tabular} 
+  }
+\caption{Performance by language according to official evaluation
     measures for the CRF component alone and the two components
-    together (CRF and semantic reranker).} P/R/F stands for precision/recall/f-score. All the
+    together (CRF and semantic reranker) P/R/F stands for precision/recall/f-score. All the
   values are expressed as percentages. The last two rows show the
   macro-average performance over the 12
   languages.\label{tab:perfByLang}}
 %\end{SCtable}
-\end{table}
+\end{table} 
 
-
-
-
-
-
-
-%%%%
-% Token-based: 3_rank1; 10_rank2; 2_rank3
-% MWE-based: 11_rank2; 3_rank3; 1_rank4th.
-
-%for PT, the token-based score of us (0.7018 second) is almost no difference with TRANSITION (0.7094 first)
-% the difference is (0.7094-0.7018)/0.7018 = 0.0108, so 1.08% margin only.
-% We can also mention this PT performance in token-based, so almost 4 languages rank1.
-
-% for SV, our MWE-based score is even no difference with the TRANSITION (0.3032 vs 0.3036), and we rank 1st on token-based on SV:
-%  so, actually, we win SV language.  :D
-%%%%
-
-%\begin{table*}
-%\caption{\label{tab:Results}F1 scores (per category and overall) on the test set for our official CRF-based (``crf") and our unofficial Semantic Re-Ranking (``sem") systems, with per category and overall MWE counts (``n") in the test set. PS refers to the MWEs in the test set that were \emph{Previously Seen} in the training set: the \% of Previously Seen MWEs and the F1 Score obtained by interpreting \% as a Recall score and assuming a 100\% Precision score.}
-
-%\centering{}\includegraphics[scale=0.645]{all-scores-mega-table.pdf}
-%\end{table*}
-
-
-% space saving
-%\subsection{Semantic Reranking using a Third-Party Corpus}
-\section{\label{subsec:Sem}Semantic reranker}
-\subsection{Motivations}
-
+\subsection{Motivations} 
 The semantic reranker\is{reranking}
  is the second component of the VMWE detection
 system. While the first component (CRF) offers a decent level of
@@ -477,6 +482,7 @@ orthogonality of the information, obtained on the one hand from the
 sequential CRF model and computed on the other hand from an independent
 semantic vector space, proves fruitful; this will be demonstrated in
 \sectref{moreau:sec:analysis}.
+
 
 \subsection{Design}
 
@@ -636,7 +642,7 @@ cannot use the morpho-syntactic information (POS tags and lemmas)
 provided with the input data.
 
 \subsection{Features}
-
+\largerpage
 The core component of the reranker\is{reranking} computes a set of feature values
 for every sequence proposed by the CRF; these features are later used
 for training or applying the decision tree model. First, these
@@ -697,7 +703,7 @@ frequency ratio and the similarity score obtained between the context
 vectors of the pseudo-MWEs and the full MWE are added as features.
 
 
-
+\largerpage
 \begin{itemize}
 \item Features comparing each pseudo-MWE consisting of a single word
   of the MWE against the full MWE. Example: for the candidate
@@ -887,10 +893,8 @@ considered as important as sentences which contain one or multiple
 expressions.
 
 
-\begin{figure}
-%\begin{SCfigure}
-  \centering
-      {\includegraphics[scale=0.47]{figures/graph-points-gold-confidence-vs-score-by-error-type.pdf}}
+\begin{figure} 
+      {\includegraphics[width=\textwidth]{figures/graph-points-gold-confidence-vs-score-by-error-type.pdf}}
       {\caption{{ Reranker score w.r.t CRF confidence for the gold
             sequence in every sentence, by error type (all languages
             together).} A sentence is represented in the right half
@@ -901,8 +905,7 @@ expressions.
           high score (resp. low) to its gold sequence, i.e. the
           reranker answer is correct
           (resp. incorrect).\protect\footnotemark
-        }\label{fig:goldConfidenceVsScoreByError}}
-%\end{SCfigure}
+        }\label{fig:goldConfidenceVsScoreByError}} 
 \end{figure}
 
 
@@ -986,7 +989,7 @@ every position.
   \centering
       {\includegraphics[scale=0.4]{figures/graph-selected-seq-log-by-error-type.pdf}}
       {\caption{{Distribution of the position selected by the reranker
-            (logarithmic scale, all languages together). } For every position, the large dark
+            (logarithmic scale, all languages together).} For every position, the large dark
           grey bar shows the total number of sentences, while the
           coloured bars show the number of sentences for every possible
           error type.\protect\footnotemark
@@ -1003,6 +1006,7 @@ every position.
   by definition.}
 
 
+  \largerpage
 The distribution of errors is not uniform over the data, and the
 number of expressions in a sentence is one of the most obvious
 factors: For example, \figref{fig:nbExprsByErrorType} shows that
@@ -1020,6 +1024,7 @@ mistakes to correct compared to sentences with no expressions, and
 contain more possibilities to correct the mistakes compared to
 sentences with three (or more) expressions (since the reranker\is{reranking} cannot
 correct anything in the {\em GoldNotIn10} cases).
+\clearpage 
 
 % ddply(allfeats,'errorType', function(df0) { data.frame(nb=nrow(df0),prop=nrow(df0)/nrow(allfeats))})
 
@@ -1059,15 +1064,14 @@ component.\footnote{The {\it GoldNotIn10} category is ignored when
   into account.} An example of using such performance scores is given
 in \tabref{tab:perfNbExprs}.
 
-\begin{table}
-  \scalebox{.8}{
+\begin{table} 
  %   \begin{tabular}{|r|ccc|ccc|}
-    \begin{tabular}{rcccccc}
+    \begin{tabularx}{\textwidth}{r@{~~~~}C@{}C@{}C@{~~~~}C@{}C@{}C}
       \lsptoprule
 
  %   \midrule
 %    \multirow{2}{*}{{\scriptsize Nb exprs}} & \multicolumn{3}{c|}{Macro-average} & \multicolumn{3}{c|}{Micro-average} \\
-    \multirow{2}{*}{{\scriptsize Nb exprs}} & \multicolumn{3}{c}{Macro-average} & \multicolumn{3}{c}{Micro-average} \\
+    \multirow{2}{*}{{  Nb exprs}} & \multicolumn{3}{c}{Macro-average} & \multicolumn{3}{c}{Micro-average} \\
                                  & P & R & F & P & R & F \\
  %   \midrule
     \midrule
@@ -1075,11 +1079,11 @@ in \tabref{tab:perfNbExprs}.
            1&    79.5&    14.5&    23.5&    81.1&    16.1&    26.8\\
            2&    64.3&    20.7&    30.4&    66.0&    15.9&    25.6\\
            3&    75.0&    20.8&    31.0&    50.0&    10.0&    16.7\\
+	  \midrule 
          all&    74.9&    18.9&    29.1&    81.4&    22.4&    35.2\\
          %    \midrule
          \lspbottomrule
-  \end{tabular}
-  }
+  \end{tabularx} 
   \caption{{Reranker-specific performance by number of expressions
       in the gold sequence (all languages).} P/R/F stands for
     precision/recall/f-score; the macro-average performance is the
@@ -1139,19 +1143,18 @@ other candidates in the sentence (group III in
 
 
 \begin{table}
-%\begin{SCtable}
-\scalebox{0.85}{
+%\begin{SCtable} 
 %  \begin{tabular}{|c|c|c|c|}
-  \begin{tabular}{cccc}
+\fittable{
+  \begin{tabular}{l@{}rrr}
           \lsptoprule
 
 %    \midrule
-                                              & {\footnotesize micro}    & {\footnotesize macro}    & {\footnotesize macro    } \\
-    Features                                  & {\footnotesize F-score}  & {\footnotesize F-score}  & {\footnotesize F-score   }\\
-                                              & {\footnotesize reranker} & {\footnotesize reranker} & {\footnotesize MWE-level} \\
-    %\midrule
-    \midrule
-{\em baseline: CRF answer}                    &    NaN   &   NaN    &   48.2    \\
+Features       & \parbox{22mm}{\raggedleft micro F-score  reranker}    & 
+			\parbox{22mm}{\raggedleft macro F-score reranker}    &
+				\parbox{22mm}{\raggedleft macro F-score MWE-level} \\ 
+\midrule
+\textit{baseline: CRF answer}                    &    NaN   &   NaN    &   48.2    \\
 all but confidence                            &   00.6   &   NaN    &   09.6    \\
 confidence + SF (*)                           &   32.0   &   NaN    &   53.1    \\
 (*) + Ia, Ib                                  &   34.9   &  29.7    &   53.4    \\
@@ -1166,8 +1169,8 @@ all features, with mean only                  &   34.8   &  29.3    &   53.6    
 all features, with min/mean/max               &   35.2   &  30.1    &{\bf 53.9} \\
 %\midrule
 \lspbottomrule
-  \end{tabular}
-}
+  \end{tabular} 
+  }
 \caption{{ Performance of the reranker using various subsets of
     features (percentages).} Simple features {\em (SF)} represents
   the number of expressions and words as well as the frequency in the
@@ -1271,7 +1274,7 @@ a continuous expression and other times as a discontinuous expression.
 
 
 \begin{figure}
-  \scalebox{0.36}{\includegraphics{figures/graph-continuous-nb-exprs.pdf}}
+  \scalebox{0.4}{\includegraphics{figures/graph-continuous-nb-exprs.pdf}}
   \caption{{ Proportion of error type by number of continuous
       expressions in the sentence,} for sentences containing 1, 2 or 3
     expressions (all languages). Example: among sentences which contain two
@@ -1279,6 +1282,8 @@ a continuous expression and other times as a discontinuous expression.
     12\%, 30\%), when there are no (resp. 1, 2) continuous expressions
     among the two. \label{fig:continuousAnalysis}}
 \end{figure}
+
+\clearpage
 
 \figref{fig:continuousAnalysis} shows the impact of continuity\is{multiword expression!continuity} in
 expressions: {\em RR+RW} cases increase with the number of continuous
@@ -1304,7 +1309,7 @@ the complementarity of the two components.
 \label{analysisContextOptions}
 
 
-\begin{table}
+\begin{table}[b]
   \begin{minipage}{.45\linewidth}
     {\centering
     \scalebox{.8}{
@@ -1504,6 +1509,7 @@ The graphics in this chapter were created with \texttt{R} \citep{R}, using the \
  \textsc{rw}  & right-wrong\\
    \textsc{vmwe}  & verbal mutiword expression\\  \textsc{wr}  & wrong-right\\
   \textsc{ww}  & wrong-wrong\\
+  \\
   \end{tabularx}
 
 
