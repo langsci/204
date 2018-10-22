@@ -1,76 +1,13 @@
-\documentclass[output=paper
-,modfonts
-,nonflat]{langsci/langscibook} 
-%\bibliography{localbibliography} 
-%\input{localpackages.tex}
-%\input{localhyphenation.tex}
-%\input{localcommands.tex} 
-
-
-% vertical alignment for side captions
+\documentclass[output=paper,modfonts,nonflat]{langsci/langscibook} 
 \sidecaptionvpos{figure}{c}
 \sidecaptionvpos{table}{c}
-
-%\usepackage{mwe} % new package from Martin scharrer
-%\usepackage{caption}
-%\usepackage[demo]{graphicx}
-
-
-%\usepackage{multicol}
-
-
-
-
-
 \title{Semantic reranking of CRF label sequences for verbal multiword expression identification} 
-\author{%
- Erwan Moreau\affiliation{ADAPT Centre, Trinity College Dublin}\and
- Ashjan Alsulaimani\affiliation{Trinity College Dublin}\and
- Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\and 
- Lifeng Han\affiliation{ADAPT Centre, Dublin City University}\and 
- Carl Vogel\affiliation{Trinity Centre for Computing and Language Studies, Trinity College Dublin}\lastand
- Koel Dutta Chowdhury\affiliation{ADAPT Centre, Dublin City University}
-}
-% \chapterDOI{} %will be filled in at production
+\author{ Erwan Moreau\affiliation{ADAPT Centre, Trinity College Dublin}\and Ashjan Alsulaimani\affiliation{Trinity College Dublin}\and Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\and 
+ Lifeng Han\affiliation{ADAPT Centre, Dublin City University}\and  Carl Vogel\affiliation{Trinity Centre for Computing and Language Studies, Trinity College Dublin}\lastand Koel Dutta Chowdhury\affiliation{ADAPT Centre, Dublin City University}}
 
-% \epigram{}
-
-\abstract{ Verbal multiword Expressions (VMWE) identification can be
-  addressed successfully as a sequence labelling problem via
-  conditional random fields (CRFs) by returning the one label sequence
-  with maximal probability. This work describes a system that reranks
-  the top 10 most likely CRF candidate VMWE sequences using a decision
-  tree regression model.
-  The reranker aims to operationalise the intuition that a
-  non-compositional MWE can have a different distributional behaviour
-  than that of its constituent words. This is why it uses semantic
-  features based on comparing the context vector of a candidate
-  expression against those of its constituent words. However, not all
-  VMWE are non-compostional, and analysis shows that non-semantic
-  features also play an important role in the behaviour of the
-  reranker. In fact, the analysis shows that the combination of the
-  sequential approach of the CRF component with the context-based
-  approach of the reranker is the main factor of improvement: our
-  reranker achieves a 12\% macro-average F1-score improvement on the basic CRF
-  method, as measured using data from PARSEME shared task on VMWE
-  identification.
-
-  %We experiment with word co-occurrence vectors as well
-  %as with word2vec vectors as semantic vectors, noticing comparable
-  %results.
-  
-%  done by computing pairwise similarity scores between semantic
-%  vectors of candidate VMWEs and each of their individual constituent
-%  words. These pairwise similarity scores form the feature vector
-%  representing every candidate sequence in the regression model.
-
-}
-
-
-%%%%%% CITATION COMMANDS:
-% \citep{Savary2017} outputs: (Savary et al. 2017)
-% \cite{Savary2017} outputs: Savary et al. (2017)
-
+\abstract{ Verbal multiword Expressions (VMWE) identification can be  addressed successfully as a sequence labelling problem via  conditional random fields (CRFs) by returning the one label sequence  with maximal probability. This work describes a system that reranks  the top 10 most likely CRF candidate VMWE sequences using a decision  tree regression model.  The reranker aims to operationalise the intuition that a  non-compositional MWE can have a different distributional behaviour  than that of its constituent words. This is why it uses semantic  features based on comparing the context vector of a candidate
+  expression against those of its constituent words. However, not all  VMWE are non-compostional, and analysis shows that non-semantic  features also play an important role in the behaviour of the  reranker. In fact, the analysis shows that the combination of the  sequential approach of the CRF component with the context-based  approach of the reranker is the main factor of improvement: our  reranker achieves a 12\% macro-average F1-score improvement on the basic CRF
+  method, as measured using data from PARSEME shared task on VMWE  identification.}
 
 
 \begin{document}

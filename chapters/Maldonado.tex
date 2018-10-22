@@ -1,34 +1,9 @@
-\documentclass[output=paper
-,modfonts
-,nonflat,draftmode]{langsci/langscibook} 
-%\bibliography{mwe2017bib3}
-%\input{localpackages.tex}
-%\input{localcommands.tex}
-%\input{localpackages.tex}
-%\input{localhyphenation.tex}
-%\input{localcommands.tex} 
-
-% Packages added by Alfredo:
-
-
-
+\documentclass[output=paper,modfonts,nonflat,draftmode]{langsci/langscibook} 
 
 \title{Analysis and Insights from the PARSEME Shared Task dataset} 
-\author{%
- Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\lastand 
- Behrang QasemiZadeh\affiliation{University of Düsseldorf}
-}
-% \chapterDOI{} %will be filled in at production
+\author{Alfredo Maldonado\affiliation{ADAPT Centre, Trinity College Dublin}\lastand  Behrang QasemiZadeh\affiliation{University of Düsseldorf}}
 
-% \epigram{}
-
-\abstract{
-The PARSEME Shared Task on the automatic identification of verbal multiword expressions (VMWEs) was the first collaborative study on the subject to cover a wide and diverse range of languages. One observation that emerged from the official results is that participating systems performed similarly on each language but differently across languages. That is, intra-language evaluation scores are relatively similar whereas inter-language scores are quite different.  We hypothesise that this pattern cannot be attributed solely to the intrinsic linguistic properties in each language corpus, but also to more practical aspects such as the evaluation framework, characteristics of the test and training sets as well as metrics used for measuring performance. This chapter takes a close look at the shared task dataset and the systems' output to explain this pattern. In this process, we produce evaluation results for the systems on VMWEs that only appear in the test set and contrast them with the official evaluation results, which include VMWEs that also occur in the training set. Additionally, we conduct an analysis aimed at estimating the relative difficulty of VMWE detection for each language. This analysis consists of a) assessing the impact on performance of the ability, or lack-thereof, of systems to handle discontinuous and overlapped VMWEs, b) measuring the relative sparsity of sentences with at least one VMWE, and c) interpreting the performance of each system with respect to two baseline systems: a system that simply tags every verb as a VMWE, and a dictionary lookup system. Based on our data analysis, we assess the suitability of the official evaluation methods, specifically the token-based method, and propose to use Cohen's kappa score as an additional evaluation method.
-}
-
-%%%%%% CITATION COMMANDS:
-% \citep{Savary2017} outputs: (Savary et al. 2017)
-% \citet{Savary2017} outputs: Savary et al. (2017)
+\abstract{The PARSEME Shared Task on the automatic identification of verbal multiword expressions (VMWEs) was the first collaborative study on the subject to cover a wide and diverse range of languages. One observation that emerged from the official results is that participating systems performed similarly on each language but differently across languages. That is, intra-language evaluation scores are relatively similar whereas inter-language scores are quite different.  We hypothesise that this pattern cannot be attributed solely to the intrinsic linguistic properties in each language corpus, but also to more practical aspects such as the evaluation framework, characteristics of the test and training sets as well as metrics used for measuring performance. This chapter takes a close look at the shared task dataset and the systems' output to explain this pattern. In this process, we produce evaluation results for the systems on VMWEs that only appear in the test set and contrast them with the official evaluation results, which include VMWEs that also occur in the training set. Additionally, we conduct an analysis aimed at estimating the relative difficulty of VMWE detection for each language. This analysis consists of a) assessing the impact on performance of the ability, or lack-thereof, of systems to handle discontinuous and overlapped VMWEs, b) measuring the relative sparsity of sentences with at least one VMWE, and c) interpreting the performance of each system with respect to two baseline systems: a system that simply tags every verb as a VMWE, and a dictionary lookup system. Based on our data analysis, we assess the suitability of the official evaluation methods, specifically the token-based method, and propose to use Cohen's kappa score as an additional evaluation method.}
 
 \begin{document}
 

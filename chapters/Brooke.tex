@@ -1,40 +1,8 @@
-%\documentclass[output=paper
-%,modfonts
-%,nonflat]{langsci/langscibook} 
-%\bibliography{localbibliography.bib} 
-%\input{localpackages.tex}
-%\input{localhyphenation.tex}
-%\input{localcommands.tex} 
-
-\documentclass[output=paper
-,modfonts
-,nonflat]{langsci/langscibook} 
-%\bibliography{localbibliography}
-%\input{localpackages.tex}
-%\input{localhyphenation.tex}
-%\input{localcommands.tex} 
-
-%\newcommand{\citep[1]}{\citepp{#1}}
-%\newcommand{\citet[1]}{\citepp{#1}}
-
-
-
-%\DeclareFloatingEnvironment[fileext=lod]{diagram}
+\documentclass[output=paper,modfonts,nonflat]{langsci/langscibook} 
 
 \title{Semi-automated resolution of inconsistency for a harmonized multiword-expression and dependency-parse annotation} 
-\author{%
- Julian Brooke\affiliation{The University of Melbourne}\and 
- King Chan\affiliation{The University of Melbourne}\lastand 
- Timothy Baldwin \affiliation{The University of Melbourne}
-}
-% \chapterDOI{} %will be filled in at production
-% \shorttitle{Semi-automated resolution of MWE and dependency parse annotation}
-
-% \epigram{}
-
-\abstract{
-This chapter presents a methodology for identifying and resolving various kinds of inconsistency in the context of merging dependency and multiword expression (MWE) annotations, to generate a dependency treebank with comprehensive MWE annotations. Candidates for correction are identified using a variety of heuristics, including an entirely novel one which identifies violations of MWE constituency in the dependency tree, and resolved by arbitration with minimal human intervention. Using this technique, we identified and corrected several hundred inconsistencies across both parse and MWE annotations, representing changes to a significant percentage (well over 10\%) of the MWE instances in the joint corpus and a large difference in MWE tagging performance relative to earlier versions.
-}
+\author{ Julian Brooke\affiliation{The University of Melbourne}\and  King Chan\affiliation{The University of Melbourne}\lastand  Timothy Baldwin \affiliation{The University of Melbourne}}
+\abstract{This chapter presents a methodology for identifying and resolving various kinds of inconsistency in the context of merging dependency and multiword expression (MWE) annotations, to generate a dependency treebank with comprehensive MWE annotations. Candidates for correction are identified using a variety of heuristics, including an entirely novel one which identifies violations of MWE constituency in the dependency tree, and resolved by arbitration with minimal human intervention. Using this technique, we identified and corrected several hundred inconsistencies across both parse and MWE annotations, representing changes to a significant percentage (well over 10\%) of the MWE instances in the joint corpus and a large difference in MWE tagging performance relative to earlier versions.}
 
 \begin{document}
 \rohead{Semi-automated resolution of annotation inconsistency}%Needed to make the authors' headline shorter. Always place just after \begin{document}

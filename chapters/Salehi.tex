@@ -1,48 +1,12 @@
-\documentclass[output=paper
-,modfonts
-,nonflat]{langsci/langscibook} 
-%\bibliography{localbibliography} 
-%\bibliography{mwe2017bib3.bib}
-%\input{localpackages.tex}
-%\input{localhyphenation.tex}
-%\input{localcommands.tex} 
+\documentclass[output=paper,modfonts,nonflat]{langsci/langscibook} 
 
 \title{Exploiting multilingual lexical resources to predict MWE compositionality} 
 
-\author{
-Bahar Salehi\affiliation{The University of Melbourne}\and 
-Paul Cook\affiliation{University of New Brunswick} \lastand
-Timothy Baldwin\affiliation{The University of Melbourne} }
-% \chapterDOI{} %will be filled in at production
-
-% \epigram{}
+\author{Bahar Salehi\affiliation{The University of Melbourne}\and Paul Cook\affiliation{University of New Brunswick} \lastand Timothy Baldwin\affiliation{The University of Melbourne} }
 
 \hyphenation{Swe-dish}
 
-\abstract{Semantic idiomaticity is the extent to which the meaning of
-  a multiword expression (MWE) cannot be predicted from the meanings
-  of its component words. Much work in natural language processing on
-  semantic idiomaticity has focused on compositionality prediction,
-  wherein a binary or continuous-valued compositionality score is
-  predicted for an MWE as a whole, or its individual component
-  words. One source of information for making compositionality
-  predictions is the translation of an MWE into other languages.  This
-  chapter extends two previously-presented studies --
-  \cite{salehi2013} and \cite{DBLP:conf/eacl/SalehiCB14} -- that
-  propose methods for predicting compositionality that exploit
-  translation information provided by multilingual lexical resources,
-  and that are applicable to many kinds of MWEs in a wide range of
-  languages. These methods make use of distributional similarity of an
-  MWE and its component words under translation into many languages,
-  as well as string similarity measures applied to definitions of
-  translations of an MWE and its component words.  We evaluate these
-  methods over English noun compounds, English verb-particle
-  constructions, and German noun compounds. We show that the
-  estimation of compositionality is improved when using translations
-  into multiple languages, as compared to simply using distributional
-  similarity in the source language. We further find that string
-  similarity complements distributional similarity.  }
-
+\abstract{Semantic idiomaticity is the extent to which the meaning of  a multiword expression (MWE) cannot be predicted from the meanings  of its component words. Much work in natural language processing on   semantic idiomaticity has focused on compositionality prediction,  wherein a binary or continuous-valued compositionality score is  predicted for an MWE as a whole, or its individual component   words. One source of information for making compositionality  predictions is the translation of an MWE into other languages.  This  chapter extends two previously-presented studies --   \cite{salehi2013} and \cite{DBLP:conf/eacl/SalehiCB14} -- that  propose methods for predicting compositionality that exploit  translation information provided by multilingual lexical resources,   and that are applicable to many kinds of MWEs in a wide range of  languages. These methods make use of distributional similarity of an  MWE and its component words under translation into many languages,   as well as string similarity measures applied to definitions of  translations of an MWE and its component words.  We evaluate these  methods over English noun compounds, English verb-particle   constructions, and German noun compounds. We show that the  estimation of compositionality is improved when using translations  into multiple languages, as compared to simply using distributional   similarity in the source language. We further find that string  similarity complements distributional similarity.  }
 \begin{document}
 
 \maketitle

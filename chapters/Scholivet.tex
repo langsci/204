@@ -1,24 +1,8 @@
-\documentclass[output=paper,
-modfonts
-]{langscibook}
-%\bibliography{mwe2017bib3,extrarefs}
-%\input{localpackages.tex}
-% \input{localhyphenation.tex}
-%\input{localcommands.tex} 
-
+\documentclass[output=paper,modfonts]{langscibook}
 \title{Sequence models and lexical resources for MWE identification in French}
-\author{%
- Manon Scholivet\affiliation{Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}\and 
- Carlos Ramisch\affiliation{Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}\lastand
- Silvio Cordeiro\affiliation{Institute of Informatics, Federal University of Rio Grande do Sul, Brazil \texorpdfstring{\\}{and} Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}
-}
+\author{Manon Scholivet\affiliation{Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}\and  Carlos Ramisch\affiliation{Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}\lastand  Silvio Cordeiro\affiliation{Institute of Informatics, Federal University of Rio Grande do Sul, Brazil \texorpdfstring{\\}{and} Aix Marseille Univ, Université de Toulon, CNRS, LIS, Marseille, France}}
 
-% \chapterDOI{} %will be filled in at production
-% \epigram{}
-
-\abstract{
-We present a simple and efficient sequence tagger capable of identifying continuous multiword expressions (MWEs) of several categories in French texts. It is based on conditional random fields (CRF), using as features local context information such as previous and next word lemmas and parts of speech. We show that this approach can obtain results that, in some cases, approach more sophisticated parser-based MWE identification methods without requiring syntactic trees from a treebank. Moreover, we study how well the CRF can take into account external information coming from both high-quality hand-crafted lexicons and MWE lists automatically obtained from large monolingual corpora. Results indicate that external information systematically helps improving the tagger's performance, compensating for the limited amount of training data.
-}
+\abstract{We present a simple and efficient sequence tagger capable of identifying continuous multiword expressions (MWEs) of several categories in French texts. It is based on conditional random fields (CRF), using as features local context information such as previous and next word lemmas and parts of speech. We show that this approach can obtain results that, in some cases, approach more sophisticated parser-based MWE identification methods without requiring syntactic trees from a treebank. Moreover, we study how well the CRF can take into account external information coming from both high-quality hand-crafted lexicons and MWE lists automatically obtained from large monolingual corpora. Results indicate that external information systematically helps improving the tagger's performance, compensating for the limited amount of training data.}
 
 \begin{document}
 
