@@ -37,7 +37,7 @@ The STREUSLE corpus \citep{schneider2014}\is{multiword expression!annotated corp
 
 \begin{figure*}[t]
 \begin{center}
-\resizebox{.8\textwidth}{!}{
+\resizebox{\textwidth}{!}{
 %\begin{adjustbox}{width=.8\textwidth}
     \begin{dependency}[edge style={black!60!black,thick},
         label style={thick}, scale=1.2]
@@ -103,7 +103,7 @@ In the MWE type consistency arbitration, for cases where majority rules did not 
 
 Relative to the changes to the MWE annotation, the changes to the parse annotation were more modest, but still not insignificant: for 161 MWE tokens across 72 types, we identified and corrected a dependency and/or POS annotation error. The majority of these (67\%) were identified using the arc count heuristic. Note we applied the parse relevant heuristics after we fixed the MWE type consistency errors, ensuring that MWE annotations that were added were duly considered for parse errors.
 
-\begin{table*}[t!]
+\begin{table*}
 \caption{Summary of changes to MWE annotation at the MWE type and token level.} % title of Table
 \begin{tabularx}{\textwidth}{c c c c c c c c} % centered columns
 \lsptoprule %inserts double horizontal lines
@@ -157,10 +157,10 @@ Relative to the changes to the MWE annotation, the changes to the parse annotati
 
 \section{Experiments}
 
-In this section we investigate the effect of the HAMSTER MWE inconsistency fixes on the task of MWE identification\is{multiword expression!identification}. For this we use the AMALGr MWE identification tool of \citet{Schneider14b}, which was developed on the initial release of the STRUESLE (called then the CMWE).\footnote{The key difference between the CMWE and STRUESLE is the inclusion of supersense tags. Though we hope to eventually include supersense information in the output of HAMSTER, supersenses are beyond the scope of the present work.} AMALGr is a supervised structured perceptron model which makes use of external resources including 10 MWE lexicons as well as Brown cluster information. For all our experiments we use the default settings from \citet{Schneider14b}, including the original train/test splits and automatic part-of-speech tagging provided by the ARK TweetNLP POS tagger \citep{Owoputi13} trained on the all non-review sections of the \ili{English} Web Treebank\is{English Web Treebank}. We note that in contrast to typical experiments in NLP, here we are holding \textit{the approach} constant while varying the quality of the dataset, which provides a quantification of the extent to which errors in the dataset interfered with our ability to build or accurately evaluate models. Following \citet{Schneider14b}, we report an F-score which is calculated based on links between words: a true positive occurs when two words which are supposed to appear together in an MWE do so as expected.
+In this section we investigate the effect of the HAMSTER MWE inconsistency fixes on the task of MWE identification\is{multiword expression!identification}. For this we use the AMALGr MWE identification tool of \citet{Schneider14b}, which was developed on the initial release of the STRUESLE \todo{STREUSLE? Check whole article} (called then the CMWE).\footnote{The key difference between the CMWE and STRUESLE is the inclusion of supersense tags. Though we hope to eventually include supersense information in the output of HAMSTER, supersenses are beyond the scope of the present work.} AMALGr is a supervised structured perceptron model which makes use of external resources including 10 MWE lexicons as well as Brown cluster information. For all our experiments we use the default settings from \citet{Schneider14b}, including the original train/test splits and automatic part-of-speech tagging provided by the ARK TweetNLP POS tagger \citep{Owoputi13} trained on the all non-review sections of the \ili{English} Web Treebank\is{English Web Treebank}. We note that in contrast to typical experiments in NLP, here we are holding \textit{the approach} constant while varying the quality of the dataset, which provides a quantification of the extent to which errors in the dataset interfered with our ability to build or accurately evaluate models. Following \citet{Schneider14b}, we report an F-score which is calculated based on links between words: a true positive occurs when two words which are supposed to appear together in an MWE do so as expected.
 
 
-\begin{table*}[t!]
+\begin{table*}
 \caption{AMALGr F-scores for various versions of MWE annotation of EWT Reviews.} % title of Table
 \centering
 \begin{tabularx}{.7\textwidth}{l c}
@@ -194,7 +194,7 @@ Our fixes result in roughly another 5\% increase to F-score relative to STRUESLE
 Our second round of experiments looks at exact match recall with respect to various subsets of the MWEs in the test set. Here we consider only the original STREUSLE and HAMSTERized version with \hard~MWEs unchanged. $N$ is the number of MWEs labeled as that type in that version of the dataset. Our goal here is to get a sense of how our changes have affected the identification of specific kinds of MWE. Weak\is{multiword expression!weak} versus strongish\is{multiword expression!strongish} is an obvious distinction (mixed MWE were considered strongish), but even more relevant to what we have done here is whether or not the MWE appears in both the training and test sets. We are also interested in the status of multiword named entities\is{named entity} (identified fairly reliably using proper noun tags in the gold-standard POS tags), which occur numerously in a corpus of reviews, but often as singletons, \ie with a frequency of one. We would expect MWEs which neither appear in our corpus nor are named entities (NEs) to be relatively unaffected by our fixes, and among the most challenging MWEs to identify in general.
 
 
-\begin{table*}[t!]
+\begin{table*}
 \caption{AMALGr exact recall for different MWE subsets in original and HAMSTERized STRUESLE.} % title of Table
 \centering
 \begin{tabularx}{.8\textwidth}{l c c c c}
@@ -220,7 +220,7 @@ Not NE, not in training & 195& 40.3 & 186& 43.9\\
 In \tableref{tab:exp2}, AMALGr does better with the HAMSTER dataset for most of the MWE subtypes considered here. The most striking difference occurs for the weak tag\is{multiword expression!weak}, reflecting a disproportionate amount of inconsistency, enough that the model built on the earlier version was apparently hesitant to apply the tag at all. Not only are MWEs with training instances tagged better after our fixes, but the set of such MWE tokens has noticeably increased. There is a corresponding drop in those test instances without training data, which are clearly the most difficult to identify, particularly when named entities\is{named entity} are excluded. The recall of named entities has actually dropped slightly, though since there are only 52 of these in the test set, this corresponds to a single missed example and is probably not meaningful. Though the rationale in terms of higher-level semantics is clear, we wonder whether including NER as part of MWE identification may result in a distorted view of the importance of MWE lexicons in token-level MWE identification. Here, we can see that among test-set-only MWEs, they stand out as being significantly easier than the rest, probably because in \ili{English} they can be identified fairly reliably using only capitalization.
 
 \section{Discussion}
-
+\largerpage
 Our three heuristics are useful because they identify potential errors with a high degree of precision. For the MWE type consistency analysis\is{annotation!consistency}, 77\% of candidate types were problematic, and for parse type consistency, the number was 63\%. For the arc count heuristic, 54\% of candidate types were ultimately changed: as mentioned earlier, many of the breaches involved systematic issues with annotation schema that we felt uncomfortable changing in isolation. By bringing these candidate instances to our attention, we were able to better focus our manual analysis effort, including in some cases looking across multiple related types, or even searching for specialist knowledge which could resolve ambiguities: for instance, in the example shown in \figureref{fig:arc-ex}, though a layperson without reference material may be unsure whether it is tissue or massage which is considered to be deep, a quick online search indicates that the original EWT syntax is in error (\textit{deep} modifies \textit{tissue}).
 
 However, it would be an overstatement to claim to have fixed all (or even almost all) the errors in the corpus.\is{multiword expression!annotated corpus} For instance, our type consistency heuristics only work when there are multiple instances of the same type, yet it is worth noting that 82\% of the MWE types in the corpus are represented by a singleton instance. Our arc count heuristic can identify issues with singletons, but its scope is fairly limited. We cannot possibly identify missing annotations for types that were not annotated at least once. We might also miss certain kinds of systematic annotation errors, for instance those mentioned in \citet{de2015studying}, though that work focused on the use of MWE dependency labels which are barely used in the EWT, one of the reasons a resource like STREUSLE is so useful.
@@ -234,7 +234,7 @@ We have proposed a methodology for merging MWE and dependency parse annotations,
 \section*{Abbreviations}
 %\begin{tabularx}{0.5\textwidth}{lX}
 
-\begin{tabularx}{.96\textwidth}{ll}
+\begin{tabularx}{\textwidth}{lQ}
 \textsc{amalg}r & A Machine Analyzer of Lexical Groupings\\
 \textsc{cmwe}  & The Comprehensive Multiword Expression Corpus\\
 \textsc{ewt} & The English Web Treebank\\
@@ -243,8 +243,7 @@ We have proposed a methodology for merging MWE and dependency parse annotations,
 \textsc{ne} & named entity \\
 \textsc{ner} & named entity recognition\\
 \textsc{nlp}& Natural Language Processing \\
-\textsc{streusle}  & Supersense-Tagged Repository of English with a\\
-& Unified  Semantics for Lexical Expressions \\
+\textsc{streusle}  & Supersense-Tagged Repository of English with a   Unified  Semantics for Lexical Expressions \\
 \end{tabularx}
 
 
