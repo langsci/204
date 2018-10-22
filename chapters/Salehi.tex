@@ -60,6 +60,7 @@ while searching for documents related to \localex{ivory tower}, we are
 almost certainly not interested in documents relating to elephant
 tusks.
 
+\largerpage
 Our approach is to use a large-scale multi-way translation lexicon to
 source translations of a given MWE and each of its component words,
 and then model the semantic similarity between each component word and
@@ -135,15 +136,15 @@ datasets.
 
 
 %\begin{figure}[t]
-%\begin{center}
+%
 %\includegraphics[ width=\columnwidth]{Chapter4/schema1}
 %\caption{
 %\label{fig:ss:schema1}  Schematic outline of our proposed \isi{string similarity} approach using the $i$th target language}
-%\end{center}
+%
 %\end{figure}
 
 \begin{figure}[t]
-\begin{center}
+
 \begin{tikzpicture}[scale=0.80]
 
 
@@ -192,7 +193,7 @@ datasets.
 \caption{
 \label{fig:diagram2}  Outline of the method for combining similarity scores
 from multiple languages, across the components of the MWE.}
-\end{center}
+
 \end{figure}
 
 
@@ -477,10 +478,10 @@ the \localex{public service} example), which motivates our use of
 \isi{string similarity} measures which can capture partial matches.
 
 \begin{table}[t]
-\begin{center}
-\begin{tabular}{l@{\hspace{6mm}}l}
+
+\begin{tabularx}{.8\textwidth}{XX}
 \lsptoprule
-English & Persian Translation \\
+English & Persian translation \\
 \midrule
 kick the bucket	& mord \\
 kick	&zad \\
@@ -496,8 +497,8 @@ public service & \localex{khadamaat} \textbf{omumi} \\
 public &\textbf{omumi} \\
 service & \localex{khedmat} \\
 \lspbottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
+
 \caption{English MWEs and their components
   with their translation in Persian. Direct matches between the
   translation of an MWE and its components are shown in \textbf{bold};
@@ -541,6 +542,7 @@ normalize LEV1 as follows:
  1 - \frac{\LEVone(\MWE^t,\component^t)}{\max(\len(\MWE^t),\len(\component^t))}
 \end{eqnarray}
 
+ 
 \paragraph*{Levenshtein with substitution penalty (LEV2):}
 One well-documented feature of Levenshtein distance
 \citep{Baldwin:2009c} is that substitutions are in fact the
@@ -548,6 +550,7 @@ combination of an addition and a deletion, and as such can be
 considered to be two edits. Based on this observation, we experiment
 with a variant of LEV1 with this penalty applied for
 substitutions. Similarly to LEV1, we normalize as follows:
+\newpage 
 \begin{eqnarray}
  1-  \frac{\LEVtwo(\MWE^t,\component^t)}{\len(\MWE^t)+\len(\component^t)}
 \end{eqnarray}
@@ -651,6 +654,7 @@ We consider simple functions for $f_{1}$ such as mean, median,
 product, minimum and maximum. $f_{2}$ was selected to be the same as $f_{1}$
 in all situations, except when we use mean for $f_1$. Here, following
 \citet{reddy2011a}, we experimented with weighted mean:
+\newpage 
 \begin{eqnarray}
 f_{2}(s_1,s_2) = \alpha s_1 + (1-\alpha) s_2 
 \end{eqnarray}
@@ -668,7 +672,7 @@ score for the full VPC.
 
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{l c l } \midrule
 %% \multicolumn{3}{c}{NC}\\
 %% Language&Frequency&Family\\
@@ -687,12 +691,12 @@ score for the full VPC.
 
 %% \end{tabular}
 
-%% \end{center}
+%% 
 %% \caption{\label{bestLangNC-table} The 10 best languages for \REDDY using LCS.}
 %% \end{table}
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{lcl} \midrule
 %% \multicolumn{3}{c}{VPC:verb}\\
 %% Language&Frequency&Family\\
@@ -710,14 +714,14 @@ score for the full VPC.
 %%  \midrule
 
 %% \end{tabular}
-%% \end{center}
+%% 
 %% \caption{\label{bestLangVPC-table} The 10 best languages for the verb
 %%   component of \BANNARD using LCS.}
 %% \end{table}
 
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{ l c l} \midrule
 %% \multicolumn{3}{c}{VPC:particle}\\
 %% Language&Frequency&Family\\
@@ -734,7 +738,7 @@ score for the full VPC.
 %% \ili{Romanian}	& 69 & Romance \\
 %%  \midrule
 %% \end{tabular}
-%% \end{center}
+%% 
 %% \caption{The 10 best languages for the particle component of \BANNARD
 %%   using LCS.}
 %% \label{bestLangVPCparticle-table} 
@@ -785,7 +789,7 @@ compositionality\is{multiword expression!compositionality} of the items in the t
 
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \smaller
 %% \begin{tabular}{cccccccccccccc}
 %% \toprule
@@ -799,7 +803,7 @@ compositionality\is{multiword expression!compositionality} of the items in the t
 %% DS &&& 0.700 &&0.177& &&&&0.141\\
 %% \bottomrule
 %% \end{tabular}
-%% \end{center}
+%% 
 %% \caption{\label{tab:stringsimresults} Correlation on each dataset. N1, N2,
 %%   and NC, are the first component of the \isi{noun compound}, its second
 %%   component, and the \isi{noun compound} itself, respectively, for ENC and
@@ -807,7 +811,7 @@ compositionality\is{multiword expression!compositionality} of the items in the t
 %% \end{table}
 
 \begin{table}[t]
-\begin{center}
+
 \begin{tabular}{lccc}
 \lsptoprule
 Method  & ENC   & EVPC  & GNC   \\
@@ -827,7 +831,7 @@ Unsupervised (coverage) & 0.642 & 0.323 & 0.343 \\
   each string similarity measure. The best correlation for each
   dataset is shown in boldface.}
 \label{tab:stringsimresults}
-\end{center}
+
 \end{table}
 
 As mentioned above, we perform nested 10-fold cross-validation to
@@ -924,7 +928,7 @@ compare it against a baseline and state-of-the-art approaches.
 
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{l c c}
 %% $sim()$& \textsc{StringSim$_{\textsc{mean}}$} & \textsc{StringSim$_{\textsc{mean}}$} + Reddy et al.\\ \midrule
 %% SW & 0.637 & 0.735 \\
@@ -939,11 +943,11 @@ compare it against a baseline and state-of-the-art approaches.
 %%   al.'s method and our method with Mean for $f_{1}$
 %%   (\textsc{StringSim$_{\textsc{mean}}$}).  The correlation using Reddy
 %%   et al.'s method is 0.714.}
-%% \end{center}
+%% 
 %% \end{table}
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{l c c c c}
 %% Method & Precision & Recall & F-score ($\beta=1$) & Accuracy \\ \midrule
 %% \citet{bannard2003} & 0.608 & 0.666 & 0.636 & 0.600 \\
@@ -952,12 +956,12 @@ compare it against a baseline and state-of-the-art approaches.
 %% \caption{\label{VPCcompare-table} Results for the classification
 %%   task. \textsc{StringSim$_{\textsc{mean}}$} is our method using Mean for
 %%   $f_{1}$}
-%% \end{center}
+%% 
 %% \end{table}
 
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \begin{tabular}{l c c@{\hspace{2em}} c} 
 %% \toprule
 %% Dataset &   Supervised LCS && Unsupervised LCS \\ \midrule
@@ -977,7 +981,7 @@ compare it against a baseline and state-of-the-art approaches.
 %% \bottomrule
 %% \end{tabular}
 %% \caption{\label{tab:ss:unsupervised} Correlation on ENC, EVPC and GNC datasets using supervised and unsupervised string similarity approach.}
-%% \end{center}
+%% 
 %% \end{table}
 
 \subsubsection{Error analysis}
@@ -1096,8 +1100,8 @@ dataset.
 
 
 \begin{table}[t]
-\begin{center}
-\begin{tabular}{l l l } \lsptoprule
+
+\begin{tabularx}{.8\textwidth}{XXX } \lsptoprule
 
 ENC&EVPC&GNC\\
 \midrule
@@ -1113,9 +1117,9 @@ Japanese& \textbf{Polish}&  Turkish\\
 \textbf{Czech}&  \textbf{Czech} &\textbf{Czech}\\
 \lspbottomrule
 
-\end{tabular}
+\end{tabularx}
 
-\end{center}
+
 \caption{\label{tab:ss:cov} The 10 languages with the highest
   translation coverage for ENC, EVPC and GNC. Languages also selected
   by the supervised approach are shown in \textbf{boldface}.}
@@ -1126,13 +1130,46 @@ Japanese& \textbf{Polish}&  Turkish\\
 %%BS end
 
 \section{An alternative multilingual dictionary\label{sec:dictcc}}
-
+\largerpage[2]
 In this section we consider the same string similarity-based approach
 to predicting compositionality\is{multiword expression!compositionality} as in \sectref{sec:stringsimmethod}, but
 using an alternative \isi{multilingual dictionary} to PanLex, specifically
 \dictcc.\footnote{\url{https://www.dict.cc/}}
 
 %% \subsection{What is \dictcc}
+
+\begin{table}[t]
+
+
+\begin{tabularx}{.8\textwidth}{XXccc}
+\lsptoprule
+Dictionary & Method  & ENC   & EVPC  & GNC   \\
+\midrule
+\dictcc \\
+\midrule
+&SW   & .269 & .217 & .514 \\
+&LCS  & .251 & .262 & \textbf{.523} \\
+&LEV1 & .181 & .161 & .482 \\
+&LEV2 & .163 & .189 & .474 \\
+&Jaccard& .158 & .127 & .442 \\
+&Dice & .230 & .192 & .420 \\
+\midrule
+PanLex \\
+\midrule
+&SW   & \textbf{.559} & \textbf{.294} & .270 \\
+&LCS  & .551 & .276 & .290 \\
+&LEV1 & .388 & .274 & .276 \\
+&LEV2 & .512 & .281 & .262 \\
+&Jaccard& .459 & .241 & .267 \\
+&Dice & .541 & .235 & .197 \\
+\lspbottomrule
+\end{tabularx}
+\caption{Correlation ($r$) on each dataset, for each string similarity
+  measure, using \dictcc and PanLex as the translation dictionary. The
+  best correlation for each dataset is shown in boldface.}
+\label{tab:stringsimresults-ccdict}
+
+\end{table}
 
 \dictcc is a translation dictionary that provides translations for
 both \ili{English} and \ili{German} into 26 languages spoken in Europe. It is a
@@ -1156,6 +1193,7 @@ languages. We introduced this restriction, as opposed to using all
 languages available in \dictcc, to allow us to compare PanLex and
 \dictcc when using the exact same set of target languages.
 
+
 Results for the string similarity-based approach to predicting
 compositionality\is{multiword expression!compositionality}, using \dictcc and PanLex, each with the same 22
 target languages, are shown in
@@ -1164,37 +1202,7 @@ selected using the same method as in \sectref{sec:ss-lang-selection}.
 
 %% \subsection{results}
 
-\begin{table}[t]
-\begin{center}
-\begin{tabular}{llccc}
-\lsptoprule
-Dictionary & Method  & ENC   & EVPC  & GNC   \\
-\midrule
-\dictcc \\
-\midrule
-&SW   & .269 & .217 & .514 \\
-&LCS  & .251 & .262 & \textbf{.523} \\
-&LEV1 & .181 & .161 & .482 \\
-&LEV2 & .163 & .189 & .474 \\
-&Jaccard& .158 & .127 & .442 \\
-&Dice & .230 & .192 & .420 \\
-\midrule
-PanLex \\
-\midrule
-&SW   & \textbf{.559} & \textbf{.294} & .270 \\
-&LCS  & .551 & .276 & .290 \\
-&LEV1 & .388 & .274 & .276 \\
-&LEV2 & .512 & .281 & .262 \\
-&Jaccard& .459 & .241 & .267 \\
-&Dice & .541 & .235 & .197 \\
-\lspbottomrule
-\end{tabular}
-\caption{Correlation ($r$) on each dataset, for each string similarity
-  measure, using \dictcc and PanLex as the translation dictionary. The
-  best correlation for each dataset is shown in boldface.}
-\label{tab:stringsimresults-ccdict}
-\end{center}
-\end{table}
+
 
 For each translation dictionary and dataset, the best method is always
 one of either SW or LCS, and in many cases these are the top two
@@ -1205,12 +1213,12 @@ methods are robust to the choice of specific translation dictionary,
 and when the number of target languages is substantially reduced.
 
 \begin{figure}[t]
-\begin{center}
+
   \includegraphics[width=0.75\textwidth]{figures/coverage-boxplot.pdf}
 \caption{Boxplots showing the percentage of expressions in each
   dataset covered by \dictcc and PanLex, over the 22 target
   languages.\label{fig:ccdict:coverage}}
-\end{center}
+
 \end{figure}
 
 There are, however, substantial differences between the results using
@@ -1282,7 +1290,7 @@ size from roughly 750M tokens for \ili{English}, to roughly 640K tokens for
 Marathi.
 
 In order to be consistent across all languages and to be as
-language-independent as possible, we calculate distributional
+language-indepen\-dent as possible, we calculate distributional
 similarity\is{distributional similarity!language-independent measure} in the following manner for a given language.
 
 Tokenisation is based on whitespace delimiters and punctuation; no
@@ -1301,7 +1309,7 @@ can't calculate the \isi{distributional similarity} for stop words, however
 dimensions in our calculation of \isi{distributional similarity}.
 
 \begin{table}[t]
-\begin{center}
+
 \begin{tabular}{l c} 
 \lsptoprule
 Context window &Correlation ($r$) \\\midrule
@@ -1311,7 +1319,7 @@ Window ($N$=3, with positional index) & 0.031 \\
 \lspbottomrule
 \end{tabular}
 \caption{\label{tab:ds:premResult} Results of distributional similarities using 10 best languages on ENC dataset ($N$ is window size)}
-\end{center}
+
 \end{table}
 
 
@@ -1415,8 +1423,8 @@ of $N$ and accordingly the best-$N$ languages are based on nested
 cross-validation over training data, independently of the test data
 for that iteration of cross-validation.
 
-Second in \CSsvr, we combine the compositionality\is{multiword expression!compositionality} scores from the
-source and all 51 target languages into a feature vector, and train an
+Second in \CSsvr, we take the compositionality\is{multiword expression!compositionality} scores from the
+source and all 51 target languages, combine them into a feature vector, and train an
 SVR over the data using
 LIBSVM.\footnote{\smaller\url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}}
 
@@ -1438,6 +1446,24 @@ most commonly selected settings for ENC, EVPC and GNC,
 respectively. That is, multiple languages are generally used, but more
 languages are used for \ili{English} VPCs than either of the compound noun
 datasets.
+
+\begin{table}[t]
+\fittable{
+\begin{tabular}{l l c c c} \lsptoprule
+Method & Summary of the Method & ENC & EVPC & GNC \\ \midrule
+\CSsource & Source language & 0.700 & 0.177 & 0.141\\
+\CStarg& Best-$N$ target languages & 0.434 & 0.398 &0.113\\
+\CSsourcetarg& Source + best-$N$ target languages & 0.725 & 0.312 & 0.178\\
+\CSsvr& SVR (Source + all 51 target languages)& \textbf{0.744} & 0.389 & 0.085\\ \midrule
+\CSstring& String Similarity &  0.644 & 0.385 & \textbf{0.372}\\ 
+\CSstringDS & \CSstring+\CSsource & 0.739&0.360&0.353\\ \midrule
+\CSall& \CSsource + \CStarg + \CSstring  & 0.732 & \textbf{0.417} & 0.364\\ \lspbottomrule
+\end{tabular}
+}
+\caption{Pearson's correlation on the ENC, EVPC and GNC datasets}
+\label{tab:results}
+\end{table}
+
 
 \begin{figure}[t]
         \centering
@@ -1466,40 +1492,9 @@ datasets.
 \end{figure}
 
 
-\begin{table}[t]
-\begin{center}
-\begin{tabular}{l l c c c} \lsptoprule
-Method & Summary of the Method & ENC & EVPC & GNC \\ \midrule
-\CSsource & Source language & 0.700 & 0.177 & 0.141\\
-\CStarg& Best-$N$ target languages & 0.434 & 0.398 &0.113\\
-\CSsourcetarg& Source + best-$N$ target languages & 0.725 & 0.312 & 0.178\\
-\CSsvr& SVR (Source + all 51 target languages)& \textbf{0.744} & 0.389 & 0.085\\ \midrule
-\CSstring& String Similarity &  0.644 & 0.385 & \textbf{0.372}\\ 
-\CSstringDS & \CSstring+\CSsource & 0.739&0.360&0.353\\ \midrule
-\CSall& \CSsource + \CStarg + \CSstring  & 0.732 & \textbf{0.417} & 0.364\\ \lspbottomrule
-\end{tabular}
-\end{center}
-\caption{Pearson's correlation on the ENC, EVPC and GNC datasets}
-\label{tab:results}
-\end{table}
 
 
 
-\begin{table}
-\begin{center}
-\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{l c c c c} \lsptoprule
-Method & Precision & Recall & F-score ($\beta=1$) & Accuracy \\ \midrule
-\citet{bannard2003} & 60.8 & 66.6 & 63.6 &60.0\\
-\CSstring & \textbf{86.2} &71.8 &77.4& 69.3\\
-\CSall & 79.5 & \textbf{89.3} & \textbf{82.0} & \textbf{74.5} \\
-\lspbottomrule
-\end{tabular}
-\end{center}
-\caption{Results (\%) for the binary compositionality prediction task on the EVPC dataset}
-\label{Classification}
-\end{table}
 
 
 
@@ -1509,7 +1504,7 @@ Method & Precision & Recall & F-score ($\beta=1$) & Accuracy \\ \midrule
 %% commonly-selected languages vary considerably between datasets.
 
 %% \begin{table}[t]
-%% \begin{center}
+%% 
 %% \smaller
 %% \begin{tabular}{l ccc} \midrule
 %% Dataset &Language & Frequency & Family \\ 
@@ -1533,7 +1528,7 @@ Method & Precision & Recall & F-score ($\beta=1$) & Accuracy \\ \midrule
 %% &\ili{Czech} & \x40 & Slavic \\
 %% \midrule
 %% \end{tabular}
-%% \end{center}
+%% 
 %% \caption{\label{tab:langs} The 5 best languages for the ENC, EVPC and
 %%   GNC datasets. The language family is based on \citet{voegelin1977}.}
 %% \end{table}
@@ -1627,10 +1622,25 @@ dataset, when we combine \isi{string similarity} and \isi{distributional similar
 (\CSall), the results improve, and we achieve the state of the art for
 the dataset.
 
+
 In \tabref{Classification}, we present classification-based evaluation
 over a subset of EVPC, binarising the compositionality\is{multiword expression!compositionality} judgements in the
 manner of \citet{bannard2003}. Our method achieves state-of-the-art
 results in terms of overall F-score and accuracy.
+
+\begin{table} 
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l c c c c} \lsptoprule
+Method & Precision & Recall & F-score ($\beta=1$) & Accuracy \\ \midrule
+\citet{bannard2003} & 60.8 & 66.6 & 63.6 &60.0\\
+\CSstring & \textbf{86.2} &71.8 &77.4& 69.3\\
+\CSall & 79.5 & \textbf{89.3} & \textbf{82.0} & \textbf{74.5} \\
+\lspbottomrule
+\end{tabular}
+
+\caption{Results (\%) for the binary compositionality prediction task on the EVPC dataset}
+\label{Classification}
+\end{table}
 
 
 
