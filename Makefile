@@ -9,8 +9,6 @@ complete: index main.pdf
 index:  main.snd
  
 main.pdf: main.aux
-	sed -i "s/\\$\^[0-9]\+\\$//g" main.toc
-	sed -i "s/\\$^{[0-9]\+}\\$//g" main.toc
 	xelatex main 
 
 main.aux: $(SOURCE)
@@ -40,7 +38,10 @@ main.snd: main.bbl
 	makeindex -o main.lnd main.ldx
 	makeindex -o main.snd main.sdx 	
 	xelatex main 
- 
+	sed -i "s/\\$\^[0-9]\+\\$//g" main.toc
+	sed -i "s/\\$^{[0-9]\+}\\$//g" main.toc
+	xelatex main 
+
 
 #create a png of the cover
 cover: FORCE

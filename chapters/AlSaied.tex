@@ -1,4 +1,5 @@
 \documentclass[output=paper,modfonts]{langscibook}
+\ChapterDOI{10.5281/zenodo.1469561}
 \title{A transition-based verbal multiword expression analyzer} 
 \author{Hazem Al Saied\affiliation{ATILF UMR 7118, Universit\'e de Lorraine/CNRS}\and  Marie Candito\affiliation{LLF UMR 7110, Universit\'e Paris Diderot/CNRS}\lastand   Matthieu Constant\affiliation{ATILF UMR 7118, Universit\'e de Lorraine/CNRS}}
 \abstract{ We describe a robust transition-based analyzer for identifying and categorizing Verbal Multiword Expressions (VMWEs). The system was developed and evaluated using the datasets of the PARSEME shared task on VMWE identification \citep{MWEWorkshop}.\newline We accommodate the variety of linguistic resources provided for each language, in terms of accompanying morphological and syntactic information. Our system produces very competitive scores, for both VMWE identification and categorization, with respect to the shared task results.}
@@ -193,7 +194,7 @@ We found that other traditional features, used in transition-based\is{parsing!tr
 
 We also added \textbf{Distance-based features}, known to help transition-based dependency parsing\is{parsing!transition-based} \citep{zhang2011transition}, more precisely the distance between S$_0$ and  S$_1$ and between S$_0$ and B$_0$ (respectively codes I and J in \tabref{table:codes}). We also extracted \textbf{Stack-length-based features} (code M in  \tabref{table:codes}).
 
-The VMWE identification\is{verbal multiword expression!identification} task is highly lexical so we found it useful to use \textbf{dictionary-based features}, which use ``dictionaries" extracted from the training set, both for multi-token VMWEs and MWTs. The dictionaries are lemma-based when lemmas are available, and form-based otherwise. These dictionary-based features include (i) a boolean feature set to true when S$_0$ belongs to the MWT dictionary (code N in  \tabref{table:codes}), and (ii) boolean features firing when $S_0$, $S_1$, $B_0$, $B_1$ or $B_2$ belong to an entry of the extracted VMWE dictionary (code L in \tabref{table:codes}).
+The VMWE identification\is{verbal multiword expression!identification} task is highly lexical so we found it useful to use \textbf{dictionary-based features}, which use ``dictionaries'' extracted from the training set, both for multi-token VMWEs and MWTs. The dictionaries are lemma-based when lemmas are available, and form-based otherwise. These dictionary-based features include (i) a boolean feature set to true when S$_0$ belongs to the MWT dictionary (code N in  \tabref{table:codes}), and (ii) boolean features firing when $S_0$, $S_1$, $B_0$, $B_1$ or $B_2$ belong to an entry of the extracted VMWE dictionary (code L in \tabref{table:codes}).
 % ***********************************
 %			Feature Tuning
 % ***********************************
@@ -202,7 +203,7 @@ The VMWE identification\is{verbal multiword expression!identification} task is h
 We first divided the data sets into three groups, based on the availability of CoNLL-U files: (a) for \textbf{\ili{Bulgarian}, \ili{Hebrew}} and \textbf{\ili{Lithuanian}} neither morphological nor syntactic information is available on top of tokens and VMWE annotation; (b) \textbf{\ili{Czech}, \ili{Spanish}, \ili{Farsi}, \ili{Maltese}} and \textbf{\ili{Romanian}} are accompanied by CoNLL-U files with morphological information only, and (c) \textbf{the other languages}\footnote{These languages are German, Greek, French, Hungarian, Italian, Polish, Portuguese, Slovene, Swedish, and Turkish.} 
 are accompanied by a fully annotated CoNLL-U file. 
 
-In the first tuning phase, we used one ``pilot" language for each group (\ili{Bulgarian}, \ili{Czech} and \ili{French}). Then, \ili{German} was added as pilot language to investigate features for languages with high percentage of MWTs and embedded VMWEs. We tuned the features using both development sets extracted from the provided training sets, and using cross-validation.
+In the first tuning phase, we used one ``pilot'' language for each group (\ili{Bulgarian}, \ili{Czech} and \ili{French}). Then, \ili{German} was added as pilot language to investigate features for languages with high percentage of MWTs and embedded VMWEs. We tuned the features using both development sets extracted from the provided training sets, and using cross-validation.
 
 Finally, we used the discovered feature groups as a source of inspiration for producing specialized feature groups for all other languages. Note that given the combinatorial explosion of feature combinations, we could not apply a full grid-search for the pilot languages, and a fortiori for all languages.
 % ***********************************

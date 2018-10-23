@@ -1,4 +1,5 @@
 \documentclass[output=paper,modfonts]{langscibook} 
+\ChapterDOI{10.5281/zenodo.1469563}
 \title{Identifying verbal multiword expressions with POS tagging and parsing techniques} 
 \author{ Katalin Ilona Simkó\affiliation{University of Szeged}\and  Viktória Kovács\affiliation{University of Szeged}\lastand  Veronika Vincze\affiliation{University of Szeged\\MTA-SZTE Research Group on Artificial Intelligence}}
 
@@ -107,7 +108,7 @@ hozatal}{decision+bringing}{decision-making}.}
 %\centering
 %\begin{dependency}[theme = simple]
 %   \begin{deptext}[column sep=1em]
-%      P\'eter \& fontos \& d\"ont\'est \& hoz  \\
+%      P\'eter \& fontos \& dönt\'est \& hoz  \\
 % Peter \& important \& decision-ACC \& bring-SG3.PRES \\
 %   \end{deptext}
 %   \deproot{4}{ROOT}
@@ -118,7 +119,7 @@ hozatal}{decision+bringing}{decision-making}.}
 
 %\begin{dependency}[theme = simple]
 %   \begin{deptext}[column sep=1em]
-%      P\'eter \& fontos \& d\"ont\'est \& hoz  \\
+%      P\'eter \& fontos \& dönt\'est \& hoz  \\
 %			Peter \& important \& decision-ACC \& bring-SG3.PRES \\
 %   \end{deptext}
 %   \deproot{4}{ROOT}
@@ -134,7 +135,7 @@ hozatal}{decision+bringing}{decision-making}.}
 \centering
 \begin{dependency}[theme = simple]
    \begin{deptext}[column sep=1em]
-      P\'eter \& \textbf{vetette} \& r\'a \& \textbf{az} \& \textbf{els\H{o}} \& \textbf{k\"ovet}  \\
+      P\'eter \& \textbf{vetette} \& r\'a \& \textbf{az} \& \textbf{els\H{o}} \& \textbf{követ}  \\
 			Peter \& cast.3.SG \& he \& the \& first \& stone \\
    \end{deptext}
    \deproot{2}{ROOT}
@@ -147,7 +148,7 @@ hozatal}{decision+bringing}{decision-making}.}
 
 \begin{dependency}[theme = simple]
    \begin{deptext}[column sep=1em]
-      P\'eter \& \textbf{vetette} \& r\'a \& \textbf{az} \& \textbf{els\H{o}} \& \textbf{k\"ovet}  \\
+      P\'eter \& \textbf{vetette} \& r\'a \& \textbf{az} \& \textbf{els\H{o}} \& \textbf{követ}  \\
 			Peter \& cast.3.SG \& he \& the \& first \& stone \\
    \end{deptext}
    \deproot{2}{ROOT}
@@ -157,14 +158,14 @@ hozatal}{decision+bringing}{decision-making}.}
 		\depedge{6}{5}{\textbf{ID}}
 		\depedge{2}{6}{\textbf{ID}}
 \end{dependency}
-\caption{Adding the ID multi-token MWE label to the dependency graph in (HU) \nltliidio{Péter \lex{vetette} r\'a \lex{az els\H{o} k\"ovet}.}{Peter cast the first stone on him}.} 
+\caption{Adding the ID multi-token MWE label to the dependency graph in (HU) \nltliidio{Péter \lex{vetette} r\'a \lex{az els\H{o} követ}.}{Peter cast the first stone on him}.} 
 \label{multimwe}
 \end{figure*}
 
 \newpage 
 For multi-token MWEs our approach is based on our hypothesis that the dependent MWE elements will be directly connected to the other MWE element(s). We do not change the structure of the dependency relations\is{dependency!relation} in the tree, but change the dependency label of the dependent MWE element to the MWE type, therefore making the MWE element retraceable from the dependency annotation of the sentence. For example \textit{l\'{a}t} and \textit{el} in \figref{VPC} make up a VPC (\nltliidio{\lex{ell\'at}}{take care}), so the dependency relation label of the dependent element, \textit{el} changes from the general syntactic label \textbf{PREVERB} to the MWE label \textbf{VPC}, with this \textbf{VPC} label now connecting the two elements of the MWE. 
 
-For MWEs of more than two tokens, the conversion replaces the dependency labels of all MWE elements that depend on the head. In \figref{multimwe}, the head of the idiom (\nltliidio{\lex{az els\H{o} k\"ovet veti}}{casts the first stone}) is the verb, \textit{vetette} (cast.Sg3.Past). All other elements' dependency labels are changed to \textbf{ID}. 
+For MWEs of more than two tokens, the conversion replaces the dependency labels of all MWE elements that depend on the head. In \figref{multimwe}, the head of the idiom (\nltliidio{\lex{az els\H{o} követ veti}}{casts the first stone}) is the verb, \textit{vetette} (cast.Sg3.Past). All other elements' dependency labels are changed to \textbf{ID}. 
 
 The second step is training the parser: we used the Bohnet parser \citep{bohnet:2010:PAPERS} for both POS tagging\is{part-of-speech tagging} and dependency parsing\is{parsing!dependency}. For the single-token MWEs, we trained the Bohnet parser's POS tagger module on the MWE-merged corpora and its dependency parser for the multi-token MWEs. The parser would treat the MWE POS tags and dependency labels as any other POS tag and dependency label. 
 
@@ -445,4 +446,6 @@ Veronika Vincze was supported by the UNKP-17-4 New National Excellence Program o
 {\sloppy
 \printbibliography[heading=subbibliography,notkeyword=this]
 }
+
+\clearpage
 \end{document}

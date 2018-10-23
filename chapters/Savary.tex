@@ -1,4 +1,5 @@
 \documentclass[output=paper,modfonts]{langscibook} 
+\ChapterDOI{10.5281/zenodo.1469555}
 \title{PARSEME multilingual corpus of verbal multiword expressions} 
 \author{
 Agata Savary$^1$,
@@ -48,10 +49,7 @@ $^{19}$Univer\-sity of Szeged (Hungary)
 
 
 %Agata Savary, Kübra Adali, Eduard Bejček, Marie Candito, Fabienne Cap, Silvio Ricardo Cordeiro, Gülşen Eryiğit, Luke Galea, Voula Giouli, Maarten van Gompel, Yaakov HaCohen-Kerner, Jolanta Kovalevskaite, Simon Krek, Chaya Liebeskind, Verginica Mititelu, Johanna Monti, Carla Parra, Lonneke van der Plas, Behrang QuasemiZadeh, Carlos Ramisch, Federico Sangati, Ivelina Stoyanova and Veronika Vincze
-
-% \chapterDOI{} %will be filled in at production
-% \epigram{}
-
+ 
 \abstract{
 Multiword expressions (MWEs) 
 %\fc{changed this from multiword to  multiword as it appeared to me that the latter one is used more frequently throughout the text.} \capa{We should probably agree on a spelling and be consistent with it throughout the whole chapter.} 
@@ -72,7 +70,7 @@ unified annotation guidelines, and a corpus\is{PARSEME!corpus}\is{multiword expr
 \renewcommand{\lsCollectionPaperCitationText}{Agata Savary et al. 2018. PARSEME multilingual corpus of verbal multiword expressions. 
 In Stella Markantonatou, Carlos Ramisch, Agata Savary \& Veronika Vincze (eds.), 
 Multiword expressions at length and in depth: Extended papers from the MWE 2017 workshop, 1–23. 
-Berlin: Language Science Press. DOI:\biberror{??}
+Berlin: Language Science Press. {\color{lsDOIGray} DOI: \href{http://dx.doi.org/zenodo.1469555}{10.5281/zenodo.1469555}}
 }
 \begin{document}
 \maketitle
@@ -1577,7 +1575,7 @@ Therefore, separate evaluation of these two stages may be helpful in enhancing t
 \label{sec:analysis}
 %\input{chapters/15.analysis}
 
-The common terminology and annotation methodology achieved in this endeavour enable cross-language observations. In this section we offer a comparative quantitative analysis of several phenomena relevant to the challenges that VMWEs pose in NLP, as discussed in \sectref{sec:sav:intro}. Namely, we analyse the lengths, discontinuities, coverage, overlapping and nesting of VMWEs across languages and VMWE types.
+The common terminology and annotation methodology achieved in this endeavour enable cross-language observations. In this section we offer a comparative quantitative analysis of several phenomena relevant to the challenges   VMWEs pose in NLP, as discussed in \sectref{sec:sav:intro}. Namely, we analyse the lengths, discontinuities, coverage, overlapping and nesting of VMWEs across languages and VMWE types.
 
 \begin{table}
 \centering
@@ -1733,8 +1731,7 @@ As the last line of \tabref{overlap} shows, such configurations occur very rarel
 %nesting occurs very rarely in the data. 
 %When they occur, they are usually due to relative clauses as in the French example \textit{Les trois arriv\'ees du Tour de France cycliste, qui se sont d\'eroul\'ees \ \`{a} Mende, se sont effectu\'ees sur l'a\'erodrome} ``The three arrivals of the Tour de France cyclist, which took place in Mende, happened in the aerodrome'' -- the two VMWEs here are \textit{arriv\'ees effectu\'ees} and \textit{se d\'eroul\'ees}. 
 This might be due to the fact that large gaps introduced within the outer-most VMWEs by the nested structure are harder to process for the human mind.
-
-\begin{center}
+ 
 \begin{table}[htp]
 \setlength{\tabcolsep}{1pt}
 %\begin{tabular}{l @{\qquad} l @{\qquad} l @{\qquad} ccccc @{\qquad} cc @{\qquad} ccccc @{\qquad} cccccc}
@@ -1753,8 +1750,7 @@ Nested VMWEs & 4 & 29 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 3 & 0 & 0 & 4 & 1 & 0 & 2 & 
 \end{small}
 \caption{Overlapping and nested VMWEs. Overlap >=2 and >2: the token belongs to at least 2 or more than 2 VMWEs, respectively. Only percentages above 0.49\% are indicated. They are counted wrt. all tokens belonging to VMWEs.}
 \label{overlap}
-\end{table}
-\end{center}
+\end{table} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

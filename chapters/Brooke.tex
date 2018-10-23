@@ -1,4 +1,5 @@
 \documentclass[output=paper,modfonts,nonflat]{langsci/langscibook} 
+\ChapterDOI{10.5281/zenodo.1469565}
 
 \title{Semi-automated resolution of inconsistency for a harmonized multiword-expression and dependency-parse annotation} 
 \author{ Julian Brooke\affiliation{The University of Melbourne}\and  King Chan\affiliation{The University of Melbourne}\lastand  Timothy Baldwin \affiliation{The University of Melbourne}}
@@ -157,7 +158,7 @@ Relative to the changes to the MWE annotation, the changes to the parse annotati
 
 \section{Experiments}
 
-In this section we investigate the effect of the HAMSTER MWE inconsistency fixes on the task of MWE identification\is{multiword expression!identification}. For this we use the AMALGr MWE identification tool of \citet{Schneider14b}, which was developed on the initial release of the STRUESLE \todo{STREUSLE? Check whole article} (called then the CMWE).\footnote{The key difference between the CMWE and STRUESLE is the inclusion of supersense tags. Though we hope to eventually include supersense information in the output of HAMSTER, supersenses are beyond the scope of the present work.} AMALGr is a supervised structured perceptron model which makes use of external resources including 10 MWE lexicons as well as Brown cluster information. For all our experiments we use the default settings from \citet{Schneider14b}, including the original train/test splits and automatic part-of-speech tagging provided by the ARK TweetNLP POS tagger \citep{Owoputi13} trained on the all non-review sections of the \ili{English} Web Treebank\is{English Web Treebank}. We note that in contrast to typical experiments in NLP, here we are holding \textit{the approach} constant while varying the quality of the dataset, which provides a quantification of the extent to which errors in the dataset interfered with our ability to build or accurately evaluate models. Following \citet{Schneider14b}, we report an F-score which is calculated based on links between words: a true positive occurs when two words which are supposed to appear together in an MWE do so as expected.
+In this section we investigate the effect of the HAMSTER MWE inconsistency fixes on the task of MWE identification\is{multiword expression!identification}. For this we use the AMALGr MWE identification tool of \citet{Schneider14b}, which was developed on the initial release of the STREUSLE  (called then the CMWE).\footnote{The key difference between the CMWE and STREUSLE is the inclusion of supersense tags. Though we hope to eventually include supersense information in the output of HAMSTER, supersenses are beyond the scope of the present work.} AMALGr is a supervised structured perceptron model which makes use of external resources including 10 MWE lexicons as well as Brown cluster information. For all our experiments we use the default settings from \citet{Schneider14b}, including the original train/test splits and automatic part-of-speech tagging provided by the ARK TweetNLP POS tagger \citep{Owoputi13} trained on the all non-review sections of the \ili{English} Web Treebank\is{English Web Treebank}. We note that in contrast to typical experiments in NLP, here we are holding \textit{the approach} constant while varying the quality of the dataset, which provides a quantification of the extent to which errors in the dataset interfered with our ability to build or accurately evaluate models. Following \citet{Schneider14b}, we report an F-score which is calculated based on links between words: a true positive occurs when two words which are supposed to appear together in an MWE do so as expected.
 
 
 \begin{table*}
@@ -168,7 +169,7 @@ In this section we investigate the effect of the HAMSTER MWE inconsistency fixes
 \textbf{Dataset}&\textbf{F1-score (\%)}\\
 \midrule
 CMWE \citep{Schneider14b} & 59.4\\
-STRUESLE 3.0 & 64.6 \\
+STREUSLE 3.0 & 64.6 \\
 \midrule
 HAMSTER-original & 69.1 \\ 
 HAMSTER-notMWE & 68.2 \\
@@ -185,21 +186,21 @@ HAMSTER-original-train  & 65.7 \\
 \label{tab:exp1} % is used to refer this table in the text
 \end{table*}
 
-There are two baselines in \tableref{tab:exp1}: the first is the original performance of AMALGr as reported in \citet{Schneider14b} using CMWE (version 1.0 of this annotation), and the second is its performance using STRUESLE (version 3.0). Note that these involve exactly the same texts: the difference between these two numbers reflects other fixes to this dataset that have happened in the years since its initial release. The difference between the two is quite substantial, at roughly 5\% F-score.
+There are two baselines in \tableref{tab:exp1}: the first is the original performance of AMALGr as reported in \citet{Schneider14b} using CMWE (version 1.0 of this annotation), and the second is its performance using STREUSLE (version 3.0). Note that these involve exactly the same texts: the difference between these two numbers reflects other fixes to this dataset that have happened in the years since its initial release. The difference between the two is quite substantial, at roughly 5\% F-score.
 
-The rest of the table makes use of HAMSTERized versions of STRUESLE, which we refer to as simply HAMSTER. The options here mostly refer to our treatment of the \hard~cases\is{annotation!hard cases}, which must be removed to make use of AMALGr. \emph{-original} indicates that we apply all fixes which result in the creation or removal of a standard STRUESLE label (\ie weak\is{multiword expression!weak} and strongish\is{multiword expression!strongish}), but leave \hard~annotations as they were in the original corpus. \emph{-notMWE} and \emph{-weak} create versions of the corpus where all \hard~labels have been mapped to either nothing (no MWE) or weak MWEs\is{multiword expression!weak}, respectively. Another option we consider is \emph{-noeval}, which involved tweaking the AMALGr evaluation script to exclude particular annotations (in this case \hard) from evaluation altogether; that is, it does not matter what the model predicted for those words which are considered \hard. Finally, {\nobreakdash\emph{-test} and \emph{-train}} refer to the situation where we apply our fixes to texts only in the test or training sets, respectively; this gives us a sense of whether the improved performance of the model over the HAMSTER datasets is primarily due to the removal of errors from the test set, or whether improving the consistency of the training set is playing a major role as well.
+The rest of the table makes use of HAMSTERized versions of STREUSLE, which we refer to as simply HAMSTER. The options here mostly refer to our treatment of the \hard~cases\is{annotation!hard cases}, which must be removed to make use of AMALGr. \emph{-original} indicates that we apply all fixes which result in the creation or removal of a standard STREUSLE label (\ie weak\is{multiword expression!weak} and strongish\is{multiword expression!strongish}), but leave \hard~annotations as they were in the original corpus. \emph{-notMWE} and \emph{-weak} create versions of the corpus where all \hard~labels have been mapped to either nothing (no MWE) or weak MWEs\is{multiword expression!weak}, respectively. Another option we consider is \emph{-noeval}, which involved tweaking the AMALGr evaluation script to exclude particular annotations (in this case \hard) from evaluation altogether; that is, it does not matter what the model predicted for those words which are considered \hard. Finally, {\nobreakdash\emph{-test} and \emph{-train}} refer to the situation where we apply our fixes to texts only in the test or training sets, respectively; this gives us a sense of whether the improved performance of the model over the HAMSTER datasets is primarily due to the removal of errors from the test set, or whether improving the consistency of the training set is playing a major role as well.
 
-Our fixes result in roughly another 5\% increase to F-score relative to STRUESLE 3.0, for a total of about 10\% F-score difference relative to results using the original CMWE annotation of this corpus. With respect to options for phrases labeled as \hard, treating them as nonMWEs seems to be a worse option than simply leaving them alone; the best explanation for this is probably that these hard cases are generally more similar to labelled MWEs. Treating them as weak\is{multiword expression!weak} appears to a better strategy. Even better, though, might be to leave \hard~inconsistencies in the training set but exclude them from consideration during testing. The results using mixed training/test datasets indicate that the fixes to the test data are clearly more important, but the consistency across the two sets also accounts for a major part of the performance increase seen here.
+Our fixes result in roughly another 5\% increase to F-score relative to STREUSLE 3.0, for a total of about 10\% F-score difference relative to results using the original CMWE annotation of this corpus. With respect to options for phrases labeled as \hard, treating them as nonMWEs seems to be a worse option than simply leaving them alone; the best explanation for this is probably that these hard cases are generally more similar to labelled MWEs. Treating them as weak\is{multiword expression!weak} appears to a better strategy. Even better, though, might be to leave \hard~inconsistencies in the training set but exclude them from consideration during testing. The results using mixed training/test datasets indicate that the fixes to the test data are clearly more important, but the consistency across the two sets also accounts for a major part of the performance increase seen here.
 
 Our second round of experiments looks at exact match recall with respect to various subsets of the MWEs in the test set. Here we consider only the original STREUSLE and HAMSTERized version with \hard~MWEs unchanged. $N$ is the number of MWEs labeled as that type in that version of the dataset. Our goal here is to get a sense of how our changes have affected the identification of specific kinds of MWE. Weak\is{multiword expression!weak} versus strongish\is{multiword expression!strongish} is an obvious distinction (mixed MWE were considered strongish), but even more relevant to what we have done here is whether or not the MWE appears in both the training and test sets. We are also interested in the status of multiword named entities\is{named entity} (identified fairly reliably using proper noun tags in the gold-standard POS tags), which occur numerously in a corpus of reviews, but often as singletons, \ie with a frequency of one. We would expect MWEs which neither appear in our corpus nor are named entities (NEs) to be relatively unaffected by our fixes, and among the most challenging MWEs to identify in general.
 
 
 \begin{table*}
-\caption{AMALGr exact recall for different MWE subsets in original and HAMSTERized STRUESLE.} % title of Table
+\caption{AMALGr exact recall for different MWE subsets in original and HAMSTERized STREUSLE.} % title of Table
 \centering
 \begin{tabularx}{.8\textwidth}{l c c c c}
 \lsptoprule
-&\multicolumn{2}{c}{\textbf{STRUESLE}} & \multicolumn{2}{c}{\textbf{HAMSTER}} \\
+&\multicolumn{2}{c}{\textbf{STREUSLE}} & \multicolumn{2}{c}{\textbf{HAMSTER}} \\
 \textbf{MWE types}& \textbf{$N$}& \textbf{Recall (\%)}& \textbf{$N$} & \textbf{Recall (\%)} \\
 \midrule
 All & 423 & 59.7 & 444 & 63.4\\
@@ -245,18 +246,10 @@ We have proposed a methodology for merging MWE and dependency parse annotations,
 \textsc{nlp}& Natural Language Processing \\
 \textsc{streusle}  & Supersense-Tagged Repository of English with a   Unified  Semantics for Lexical Expressions \\
 \end{tabularx}
-
-
-%\bibliography{eacl2017}
-%\bibliographystyle{main}
-
+ 
 {\sloppy
 \printbibliography[heading=subbibliography,notkeyword=this]
 }
+
+\clearpage
 \end{document}
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
